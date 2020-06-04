@@ -1,0 +1,504 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<title>SAS® Solution for IFRS9: irm/source/sas/misc/ddl/reportmart/credit_risk_detail.sas File Reference</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../SASDocumentationExtra.css" rel="stylesheet" type="text/css"/>
+<link href="../../SASDocumentationCustom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname" align="left"><a href="http://www.sas.com">
+       <img alt="SAS Documentation" 
+       src="data:image/jpeg;base64,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" width="250" height="57"></a>
+   <div id="projectbrief">SAS® Solution for IFRS9</div>
+   <div id="projectnumber">Reference manual - version 01.2020</div>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d5/d44/credit__risk__detail_8sas.html','../../');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">credit_risk_detail.sas File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>The report mart table CREDIT_RISK_DETAIL contains the required information for the SAS Visual Analytics Management Report.  
+<a href="#details">More...</a></p>
+
+<p><a href="../../d5/d44/credit__risk__detail_8sas_source.html">Go to the source code of this file.</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The report mart table CREDIT_RISK_DETAIL contains the required information for the SAS Visual Analytics Management Report. </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">PK  </th><th class="markdownTableHeadNone">Variable  </th><th class="markdownTableHeadNone">Type  </th><th class="markdownTableHeadNone">Required?  </th><th class="markdownTableHeadNone">Relationships  </th><th class="markdownTableHeadNone">Label  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">ANALYSIS_RUN_ID  </td><td class="markdownTableBodyNone">NUMERIC  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone">RGF Analysis Run Key  </td><td class="markdownTableBodyNone">Analysis Run Id  </td><td class="markdownTableBodyNone">Unique key of the Analysis Run that created the results   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">WORKGROUP  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Workgroup  </td><td class="markdownTableBodyNone">SAS Risk Workgroup   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">LOAD_ID  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Load Id  </td><td class="markdownTableBodyNone">Identifies whether the current data was created as part of a production analysis run or not. : <br />
+ - Production <br />
+ - What-If   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone"><b>ENTITY_ID</b>  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"><a class="el" href="../../df/de3/entity_8sas.html">entity.sas</a>  </td><td class="markdownTableBodyNone">Entity Identifier  </td><td class="markdownTableBodyNone">Entity Identifier   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone"><b>REPORTING_DT</b>  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Reporting Date  </td><td class="markdownTableBodyNone">Reference date for the calculation. Also known as the base date or evaluation date of the portfolio   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">INSTID  </td><td class="markdownTableBodyNone">CHARACTER(64)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Instrument Identifier  </td><td class="markdownTableBodyNone">Financial instrument identifier   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">SCENARIO_ID  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Scenario Id  </td><td class="markdownTableBodyNone">Unique scenario id used for the analysis. Each forecast time has a separate scenario id   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">FORECAST_TIME  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Forecast Time  </td><td class="markdownTableBodyNone">Forecast time horizon   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><div class="image">
+<img src="../../pk.jpg" alt="pk.jpg"/>
+</div>
+  </td><td class="markdownTableBodyNone">MOVEMENT_ID  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Movement Id  </td><td class="markdownTableBodyNone">Identifier for any changes that might occurr to the data as a result of a management adjustment/override. Model output has movement_id = 1, any adjustment is measured as a delta change from the previous movement_id, and stored using incremental movement_id values   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PROJECT_NAME  </td><td class="markdownTableBodyNone">CHARACTER(64)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Project Name  </td><td class="markdownTableBodyNone">Name of the cycle in which the data was created   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ANALYSIS_RUN_NAME  </td><td class="markdownTableBodyNone">CHARACTER(150)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Analysis Run Name  </td><td class="markdownTableBodyNone">Name of the analysis run that created this data   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ANALYSIS_TYPE_CD  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Analysis Type Code  </td><td class="markdownTableBodyNone">Type of analysis run that created this data   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SCENARIO_NAME  </td><td class="markdownTableBodyNone">CHARACTER(512)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Scenario Name  </td><td class="markdownTableBodyNone">Name of the business scenario: it groups scenario id values across multiple forecast horizons   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">RULE_ID  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Adjustment Rule Id  </td><td class="markdownTableBodyNone">Adjustment Rule Id   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">RULE_DESC  </td><td class="markdownTableBodyNone">CHARACTER(4096)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Adjustment Rule Description  </td><td class="markdownTableBodyNone">Adjustment Rule Description   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INSTTYPE  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Instrument Type  </td><td class="markdownTableBodyNone">Instrument type   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PORTFOLIO_SEGMENT  </td><td class="markdownTableBodyNone">CHARACTER(50)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Portfolio Segment  </td><td class="markdownTableBodyNone">Portfolio segmentation   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACCOUNTING_TREATMENT_CD  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Accounting Treatment Code  </td><td class="markdownTableBodyNone">Accounting Treatment also known as Carry Value Code. Code used to categorize investments that are reported at amortized cost, Held to maturity securities (HTM), versus at fair value, Available for sale securities (AFS)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACCOUNTING_METHOD  </td><td class="markdownTableBodyNone">CHARACTER(14)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Accounting Method  </td><td class="markdownTableBodyNone">Whether the instrument was evaluated at ammortized cost or at fair value   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ASSESSMENT_TYPE_CD  </td><td class="markdownTableBodyNone">CHARACTER(10)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Assessment type Code  </td><td class="markdownTableBodyNone">Assessment type code: <br />
+ - IA <br />
+ - CA   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ASSESSMENT_TYPE_DESC  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Assessment type Description  </td><td class="markdownTableBodyNone">Assessment type description: <br />
+ - Individual Assessment <br />
+ - Collective Assessment   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ASSET_TYPE_DESC  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Asset Type  </td><td class="markdownTableBodyNone">Asset type categorization   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PRODUCT_CD  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"><a class="el" href="../../d5/d99/map__product__hierarchy_8sas.html">map_product_hierarchy.sas</a>  </td><td class="markdownTableBodyNone">Product Code  </td><td class="markdownTableBodyNone">Product Code   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PRODUCT_LEV1  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Product Category  </td><td class="markdownTableBodyNone">Product Category   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PRODUCT_LEV2  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Product Sub-Category  </td><td class="markdownTableBodyNone">Product Sub-Category   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PRODUCT_LEV3  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Product Name  </td><td class="markdownTableBodyNone">Product Name   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOB_ID  </td><td class="markdownTableBodyNone">CHARACTER(64)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"><a class="el" href="../../d9/d1e/map__lob__hierarchy_8sas.html">map_lob_hierarchy.sas</a>  </td><td class="markdownTableBodyNone">Line of Business Id  </td><td class="markdownTableBodyNone">Line of Business Id (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOB_LEV1  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Line of Business Level 1  </td><td class="markdownTableBodyNone">Line of Business Level 1 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOB_LEV2  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Line of Business Level 2  </td><td class="markdownTableBodyNone">Line of Business Level 2 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOB_LEV3  </td><td class="markdownTableBodyNone">CHARACTER(200)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Line of Business Level 3  </td><td class="markdownTableBodyNone">Line of Business Level 3 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">GEOGRAPHY_CD  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"><a class="el" href="../../d7/d1b/map__geo__hierarchy_8sas.html">map_geo_hierarchy.sas</a>  </td><td class="markdownTableBodyNone">Geography Code  </td><td class="markdownTableBodyNone">Geography Code (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">GEOGRAPHY_LEV1  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Geography Level 1  </td><td class="markdownTableBodyNone">Geography Level 1 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">GEOGRAPHY_LEV2  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Geography Level 2  </td><td class="markdownTableBodyNone">Geography Level 2 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">GEOGRAPHY_LEV3  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Geography Level 3  </td><td class="markdownTableBodyNone">Geography Level 3 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">GEOGRAPHY_LEV4  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Geography Level 4  </td><td class="markdownTableBodyNone">Geography Level 4 (reporting dimension).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SECTOR_DESC  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Sector Description  </td><td class="markdownTableBodyNone">Sector Description   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CURRENCY  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Currency  </td><td class="markdownTableBodyNone">Original currency   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_RATING_AGENCY  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Rating Agency at Origination  </td><td class="markdownTableBodyNone">Credit Rating Agency (i.e. FICO, EQUIFAX, S&amp;P)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_RATING_GRADE  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Rating Grade/Score at Origination  </td><td class="markdownTableBodyNone">Credit Rating Grade/Score. Example: 750 (FICO), AAA (S&amp;P), etc.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_STD_RATING_GRADE  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Standardised Rading Grade at Origination  </td><td class="markdownTableBodyNone">A standardized rating scale level is assigned to each loan (either retail or commercial) so that consistent reporting can be done across the entire portfolio. Mapping is required in order to assign a rating scale level to a given credit score (in case of retail) or rating grade (in case of commercial).<br />
+Closed List Values:<br />
+ 1 - Largely Risk Free <br />
+ - <em>2 - Minimal Risk</em> <br />
+ - <em>3 - Modest Risk</em> <br />
+ - <em>4 - Bankable</em> <br />
+ - <em>5 - Additional Review</em> <br />
+ - <em>6 - Special Mention</em> <br />
+ - <em>7 - Sub-Standard</em> <br />
+ - <em>8 - Doubtful</em> <br />
+ - <em>9 - Loss</em>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_CREDIT_STATE  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Credit State at Origination  </td><td class="markdownTableBodyNone">Numeric scale value corresponding to the value of column ORIG_STD_RATING_GRADE (range 1 to 9)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">RATING_AGENCY  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Rating Agency  </td><td class="markdownTableBodyNone">Credit Rating Agency (i.e. FICO, EQUIFAX, S&amp;P)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">RATING_GRADE  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Rating Grade/Score  </td><td class="markdownTableBodyNone">Credit Rating Grade/Score. Example: 750 (FICO), AAA (S&amp;P), etc.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">STD_RATING_GRADE  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Standardised Rading Grade  </td><td class="markdownTableBodyNone">A standardized rating scale level is assigned to each loan (either retail or commercial) so that consistent reporting can be done across the entire portfolio. Mapping is required in order to assign a rating scale level to a given credit score (in case of retail) or rating grade (in case of commercial).<br />
+Closed List Values:<br />
+ 1 - Largely Risk Free <br />
+ - <em>2 - Minimal Risk</em> <br />
+ - <em>3 - Modest Risk</em> <br />
+ - <em>4 - Bankable</em> <br />
+ - <em>5 - Additional Review</em> <br />
+ - <em>6 - Special Mention</em> <br />
+ - <em>7 - Sub-Standard</em> <br />
+ - <em>8 - Doubtful</em> <br />
+ - <em>9 - Loss</em>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CREDIT_STATE  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Credit State  </td><td class="markdownTableBodyNone">Numeric scale value corresponding to the value of column STD_RATING_GRADE (range 1 to 9)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DRAWDOWN_PERIOD_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Drawdown Period Flag  </td><td class="markdownTableBodyNone">Indicates that a contract is in its drawdown period allowing additional drawdowns until the full CREDIT_LIMIT_AMT is reached and the OFF_BALANCE_AMT is 0.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ISSUED_GUARANTEE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Issued Flag  </td><td class="markdownTableBodyNone">Indicates that a contract is a pure off balance guarantee issued by the bank that can be called under certain conditions by a beneficiary.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">REVOLVING_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Revolving Flag  </td><td class="markdownTableBodyNone">Indicates that a contract is revolving, meaning that drawings and repayments don't follow a predefined schedule as long as the CREDIT_LIMIT_AMT is not exceeded.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DELINQUENCY_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Delinquency Flag  </td><td class="markdownTableBodyNone">Indicates delinquency (Y) or not (N)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">EVER_DELINQUENT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Ever Delinquent Flag  </td><td class="markdownTableBodyNone">Flag indicating whether there has ever been a delinquency   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOAN_STATUS_DESC  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Loan Status  </td><td class="markdownTableBodyNone">Status of the loan (for instance Impaired/Normal/Special Mention/Pipeline/Written-off...).   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Purchased or Originated Credit Imparied Flag  </td><td class="markdownTableBodyNone">Identifies purchased financial assets with credit deterioration   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">TDR_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Troubled Debt Restructuring Flag  </td><td class="markdownTableBodyNone">Identifies loans that are going through a debt restructuring due to economic or legal reasons related to a debtor's financial difficulties   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FORECLOSURE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Foreclosure Flag  </td><td class="markdownTableBodyNone">Indicates a foreclosure action on the mortgage   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">RELATED_PARTY_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Related Party Flag  </td><td class="markdownTableBodyNone">Identify related parties for disclosure (refer to FAS57)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">COLLATERAL_SUPPORT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Collateral Dependent Flag  </td><td class="markdownTableBodyNone">Identify exposures with collaterals that can serve as alternative means of repayment when the counterparty is experiencing financial difficulties (ASU 2016-13 326-20-50-20)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FINANCIAL_DIFFICULTIES_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Financial Difficulties Flag  </td><td class="markdownTableBodyNone">Identify counterparties that are experiencing financial difficulties (ASU 2016-13 326-20-50-20)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">UNCONDITIONALLY_CANCELABLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Unconditionally Cancelable Flag  </td><td class="markdownTableBodyNone">Flag: Y/N. Identifies instruments for which a banking organization may, at any time, with or without cause, refuse to extend credit   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DEACTIVATION_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Deactivation Flag  </td><td class="markdownTableBodyNone">Flag: Y/N. Identifies instruments that are eliminated from the original portfolio in a given activation scenario and horizon   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SYNTHETIC_INSTRUMENT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Synthetic Instrument Flag  </td><td class="markdownTableBodyNone">Flag: Y/N. Identifies synthetic instruments that were generated based on the user business assumptions   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL_STAGE  </td><td class="markdownTableBodyNone">CHARACTER(10)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL Stage Allocation  </td><td class="markdownTableBodyNone">Stage Allocation. Valid values: <br />
+ - Stage 1 <br />
+ - Stage 2 <br />
+ - Stage 3   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREV_ECL_STAGE  </td><td class="markdownTableBodyNone">CHARACTER(10)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Previous Period ECL Stage Allocation  </td><td class="markdownTableBodyNone">Previous Period Stage Allocation. Valid values: <br />
+ - Stage 1 <br />
+ - Stage 2 <br />
+ - Stage 3   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACTIVATION_SCENARIO  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Activation Scenario  </td><td class="markdownTableBodyNone">The Scenario Id for which the synthetic instrument was generated and processed. Only relevant for synthetic instruments.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACTIVATION_HORIZON  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Activation Horizon  </td><td class="markdownTableBodyNone">The time horizon in which the synthetic instrument becomes active (i.e. it is originated). For deactivated positions, this is the time horizon when the instrument is removed from the portfolio (i.e. short selling)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIGINATION_DT  </td><td class="markdownTableBodyNone">DATE  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Origination Date  </td><td class="markdownTableBodyNone">Loan start/origination date   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MATURITY_DT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Maturity Date  </td><td class="markdownTableBodyNone">Date on which the principal is fully paid off for the loan/security.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACQUISITION_DT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Acquisition Date  </td><td class="markdownTableBodyNone">Date on which the loan or security was acquired is reported on the POCI Reconciliation disclosure template.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MOVEMENT_DESC  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Movement Description  </td><td class="markdownTableBodyNone">Custom description provided by the user when executing the adjustment allocation analysis. Used to provide a user specific comment about the change being applied on top of the model results   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MOVEMENT_TYPE_CD  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Movement Type Code  </td><td class="markdownTableBodyNone">Movement type code. See <a class="el" href="../../d7/da2/map__movement__type_8sas.html">map_movement_type.sas</a> for a list of valid values   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MOVEMENT_TYPE  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Movement Type  </td><td class="markdownTableBodyNone">Type of movement or adjustment. Looked up from <a class="el" href="../../d7/da2/map__movement__type_8sas.html">map_movement_type.sas</a>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MOVEMENT_CATEGORY  </td><td class="markdownTableBodyNone">CHARACTER(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Movement Category  </td><td class="markdownTableBodyNone">Movement or Adjustment category. Looked up from <a class="el" href="../../d7/da2/map__movement__type_8sas.html">map_movement_type.sas</a>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FORECAST_PERIOD  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Forecast Period  </td><td class="markdownTableBodyNone">Forecast Period expressed as the number of intervals from the Reporting Date. I.e. Year 0 (current period), Year 1, .., Year N   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DAYS_PAST_DUE_CNT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Days Past Due  </td><td class="markdownTableBodyNone">Number of days past the payment due date   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_UNPAID_BALANCE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Unpaid Balance Amount at Origination  </td><td class="markdownTableBodyNone">Unpaid balance of the instrument at the origination dat e   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_PIT_PD  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PIT PD at Origination  </td><td class="markdownTableBodyNone">Point-In-Time Probablilty of Default at origination   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIG_LTV_RT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LTV at Origination  </td><td class="markdownTableBodyNone">Loan-To-Value Ratio at origination   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PIT_PD  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PIT PD  </td><td class="markdownTableBodyNone">Point-In-Time Probablilty of Default   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LTV_RT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LTV  </td><td class="markdownTableBodyNone">Loan-to-Value expressed as a percentageof the collateral   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LTV_DESC  </td><td class="markdownTableBodyNone">CHARACTER(50)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LTV Description  </td><td class="markdownTableBodyNone">Loan-to-Value description. Looked up from <a class="el" href="../../da/dd8/map__ltv__type_8sas.html">map_ltv_type.sas</a>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LGD  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LGD  </td><td class="markdownTableBodyNone">Loss Given Default   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PD_12M  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PD (12 months)  </td><td class="markdownTableBodyNone">Probability of Default over the next 12 months   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PD_LIFETIME  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PD (Lifetime)  </td><td class="markdownTableBodyNone">Probability of Default over the lifetime of the loan   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LAPD  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Lifetime Annualized PD  </td><td class="markdownTableBodyNone">Annualized value od the lifetime probability of default   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LFPD  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Levelized Forward PD  </td><td class="markdownTableBodyNone">Spread equivalent of the lifetime probability of default   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CURRENT_RT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Current Rate  </td><td class="markdownTableBodyNone">Decimal value   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">EFFECTIVE_INTEREST_RT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Effective Interest Rate  </td><td class="markdownTableBodyNone">Decimal value   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MARGIN_RT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Rate Margin  </td><td class="markdownTableBodyNone">Decimal value. Margin over the reference interest rate.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CREDIT_LIMIT_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Credit Limit Amount  </td><td class="markdownTableBodyNone">Indicates maximum allowed credit exposure on the contract.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">UNPAID_BALANCE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Unpaid Balance Amount  </td><td class="markdownTableBodyNone">Unpaid balance of the instrument at the reporting date   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DRAWN_PCT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Drawn Percentage  </td><td class="markdownTableBodyNone">Drawn percentage for instruments with a nonzero credit limit   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">OFF_BALANCE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Off Balance Amount of the Contract  </td><td class="markdownTableBodyNone">Indicates amount of contract that is off balance, used for issued guarantees, revolving credits, pending credit offers and term loans in their drawdown period   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">WRITE_OFF_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">(Current Period) Write-off  </td><td class="markdownTableBodyNone">Drives mapping to worksheets. See here for general worksheet mapping information. This is the current period write-off amount (partial or full)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CUM_WRITE_OFF_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">(Cumulative) Write-off  </td><td class="markdownTableBodyNone">Drives mapping to worksheets. See here for general worksheet mapping information. This is the cumulative write-off amount (partial or full)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREV_CUM_WRITE_OFF_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">(Cumulative - Previous Period) Write-off  </td><td class="markdownTableBodyNone">Cumulative write-off amount from the previous period.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">RECOVERY_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">(Current Period) Recovery Amount  </td><td class="markdownTableBodyNone">Drives mapping to worksheets. See here for general worksheet mapping information. This is the current period recovery amount (partial or full)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CUM_RECOVERY_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">(Cumulative) Recovery Amount  </td><td class="markdownTableBodyNone">Drives mapping to worksheets. See here for general worksheet mapping information. This is the cumulative recovery amount (partial or full)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREV_CUM_RECOVERY_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">(Cumulative - Previous Period) Recovery Amount  </td><td class="markdownTableBodyNone">Cumulative recovery amount from the previous period.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FEE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Amount of Fees  </td><td class="markdownTableBodyNone">Collected fees   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACCRUED_INTEREST_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Accrued Interest  </td><td class="markdownTableBodyNone">Accrued Interest   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI_PURCHASE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI Purchase Amount  </td><td class="markdownTableBodyNone">Purchase price of POCI assets is reported on POCI Reconciliation disclosure template.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL_12M  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL (12 months)  </td><td class="markdownTableBodyNone">Expected Credit Loss over the next 12 months   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL_LIFETIME  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL (Lifetime)  </td><td class="markdownTableBodyNone">Expected Credit Loss over the lifetime of the loan   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">Y  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ECL (Staged)  </td><td class="markdownTableBodyNone">Staged Expected Credit Loss   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREV_ECL  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Previous Period ECL  </td><td class="markdownTableBodyNone">Staged Previous Period Expected Credit Loss   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">COLLATERAL_TYPE  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Collateral Type  </td><td class="markdownTableBodyNone">Collateral Type   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">COUNTERPARTY_TYPE  </td><td class="markdownTableBodyNone">VARCHAR(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Counterparty Type  </td><td class="markdownTableBodyNone">Counterparty Type   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI_PAR_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI Par Value Amount  </td><td class="markdownTableBodyNone">POCI Par Value Amount   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">COLLATERAL_VALUE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Collateral Value Amount  </td><td class="markdownTableBodyNone">Collateral Value Amount   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">AMORTIZED_COST_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Amortized Cost Basis Amount  </td><td class="markdownTableBodyNone">Amortized Cost Basis Amount   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">NET_WRITE_OFF_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Net Write Off Amount  </td><td class="markdownTableBodyNone">Net write off amount.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PROVISION_EXPENSE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Provision Expense Amount  </td><td class="markdownTableBodyNone">Provision expense amount.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FAIR_VALUE  </td><td class="markdownTableBodyNone">NUMERIC  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Fair Value  </td><td class="markdownTableBodyNone">Also know as Market Value. The estimated price at which an asset can be sold or a liability settled in an orderly transaction to a third party under current market conditions.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACQUISITION_DT  </td><td class="markdownTableBodyNone">DATE  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Purchase Date  </td><td class="markdownTableBodyNone">The date on which the financial instruments was acquired.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ACQUISITION_PRICE  </td><td class="markdownTableBodyNone">NUMERIC  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Acquisition Price per unit  </td><td class="markdownTableBodyNone">The unit price paid per unit of holding to acquire a financial asset.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ISSUANCE_DATE  </td><td class="markdownTableBodyNone">DATE  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Issuance Date  </td><td class="markdownTableBodyNone">The date on which a company or government makes a new issue of securities to the public.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ISSUER_NAME  </td><td class="markdownTableBodyNone">VARCHAR(100)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Issuer Name  </td><td class="markdownTableBodyNone">The name of legal entity that develops, registers and sells securities for the purpose of financing its operations. Issuers may be domestic or foreign governments, corporations or investment trusts.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI_PURCHASE_DT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">POCI Purchase Date  </td><td class="markdownTableBodyNone">Used to determine if a POCI asset was purchased in the current reporting period.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">NONACCRUAL_STATUS_FLG  </td><td class="markdownTableBodyNone">VARCHAR(3)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Nonaccrual Status Flag  </td><td class="markdownTableBodyNone">Indicates nonaccrual status (Y) or not (N)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DPD_CLASS  </td><td class="markdownTableBodyNone">VARCHAR(50)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Days Past Due Classification  </td><td class="markdownTableBodyNone">Days Past Due Classification used in the Disclosure Past Due Reports   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INTEREST_INCOME_ON_NON_ACC_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Income Amount on Nonaccrual  </td><td class="markdownTableBodyNone">Interest income recognized during the period on nonaccrual assets is reported on nonaccrual disclosure template.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">NOMINAL_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Nominal Amount  </td><td class="markdownTableBodyNone">Nominal Amount = OFF_BALANCE_AMT + UNPAID_BALANCE_AMT   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ALLOWANCE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Allowance Amount  </td><td class="markdownTableBodyNone">Allowance Amount   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREV_ALLOWANCE_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Previous Period Allowance Amount  </td><td class="markdownTableBodyNone">Previous Period Allowance Amount   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PARTIAL_WRITE_OFF_AMT  </td><td class="markdownTableBodyNone">NUMERIC(8)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Partial Write Off Amount  </td><td class="markdownTableBodyNone">Partial Write Off Amount   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FINREP_NON_PERFORMING_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Finrep - Non-performing indicator  </td><td class="markdownTableBodyNone">FINREP non-performing indicator   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FINREP_COLLATERAL_TYPE  </td><td class="markdownTableBodyNone">CHARACTER(64)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Finrep - Collateral Type  </td><td class="markdownTableBodyNone">FINREP collateral type   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FINREP_PURPOSE_TYPE  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Finrep - Purpose Type Code  </td><td class="markdownTableBodyNone">FINREP purpose type code   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FINREP_PROJECT_FINANCE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Finrep - Project Finance indicator  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no). Drives mapping to FINREP templates   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOW_CREDIT_RISK_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Low Credit Risk Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no). Indicates whether the instrument is subject to low credit risk as referred to by IFRS9 B.5.2.22-B.5.2.24. Note that alternatively this flag can be derived in the stage allocation logic.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">IRRECOVERABLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Finrep - Irrecoverable contract flag  </td><td class="markdownTableBodyNone">Drives mapping to FINREP templates. Used together with write-off amount to identify amounts to be reported on write-offs.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MODIFIED_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Modification flag  </td><td class="markdownTableBodyNone">Indicates modification of the instrument. Used in FINREP 12.1 report for "Changes due to change in credit risk (net)" and "Changes due to modifications without derecognition (net)"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SPPI_PRODUCT_TYPE_CD  </td><td class="markdownTableBodyNone">CHARACTER(20)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SPPI Product Type  </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SPPI_PRODUCT_SUBTYPE_CD  </td><td class="markdownTableBodyNone">CHARACTER(20)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SPPI Product Sub Type  </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">NON_RECOURSE_PROVISION_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Non Recourse Provision Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MATURITY_CAP_INT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Maturity Cap Int Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DEFERRAL_POSSIBLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Deferral Possible Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INT_COMPOUNDING_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Compounding Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">LOSSES_TO_HOLDER_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Losses to Holder Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INTEREST_BASE_OUTSTANDING_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Base Outstanding Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INTEREST_PAYM_CANCELLABLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Payment Cancellable Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INTEREST_PAYM_DEFERRABLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Payment Deferrable Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">DEFERRED_INT_PMNT_ACCRUE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Deferred Interest Payment Accrue Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">CF_INDEXED_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Cashflow Indexed Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ZERO_CURVE_REF  </td><td class="markdownTableBodyNone">CHARACTER(32)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Zero Curve Reference  </td><td class="markdownTableBodyNone">Defaults to NA when not relevant, else must be a risk factor curve   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INVERSE_FLOATING_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Inverse Floating Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">FINANCIAL_LEVERAGE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Financial Leverage Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INTEREST_EXT_FIXED_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Ext Fixed Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INTEREST_EXT_FIXED_COM_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Ext Fixed Com Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREPAYMENT_POSSIBLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Prepayment Possible Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">PREPAYMENT_AMT_CAP_INT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Prepayment Amount Cap Int Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">ORIGINATED_PREM_DISCOUNT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Originated Prem Discount Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SIGNIFICANT_AMT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Significant Amount Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MATURITY_EXT_POSSIBLE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Maturity Ext Possible Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">INT_MARKET_RATE_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Interest Market Rate Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">MATURITY_EXT_CAP_INT_FLG  </td><td class="markdownTableBodyNone">CHARACTER(1)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Maturity Ext Cap Int Flag  </td><td class="markdownTableBodyNone">Accepts either Y (yes) or N (no)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SPPI_TEST  </td><td class="markdownTableBodyNone">CHARACTER(15)  </td><td class="markdownTableBodyNone">N  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">SPPI Test Result  </td><td class="markdownTableBodyNone">SPPI Test Pass (PASSED) or Fail (FAILED).   </td></tr>
+</table>
+<dl class="section author"><dt>Author</dt><dd>SAS Institute Inc. </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2019 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="../../d5/d44/credit__risk__detail_8sas_source.html">credit_risk_detail.sas</a>.</p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_46149c302239f78dbcc74ecc751773ca.html">irm</a></li><li class="navelem"><a class="el" href="../../dir_12c2327fdc7a353c40c3fb6af2c8b8cc.html">source</a></li><li class="navelem"><a class="el" href="../../dir_40e3c92bfc2803ad808d16c5fb047324.html">sas</a></li><li class="navelem"><a class="el" href="../../dir_edd63acafddd408c41c9cdbe85209411.html">misc</a></li><li class="navelem"><a class="el" href="../../dir_8cf914bb26ad1e0fd0820ea58c5ab67b.html">ddl</a></li><li class="navelem"><a class="el" href="../../dir_de2fa10fe0a4c5d86c9d53d16fa9ccbc.html">reportmart</a></li><li class="navelem"><a class="el" href="../../d5/d44/credit__risk__detail_8sas.html">credit_risk_detail.sas</a></li>
+    <li class="footer">Generated by
+      <a href="http://www.sas.com">SAS</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

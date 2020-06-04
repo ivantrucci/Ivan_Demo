@@ -1,0 +1,344 @@
+{
+  "reviewActivities": {
+      "tasks": [
+        {
+          "taskName": "Review Data Quality",
+          "linkText": "'reviewActivity.dq.title.txt'",
+          "linkHref": "concat(GetVAViewerDirectiveURL('/Products/SAS Solution for IFRS9/Reports', 'Data Quality'), '&amp;FilterBaseDate=', substring(baseDt,0,10), '&amp;FilterBaseDate_Dtl=', substring(baseDt,0,10))"
+        },
+        {
+          "taskName": "Review Classification",
+          "linkText": "'reviewActivity.dataClassification.title.txt'",
+          "linkHref": "if(empty(getPerspectiveId(false)),concat('content/',getContentId(false),'#/AnalysisDataTable'),concat('content/',getContentId(false),'-',getPerspectiveId(false),'#/AnalysisDataTable'))"
+        },
+        {
+          "taskName": "Configure Master Risk Scenarios",
+          "linkText": "'reviewActivity.prepareScenarios.title.txt'",
+          "linkHref": "if(empty(getPerspectiveId(false)),concat('content/',getContentId(false),'#/MasterRiskScenarioTable'),concat('content/',getContentId(false),'-',getPerspectiveId(false),'#/MasterRiskScenarioTable'))"
+        },
+        {
+          "taskName": "Review Credit Risk Results",
+          "linkText": "'reviewActivity.creditRiskResults.title.txt'",
+          "linkHref": "GetVAViewerDirectiveURL('/Products/SAS Solution for IFRS9/Reports', 'Management Report')"
+        },
+        {
+          "taskName": "Prepare Attribution Template",
+          "linkText": "'Prepare Attribution Template'",
+          "linkHref": "if(empty(getPerspectiveId(false)),concat('content/',getContentId(false),'#/AttributionAnalysisTable'),concat('content/',getContentId(false),'-',getPerspectiveId(false),'#/AttributionAnalysisTable'))"
+        },
+        {
+          "taskName": "Review Attribution Analysis Results",
+          "linkText": "'reviewActivity.attributionTemplates.title.txt'",
+          "linkHref": "GetVAViewerDirectiveURL('/Products/SAS Solution for IFRS9/Reports', 'Management Report')"
+        },
+        {
+          "taskName": "Review Disclosure Reports",
+          "linkText": "'reviewActivity.disclosureReports.title.txt'",
+          "linkHref": "GetFirst(JPath('read',ExecuteSASCode('get_rgf_links.sas',C_GetGlobalParameters(concat('{\"cycle_key\":',custObj214Rk,',\"perspective_id\":\"',if(empty(getPerspectiveId(false)),'\"\"',getPerspectiveId(false)),'\"}'), true, true),'rgf_links','hlink'), '$.rows[?(@.hlink != \"\")].hlink'))"
+        }
+      ]
+  },
+  "wf_flow_diagram": {
+    "wf_summary": {
+      "nodes": [
+        {
+          "key": "IC",
+          "text": "Initialize Cycle"
+        },
+        {
+          "key": "DP",
+          "text": "Data Processing",
+          "drill": true,
+          "alias": [
+            "Data Preparation",
+            "Run Data Quality",
+            "Manual Adjustments",
+            "Review Data Quality"
+          ]
+        },
+        {
+          "key": "DC",
+          "text": "Data Classification",
+          "drill": true,
+          "alias": [
+            "Run Classification",
+            "Adjust Classification",
+            "Review Classification"
+          ]
+        },
+        {
+          "key": "S",
+          "text": "Prepare Scenarios",
+          "alias": [
+            "Configure Master Risk Scenarios"
+          ]
+        },
+        {
+          "key": "CRA",
+          "text": "Credit Risk Analysis",
+          "drill": true,
+          "alias": [
+            "Credit Risk Analysis",
+            "Credit Risk Adjustments",
+            "Review Credit Risk Results"
+          ]
+        },
+        {
+          "key": "ATT",
+          "text": "Attribution",
+          "drill": true,
+          "alias": [
+            "Prepare Attribution Template",
+            "Attribution Analysis",
+            "Review Attribution Analysis Results"
+          ]
+        },
+        {
+          "key": "GD",
+          "text": "Generate Disclosures",
+          "drill": true,
+          "alias": [
+            "Generate Disclosures",
+            "Review Reports"
+          ]
+        },
+        {
+          "key": "SO",
+          "text": "Sign-Off"
+        }
+      ],
+      "links": [
+        {"from": "IC", "to": "DP"},
+        {"from": "DP", "to": "DC"},
+        {"from": "DC", "to": "S"},
+        {"from": "S", "to": "CRA"},
+        {"from": "CRA", "to": "ATT"},
+        {"from": "ATT", "to": "GD"},
+        {"from": "GD", "to": "SO"}
+      ]
+    },
+    "Data Processing": {
+      "nodes": [
+        {
+          "key": "START",
+          "text": "",
+          "category": "_START_"
+        },
+        {
+          "key": "DP",
+          "text": "Data Preparation"
+        },
+        {
+          "key": "RuDQ",
+          "text": "Run Data Quality"
+        },
+        {
+          "key": "MA",
+          "text": "Manual Adjustments"
+        },
+        {
+          "key": "ReDQ",
+          "text": "Review Data Quality"
+        },
+        {
+          "key": "END",
+          "text": "",
+          "category": "_END_"
+        }
+      ],
+      "links": [
+        {"from": "START", "to": "DP"},
+        {"from": "DP", "to": "RuDQ"},
+        {"from": "RuDQ", "to": "ReDQ"},
+        {"from": "MA", "to": "RuDQ"},
+        {"from": "ReDQ", "to": "MA"},
+        {"from": "ReDQ", "to": "DP"},
+        {"from": "ReDQ", "to": "END"}
+      ]
+    },
+    "Data Classification": {
+      "nodes": [
+        {
+          "key": "START",
+          "text": "",
+          "category": "_START_"
+        },
+        {
+          "key": "RunClass",
+          "text": "Run Classification"
+        },
+        {
+          "key": "AdjClass",
+          "text": "Adjust Classification"
+        },
+        {
+          "key": "RevClass",
+          "text": "Review Classification"
+        },
+        {
+          "key": "END",
+          "text": "",
+          "category": "_END_"
+        }
+      ],
+      "links": [
+        {"from": "START", "to": "RunClass"},
+        {"from": "RunClass", "to": "RevClass"},
+        {"from": "RevClass", "to": "AdjClass"},
+        {"from": "AdjClass", "to": "RevClass"},
+        {"from": "RevClass", "to": "END"}
+      ]
+    },
+    "Credit Risk Analysis": {
+      "nodes": [
+        {
+          "key": "START",
+          "text": "",
+          "category": "_START_"
+        },
+        {
+          "key": "CR",
+          "text": "Credit Risk Analysis"
+        },
+        {
+          "key": "RR",
+          "text": "Review Credit Risk Results"
+        },
+        {
+          "key": "AA",
+          "text": "Credit Risk Adjustments"
+        },
+        {
+          "key": "END",
+          "text": "",
+          "category": "_END_"
+        }
+      ],
+      "links": [
+        {"from": "START", "to": "CR"},
+        {"from": "CR", "to": "RR"},
+        {"from": "RR", "to": "AA"},
+        {"from": "RR", "to": "CR"},
+        {"from": "AA", "to": "RR"},
+        {"from": "RR", "to": "END"}
+      ]
+    },
+    "Generate Disclosures": {
+      "nodes": [
+        {
+          "key": "START",
+          "text": "",
+          "category": "_START_"
+        },
+        {
+          "key": "GenRPT",
+          "text": "Generate Disclosures"
+        },
+        {
+          "key": "RevRPT",
+          "text": "Review Disclosure Reports"
+        },
+        {
+          "key": "END",
+          "text": "",
+          "category": "_END_"
+        }
+      ],
+      "links": [
+        {"from": "START", "to": "GenRPT"},
+        {"from": "GenRPT", "to": "RevRPT"},
+        {"from": "RevRPT", "to": "GenRPT"},
+        {"from": "RevRPT", "to": "END"}
+      ]
+    },
+    "Attribution": {
+      "nodes": [
+        {
+          "key": "START",
+          "text": "",
+          "category": "_START_"
+        },
+        {
+          "key": "Config",
+          "text": "Prepare Attribution Template"
+        },
+        {
+          "key": "AttANA",
+          "text": "Attribution Analysis"
+        },
+        {
+          "key": "RevAA",
+          "text": "Review Attribution Analysis Results"
+        },
+        {
+          "key": "END",
+          "text": "",
+          "category": "_END_"
+        }
+      ],
+      "links": [
+        {"from": "START", "to": "Config"},
+        {"from": "Config", "to": "AttANA"},
+        {"from": "AttANA", "to": "RevAA"},
+        {"from": "RevAA", "to": "AttANA"},
+        {"from": "RevAA", "to": "END"}
+      ]
+    }
+  },
+  "wf_activity_model_mapping": {
+    "count": 10,
+    "items": [
+      {
+        "modelSscId": "RMC|IFRS9-001-Init",
+        "activity": "Initialize Cycle",
+        "key": "key1"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-002-DataPreparation",
+        "activity": "Data Preparation",
+        "key": "key2"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-003-DataQuality",
+        "activity": "Run Data Quality",
+        "key": "key3"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-004-DataAdjustment",
+        "activity": "Manual Adjustments",
+        "key": "key4"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-004-DataAdjustment",
+        "activity": "Run Classification",
+        "key": "key5"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-004-DataAdjustment",
+        "activity": "Adjust Classification",
+        "key": "key6"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-005-CreditRisk",
+        "activity": "Credit Risk Analysis",
+        "key": "key7"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-006-AdjustmentAllocation",
+        "activity": "Credit Risk Adjustments",
+        "key": "key8"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-008-Disclosures",
+        "activity": "Generate Disclosures",
+        "key": "key9"
+      },
+      {
+        "modelSscId": "RMC|IFRS9-009-AttributionAnalysis",
+        "activity": "Attribution Analysis",
+        "key": "key10"
+      }
+    ]
+  },
+  "wf_template_name": "IFRS9_Cycle"
+}

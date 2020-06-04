@@ -1,0 +1,19 @@
+# This file defines SAS data sets that contain name/value pairs
+# that define global macro variables to be loaded before a node
+# executes. The file must contain two string columns shown below:
+# CONFIG_NAME - Defines the name of the macro variable
+# CONFIG_VALUE - Defines the value of the macro variable
+# The key below indicates the name of the SAS data set. The
+# value of the key should be set to the string "local" as
+# shown below.
+#
+# All keys should be upper case
+GLOBAL.SYSTEM_OPTION=local
+FRS9_CFG.RUN_OPTION=local
+FRS9_PRM.RUN_OPTION=local
+FRS9_PRM.ATTRIBUTION_OPTION=local
+FRS9_CFG.REPORT_OPTION=local
+FRS9_CFG.ENRICHMENT_CONFIG=local
+FRS9_CFG.DQ_CONFIG=local
+FRS9_CFG.CREDIT_RISK_CONFIG=local
+FRS9_CFG.ALLOCATION_CONFIG=local

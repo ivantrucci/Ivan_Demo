@@ -1,0 +1,76 @@
+{
+   "menuItems": [
+      {
+         "name": "dashboard",
+         "enabled": true
+      },
+      {
+         "name": "cycle",
+         "enabled": true
+      },
+      {
+         "name": "analysisData",
+         "enabled": true
+      },
+      {
+         "name": "analysisRun",
+         "enabled": true
+      },
+      {
+         "name": "segmentationScheme",
+         "enabled": false
+      },
+      {
+         "name": "allocationScheme",
+         "enabled": false
+      },
+      {
+         "name": "businessEvolutionPlan",
+         "enabled": false
+      },
+      {
+         "name": "masterRiskScenario",
+         "enabled": true
+      },
+      {
+         "name": "issue",
+         "enabled": true
+      },
+      {
+         "name": "actionPlan",
+         "enabled": true
+      },
+      {
+         "name": "correspondence",
+         "enabled": true
+      },
+      {
+         "name": "model",
+         "enabled": true
+      },
+      {
+         "name": "modelRun",
+         "enabled": true
+      },
+      {
+         "name": "attributionTemplate",
+         "enabled": true
+      },
+      {
+         "name": "dataDefinition",
+         "enabled": true
+      },
+      {
+         "name": "dataMap",
+         "enabled": true
+      },
+      {
+         "name": "ruleSet",
+         "enabled": true
+      },
+      {
+         "name": "workflowTemplate",
+         "enabled": true
+      }
+   ]
+}

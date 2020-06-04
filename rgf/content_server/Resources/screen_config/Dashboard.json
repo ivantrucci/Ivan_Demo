@@ -1,0 +1,54 @@
+{
+   "reports": [
+      {
+         "id": "Report01",
+         "reportPath": "'/Products/SAS Solution for IFRS9/Reports'",
+         "reportName": "'Data Quality'"
+      },
+      {
+         "id": "Report02",
+         "reportPath": "'/Products/SAS Solution for IFRS9/Reports'",
+         "reportName": "'Management Report'"
+      },
+      {
+         "id": "Report03",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report04",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report05",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report06",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report07",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report08",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report09",
+         "reportPath": "",
+         "reportName": ""
+      },
+      {
+         "id": "Report10",
+         "reportPath": "",
+         "reportName": ""
+      }
+   ]
+}

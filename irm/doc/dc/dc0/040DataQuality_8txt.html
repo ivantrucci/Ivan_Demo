@@ -1,0 +1,392 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<title>SAS® Solution for IFRS9: Data Quality and Data Adjustment</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../SASDocumentationExtra.css" rel="stylesheet" type="text/css"/>
+<link href="../../SASDocumentationCustom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname" align="left"><a href="http://www.sas.com">
+       <img alt="SAS Documentation" 
+       src="data:image/jpeg;base64,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" width="250" height="57"></a>
+   <div id="projectbrief">SAS® Solution for IFRS9</div>
+   <div id="projectnumber">Reference manual - version 01.2020</div>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('dc/dc0/040DataQuality_8txt.html','../../');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Data Quality and Data Adjustment </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#DataQualityIntroduction">Introduction</a></li>
+<li class="level1"><a href="#RuleSetOverview">Rules and Rule Sets</a></li>
+<li class="level1"><a href="#DataQualityHow_key">Data Quality Checking</a><ul><li class="level2"><a href="#DataQualityConfiguration_key">Data Quality Rule Set Configuration and Execution</a></li>
+<li class="level2"><a href="#DataQualityProvidedRules_key">Pre-Configured Data Quality Rules</a></li>
+<li class="level2"><a href="#DataQualityReporting_key">Data Quality Reporting</a><ul><li class="level3"><a href="#DataQualitySummary_key">The Data Quality Summary Report</a></li>
+<li class="level3"><a href="#DataQualityDetails_key">The Data Quality Details Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><a href="#DataAdjustmentHow_key">Data Adjustment</a><ul><li class="level2"><a href="#DataAdjustConfiguration_key">Data Adjustment Rule Set Configuration and Execution</a></li>
+<li class="level2"><a href="#DataAdjustmentProvidedRules_key">Pre-Configured Data Adjustment Rules</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#DataClassifications_key">Data Classification</a><ul><li class="level2"><a href="#DC_RunSPPI_key">Running SPPI Tests</a></li>
+<li class="level2"><a href="#Template_SPPI_key">Template for SPPI Test</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#DataQualityAdditionalRules_key">Configuring Additional Rules and Rule Sets</a></li>
+<li class="level1"><a href="#AllocationAdjustments_key">Overlays &amp; Manual Adjustments</a><ul><li class="level2"><a href="#AllocAdjustment_key">Introduction</a></li>
+<li class="level2"><a href="#AllocAdjustment_details">Adjustment Allocation Details</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#RegulationLinks">Regulation</a><ul><li class="level2"><a href="#BCBSReferences">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><p><a class="anchor" id="DataQualityIntro"></a></p>
+<h1><a class="anchor" id="DataQualityIntroduction"></a>
+Introduction</h1>
+<p>SAS Solution for IFRS 9 proactively identifies and reports data quality issues and enables you to adjust your data dynamically through rules.</p>
+<p>The solution contains a number of pre-configured data quality rules and data adjustment rules. These pre-configured rules are in line with the principles of the BCBS 239 regulation (<a href="https://www.bis.org/publ/bcbs239.pdf">https://www.bis.org/publ/bcbs239.pdf</a>). However, the solution enables you to edit these pre-configured rules as needed and create your own rules for quality checking and adjustment.</p>
+<h1><a class="anchor" id="RuleSetOverview"></a>
+Rules and Rule Sets</h1>
+<p>There are two primary ways in which SAS Solution for IFRS 9 uses rules:</p><ul>
+<li><b>Data quality checking</b>: The solution evaluates the quality of the data using rules, and generates data quality reports that can be reviewed for issues that have been identified.</li>
+<li><b>Data adjustment</b>: The solution enables you to make manual adjustments to data using rules.</li>
+</ul>
+<p>The Rule Set business object in SAS Solution for IFRS 9 is used for grouping these rules.</p>
+<p>The Rule Sets object supports four types of rule sets:</p>
+<ul>
+<li><b><em>Business rule sets</em></b>: Used for checking data quality and performing data transformation tasks.</li>
+<li><b><em>Allocation rule sets</em></b>: Used to define rules for allocating overlays and manual adjustments to detail data.</li>
+</ul>
+<p>Business rule sets are defined using the data definition of the table for which the rules will be applied. The spreadsheet in the rule set object is refreshed with metadata of the data definition that you select.</p>
+<p>There are two components that define a rule in a Business rule set: CONDITION and ACTION. The rules always work in this fashion:</p>
+<p>If <em><b>&lt;conditions&gt;</b></em> then <em><b>&lt;actions&gt;</b></em>.</p>
+<p>Each individual component (condition or action) is a separate row in the rule set table. The action component is optional. A rule can have multiple conditions and actions. All components for a rule are linked by the same Rule ID. For a given rule set object, you can add a rule by adding a new row in the Rule set component. The following screen capture shows a Rule Set object with several columns in the rule set table highlighted.</p>
+<div class="image">
+<img src="../../RuleSetCreation.png" alt="RuleSetCreation.png"/>
+</div>
+<p>For a detailed description of each column in the rule set table, see <a class="el" href="../../">irm_run_rules.sas</a>.</p>
+<p>Rule sets can be applied to data in multiple ways:</p><ul>
+<li>by completing the Data Quality and Data Adjustment steps in a cycle</li>
+<li>by running an Analysis run using the model <em>IFRS9 – Data Quality</em> or <em>IFRS9 – Data Adjustment</em></li>
+<li>by running a transformation on the data from the Analysis Data object using a rule set</li>
+</ul>
+<p>The first two options in the preceding list are the same except that the steps are initiated directly within the cycle in the first case and outside the cycle in the second case.</p>
+<p>Some key considerations when using rule sets for data quality checking and data adjustment:</p><ul>
+<li>If a rule set has both Condition and Action type rules, only Condition type rules are applied on the data when using <em>IFRS9 – Data Quality</em> model.</li>
+<li>Data quality reports are populated only when the rule sets are applied using the <em>IFRS9 – Data Quality</em> model.</li>
+<li>The <em>IFRS9 – Data Adjustment</em> model does not update the reports.</li>
+</ul>
+<h1><a class="anchor" id="DataQualityHow_key"></a>
+Data Quality Checking</h1>
+<h2><a class="anchor" id="DataQualityConfiguration_key"></a>
+Data Quality Rule Set Configuration and Execution</h2>
+<p><b>Data Quality Rule Set Configuration</b> Values in data sets registered in the Analysis Data object can be programmatically checked for quality using rule sets. The Rule Sets business object in the solution stores a repository of rules. Each rule set instance of a rule set object is associated with input data (for example, CREDIT_PORTFOLIO for credit portfolio data). The solution contains pre-configured rules for credit portfolio data. These rules are registered in the Rule Sets object when the <em> IFRS9 – Data Preparation </em> model is executed in the cycle. Each pre-configured rule is associated with a BCBS principle. Each rule can be given a weight for specifying rule importance.</p>
+<p>The pre-configured rules are setup in the Rule_Set_Config table located in the federated area under the <code><em>federated_area</em>/landing_area/base/ifrs9/static</code> directory. See <a class="el" href="../../d3/d85/rule__set__config_8sas.html">rule_set_config.sas</a> for the structure of the configuration table. Users can add additional rules or edit rules in any rule set that has been registered in the solution by updating the rule set in the UI.</p>
+<p><b>Data Quality Rule Set Execution</b><br />
+ Data quality rules for the default credit portfolio project are executed when the <em>IFRS9 – Data Quality </em> model is executed in the cycle. This model only applies rules of type <em>Condition</em>. This step in the cycle creates an Analysis Run. These rules can also be executed outside the cycle by running the <em>IFRS9 – Data Quality</em> model from within the Analysis Run object. The pre-configured <em> IFRS9 – Data Quality </em> model can be executed only for credit portfolio data. If you want to perform data quality checks on other data sets, you must define new data quality models or modify the existing <em>IFRS9 – Data Quality</em> model.</p>
+<p>Every data quality model execution creates two output data sets that are registered in the Analysis Data object:</p><ul>
+<li>Data Quality Summary</li>
+<li>Data Quality Details</li>
+</ul>
+<p>These two data sets display detailed results from the data quality model execution. The relationships diagram in the Analysis Run instance shows all the inputs and outputs of the execution. Here is an example relationship diagram that visualizes how the data quality analysis run is connected between the inputs (the Portfolio analysis data, the <em>IFRS9 – Data Quality</em> model, and the DQ Portfolio rule set) and the outputs (the Data Quality Details and Data Quality Summary data sets).</p>
+<div class="image">
+<img src="../../DataQualityExecution.png" alt="DataQualityExecution.png"/>
+</div>
+<p>In addition, certain details regarding the cycle, such as base date and entity, can also be considered as an input to the Analysis Run.</p>
+<p>Note that each analysis run of the same portfolio and rule set creates new analysis data objects (Data Quality Summary and Data Quality Details) as output.</p>
+<h2><a class="anchor" id="DataQualityProvidedRules_key"></a>
+Pre-Configured Data Quality Rules</h2>
+<p>The following table lists the data quality rules that are pre-configured in SAS Solution for IFRS 9, along with their underlying BCBS principle.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Rule ID  </th><th class="markdownTableHeadNone">Column  </th><th class="markdownTableHeadNone">Rule Description  </th><th class="markdownTableHeadNone">Rule Type  </th><th class="markdownTableHeadNone">Rule Details  </th><th class="markdownTableHeadNone">B   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_01  </td><td class="markdownTableBodyNone">CURRENCY  </td><td class="markdownTableBodyNone">Check Missing Currency  </td><td class="markdownTableBodyNone" colspan="2">MISSING  </td><td class="markdownTableBodyNone">Completeness   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_02  </td><td class="markdownTableBodyNone">CURRENCY  </td><td class="markdownTableBodyNone">Check Currency Length  </td><td class="markdownTableBodyNone">NOT_FIXED_LENGTH  </td><td class="markdownTableBodyNone">3  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_03  </td><td class="markdownTableBodyNone">COLLATERAL_SUPPORT_FLG  </td><td class="markdownTableBodyNone">Check Collateral Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_04  </td><td class="markdownTableBodyNone">FINANCIAL_DIFFICULTIES_FLG  </td><td class="markdownTableBodyNone">Check Financial Difficulties Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_05  </td><td class="markdownTableBodyNone">UNCONDITIONALLY_CANCELABLE_FLG  </td><td class="markdownTableBodyNone">Check Unconditionally Cancelable Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_06  </td><td class="markdownTableBodyNone">RELATED_PARTY_FLG  </td><td class="markdownTableBodyNone">Check Related Party Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_07  </td><td class="markdownTableBodyNone">TDR_FLG  </td><td class="markdownTableBodyNone">Check TDR Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_08  </td><td class="markdownTableBodyNone">PCD_FLG  </td><td class="markdownTableBodyNone">Check PCD Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_09  </td><td class="markdownTableBodyNone">EVER_DELINQUENT_FLG  </td><td class="markdownTableBodyNone">Check Ever Delinquent Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_10  </td><td class="markdownTableBodyNone">DELINQUENCY_FLG  </td><td class="markdownTableBodyNone">Check Delinquency Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_11  </td><td class="markdownTableBodyNone">PENDING_OFFER_FLG  </td><td class="markdownTableBodyNone">Check Pending Offer Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_12  </td><td class="markdownTableBodyNone">DRAWDOWN_PERIOD_FLG  </td><td class="markdownTableBodyNone">Check Drawdown Period Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_13  </td><td class="markdownTableBodyNone">REVOLVING_FLG  </td><td class="markdownTableBodyNone">Check Revolving Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_14  </td><td class="markdownTableBodyNone">ISSUED_GUARANTEE_FLG  </td><td class="markdownTableBodyNone">Check Guarantee Flag  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Y", "N"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_15  </td><td class="markdownTableBodyNone">DAY_BASIS_CD  </td><td class="markdownTableBodyNone">Check Day Basis Code  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"30/360", "ACT/360", "365", "ACT/ACT"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_16  </td><td class="markdownTableBodyNone">INTEREST_RATE_TYPE  </td><td class="markdownTableBodyNone">Check Interest Type Code  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Fixed", "Variable", "ARM", "Hybrid"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_17  </td><td class="markdownTableBodyNone">PAYMENT_TYPE_CD  </td><td class="markdownTableBodyNone">Check Payment Type Code  </td><td class="markdownTableBodyNone">NOT_LIST  </td><td class="markdownTableBodyNone">"Level Pay", "Straight Line", "Bullet"  </td><td class="markdownTableBodyNone">Accuracy &amp; Integrity   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_18  </td><td class="markdownTableBodyNone">START_DT  </td><td class="markdownTableBodyNone">Check Missing Start Date  </td><td class="markdownTableBodyNone" colspan="2">MISSING  </td><td class="markdownTableBodyNone">Completeness   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_19  </td><td class="markdownTableBodyNone">MATURITY_DT  </td><td class="markdownTableBodyNone">Check Missing Maturity Date  </td><td class="markdownTableBodyNone" colspan="2">MISSING  </td><td class="markdownTableBodyNone">Completeness   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_20  </td><td class="markdownTableBodyNone">EFFECTIVE_INTEREST_RT  </td><td class="markdownTableBodyNone">Check Missing EIR  </td><td class="markdownTableBodyNone" colspan="2">MISSING  </td><td class="markdownTableBodyNone">Completeness   </td></tr>
+</table>
+<h2><a class="anchor" id="DataQualityReporting_key"></a>
+Data Quality Reporting</h2>
+<h3><a class="anchor" id="DataQualitySummary_key"></a>
+The Data Quality Summary Report</h3>
+<p>The following is a screen capture of the Data Quality Summary report that is available in the solution by default.</p>
+<div class="image">
+<img src="../../DataQualitySummary.png" alt="DataQualitySummary.png"/>
+</div>
+<h3><a class="anchor" id="DataQualityDetails_key"></a>
+The Data Quality Details Report</h3>
+<p>The following is a screen capture of the Data Quality Details report that is available in the solution by default.</p>
+<div class="image">
+<img src="../../DataQualityDetails.png" alt="DataQualityDetails.png"/>
+</div>
+<h1><a class="anchor" id="DataAdjustmentHow_key"></a>
+Data Adjustment</h1>
+<h2><a class="anchor" id="DataAdjustConfiguration_key"></a>
+Data Adjustment Rule Set Configuration and Execution</h2>
+<p><b>Data Adjustment Rule Set Configuration</b> Values in data sets registered in the Analysis Data object can be programmatically adjusted using rule sets. Each rule set instance of the rule set object is associated with a data definition of analysis data such as credit portfolio. Unlike the Data Quality check, which does not make adjustments (actions) when data quality issues are identified, both the Condition and Action components are required for the adjustment of data.</p>
+<p>Pre-configured rules are provided in the product for the credit portfolio data. These rules are registered in the Rule sets object when the <em>IFRS9 – Data Preparation</em> model is executed in the cycle. The pre-configured rules are setup in the Rule_Set_Config table in the <code><em>federated_area</em>/landing_area/base/ifrs9/static</code> directory. See <a class="el" href="../../d3/d85/rule__set__config_8sas.html">rule_set_config.sas</a> for the structure of this configuration table. Users can add additional rules to any rule set that is already registered in the solution directly from the rule set object screen. See <a class="el" href="../../dc/dc0/040DataQuality_8txt.html#RuleSetOverview">Rules and Rule Sets</a> for more details. <br />
+ <b>Data Adjustment Rule Set Execution</b> Data adjustment rules for the default credit portfolio project are automatically executed when the <em>IFRS9 – Data Adjustment</em> model is executed from within the cycle and an analysis run is created. This model applies all the rules in the rule set and uses the rule of type Action to perform data adjustment. Data adjustment rules can also be executed outside the cycle by running the <em>IFRS9 – Data Adjustment</em> model from within the Analysis Run business object. Every data adjustment model execution creates two output data sets that are registered in the Analysis Data object.</p>
+<ul>
+<li>Adjusted data (of the input data)</li>
+<li>Adjustments Summary</li>
+</ul>
+<h2><a class="anchor" id="DataAdjustmentProvidedRules_key"></a>
+Pre-Configured Data Adjustment Rules</h2>
+<p>The following table details the default rules for adjusting data for the CREDIT_PORTFOLIO project.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Rule ID  </th><th class="markdownTableHeadNone">Column  </th><th class="markdownTableHeadNone">Rule Description  </th><th class="markdownTableHeadNone">Rule Type  </th><th class="markdownTableHeadNone">Rul   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_03  </td><td class="markdownTableBodyNone">COLLATERAL_SUPPORT_FLG  </td><td class="markdownTableBodyNone">Check Collateral Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_04  </td><td class="markdownTableBodyNone">FINANCIAL_DIFFICULTIES_FLG  </td><td class="markdownTableBodyNone">Check Financial Difficulties Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_05  </td><td class="markdownTableBodyNone">UNCONDITIONALLY_CANCELABLE_FLG  </td><td class="markdownTableBodyNone">Check Unconditionally Cancelable Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_06  </td><td class="markdownTableBodyNone">RELATED_PARTY_FLG  </td><td class="markdownTableBodyNone">Check Related Party Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_07  </td><td class="markdownTableBodyNone">TDR_FLG  </td><td class="markdownTableBodyNone">Check TDR Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_08  </td><td class="markdownTableBodyNone">PCD_FLG  </td><td class="markdownTableBodyNone">Check PCD Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_09  </td><td class="markdownTableBodyNone">EVER_DELINQUENT_FLG  </td><td class="markdownTableBodyNone">Check Ever Delinquent Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_10  </td><td class="markdownTableBodyNone">DELINQUENCY_FLG  </td><td class="markdownTableBodyNone">Check Delinquency Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_11  </td><td class="markdownTableBodyNone">PENDING_OFFER_FLG  </td><td class="markdownTableBodyNone">Check Pending Offer Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_12  </td><td class="markdownTableBodyNone">DRAWDOWN_PERIOD_FLG  </td><td class="markdownTableBodyNone">Check Drawdown Period Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_13  </td><td class="markdownTableBodyNone">REVOLVING_FLG  </td><td class="markdownTableBodyNone">Check Revolving Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PTF_RULE_14  </td><td class="markdownTableBodyNone">ISSUED_GUARANTEE_FLG  </td><td class="markdownTableBodyNone">Check Guarantee Flag  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"N"   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PTF_RULE_15  </td><td class="markdownTableBodyNone">DAY_BASIS_CD  </td><td class="markdownTableBodyNone">Check Day Basis Code  </td><td class="markdownTableBodyNone">SET  </td><td class="markdownTableBodyNone">"ACT/ACT"   </td></tr>
+</table>
+<p>In the preceding table, the rule with RULE_ID = PTF_RULE_03 is the Action component of the rule with the same Rule ID in the <a class="el" href="../../dc/dc0/040DataQuality_8txt.html#DataQualityProvidedRules_key">Pre-Configured Data Quality Rules</a> table.</p>
+<h1><a class="anchor" id="DataClassifications_key"></a>
+Data Classification</h1>
+<h2><a class="anchor" id="DC_RunSPPI_key"></a>
+Running SPPI Tests</h2>
+<p>A series of business rules are available that will evaluate whether a credit portfolio passes the SPPI test or not. In general, the goal is to identify contractual provisions that modify the cash flows of an instrument such that they do not give rise to only a straightforward repayment of principal and interest.</p>
+<p>There are three potential outcomes of the classification:</p><ul>
+<li>SPPI not applicable</li>
+<li>SPPI test passed</li>
+<li>SPPI test failed</li>
+</ul>
+<p>SPPI Tests are conducted based on selected rule set, which contains a series of business rules that define conditions and actions which are applied on the financial instruments contained within the entity's portfolio. For convenience, the data required to run the SPPI test can be stored in a separate table (see <a class="el" href="../../dc/d42/portfolio__sppi__details_8sas.html">portfolio_sppi_details.sas</a> for some sample data). The SPPI test can be run on this separate table or on the credit portfolio table after it has been enriched with the data contained in the portfolio SPPI details table.</p>
+<p>To enrich credit portfolio data, select "Y" for "SPPI enrichment" during Data Preparation step: </p><div class="image">
+<img src="../../sppiEnrichment.png" alt="sppiEnrichment.png"/>
+</div>
+<p>To conduct SPPI Test, continue the cycle to Run Classification step, then select the appropriate "Analysis data" containing the SPPI Test related variables, and the "Rule set" containing the SPPI Test related rules: </p><div class="image">
+<img src="../../sppiDataAdjParams.png" alt="sppiDataAdjParams.png"/>
+</div>
+<p>And select "Run classification". The result will be available as a new analysis data.</p>
+<h2><a class="anchor" id="Template_SPPI_key"></a>
+Template for SPPI Test</h2>
+<p>The template SPPI test provided in the solution requires</p><ul>
+<li>SPPI sample data (<a class="el" href="../../dc/d42/portfolio__sppi__details_8sas.html">portfolio_sppi_details.sas</a>)</li>
+<li>SPPI sample rules (<a class="el" href="../../d3/d85/rule__set__config_8sas.html">rule_set_config.sas</a>)</li>
+</ul>
+<p>The sample SPPI rules are designed under the assumption that the portfolio instruments are particularly sensitive to the following features:</p><ul>
+<li>Instrument characteristics:<ul>
+<li>Verify whether the position pertains to a debt instrument</li>
+<li>Verify whether there exists a non-recourse condition that gives rise to non-SPPI cashflows</li>
+</ul>
+</li>
+<li>Capital payments<ul>
+<li>Verify whether the payments made at maturity satisfy the conditions of the SPPI test</li>
+<li>Verify whether interest is being compounded should for a reason the payment at maturity be deferred</li>
+<li>Verify whether any losses can be imposed on holders of the instruments</li>
+</ul>
+</li>
+<li>Interest payments<ul>
+<li>Verify whether the interest is being calculated on the outstanding debt</li>
+<li>Verify whether the payments of interest can be cancelled</li>
+<li>Verify whether the payments of interest can be deferred</li>
+<li>Verify whether the base of the floating interest rate is non-interest related</li>
+<li>Verify whether there exists an inverse floating rate</li>
+<li>Verify whether there exists financial leverage</li>
+<li>Verify whether the interest is externally fixed</li>
+</ul>
+</li>
+<li>Prepayments<ul>
+<li>Verify whether prepayment is possible</li>
+</ul>
+</li>
+<li>Maturity Extension<ul>
+<li>Verify whether the currency of the instrument can change</li>
+<li>Verify whether the maturity can be extended at market-conform interest rates</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="DataQualityAdditionalRules_key"></a>
+Configuring Additional Rules and Rule Sets</h1>
+<p>Additional rules and rule sets can be configured in two ways:</p><ul>
+<li>Programmatically by configuring rules through a back-end data loading and preparation script</li>
+<li>By creating rules directly in the Rule Set business object in the UI</li>
+</ul>
+<p><b><em>Configuring Rules in the Back-End and Programmatically Loading Data in the Data Preparation Step of the Cycle</em></b></p>
+<p>By default, the rules are configured in the Rule_Set_Config table in the <code><em>federated_area</em>/landing_area/base/ifrs9/static</code> directory. See <a class="el" href="../../d3/d85/rule__set__config_8sas.html">rule_set_config.sas</a> for the structure of the configuration table. All rules that correspond to the same rule set are grouped by the RULE_SET_GROUP_ID. The configuration of each input table that is loaded into the solution is performed in the Datastore_Config file. See <a class="el" href="../../da/d6c/datastore__config_8sas.html">datastore_config.sas</a> for the structure of the configuration table. The RULE_SET_GROUP_ID that was defined in the Rule_Set_Config table is assigned to an input table related record in the Datastore_Config file.</p>
+<p>In addition to this key connection between the configuration tables, information on the rule set name and description must also be specified in the Datastore_Config file. When the default <em>IFRS9 – Data Preparation </em> model is executed, the code creates the data definition in the solution (if it does not already exist) for the input table, creates the analysis data for the input table, and creates the rule set instance with the rules.</p>
+<p><b><em>Creating Rules Directly in the Rule Set Object Using the Data Definition Table</em></b></p>
+<p>Rules can also be added to an existing rule set or can be created directly from the Rule set object in the solution for analysis data that is already loaded into the system. For more details on rules and rule sets, see <a class="el" href="../../dc/dc0/040DataQuality_8txt.html#RuleSetOverview">Rules and Rule Sets</a>.</p>
+<h1><a class="anchor" id="AllocationAdjustments_key"></a>
+Overlays &amp; Manual Adjustments</h1>
+<h2><a class="anchor" id="AllocAdjustment_key"></a>
+Introduction</h2>
+<p>Overlays and manual adjustments can be used to adjust the historical data to reflect both current and future conditions. To create these types of adjustments, create a rule set in the UI and select <b>Allocation Rule Set</b> as the <b>Rule set type</b>.</p>
+<p>This will alter the rule set table to display a series of allocation adjustment related columns, as shown in the following screen capture.</p>
+<div class="image">
+<img src="../../AllocationRuleSet.png" alt="AllocationRuleSet.png"/>
+</div>
+<h2><a class="anchor" id="AllocAdjustment_details"></a>
+Adjustment Allocation Details</h2>
+<p>Adjustments configured in an allocation rule set will be allocated down to the loan level in a manner configured on a rule-by-rule basis. For details about the allocations, see <a class="el" href="../../">irm_apply_allocation_rules.sas</a>.</p>
+<h1><a class="anchor" id="RegulationLinks"></a>
+Regulation</h1>
+<h2><a class="anchor" id="BCBSReferences"></a>
+References</h2>
+<ol type="1">
+<li>[BCBS2013JAN_BCBS239] Bank For International Settlements (2013). Principles for effective risk data aggregation and risk reporting Download here: <a href="https://www.bis.org/publ/bcbs239.pdf">https://www.bis.org/publ/bcbs239.pdf</a> </li>
+</ol>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+      <a href="http://www.sas.com">SAS</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

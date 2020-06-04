@@ -1,0 +1,184 @@
+{
+  "pages": [
+    {
+      "template": "CPB_VIEW_TOOLBAR",
+      "components": [{
+        "libName": "sas.risk.rgf.ifrs9",
+        "name": "O_CustomObject206"
+      }],
+      "visible": true,
+      "routePatterns": [
+        {"pattern": "masterRiskScenarios/{key}/{variance}"},
+        {"pattern": "masterRiskScenarios/{key}"}
+      ],
+      "pageId": "masterRiskScenarios",
+      "actions": [
+        {
+          "route": 0,
+          "navstyle": 9,
+          "event": "close_object",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "object_selected",
+          "processor": "rmc_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "create_new",
+          "processor": "rmc_actionProcessor"
+        },
+        {
+          "route": 1,
+          "navstyle": 1,
+          "event": "edit_screen",
+          "processor": "rgf_actionProcessor"
+        }
+      ]
+    },
+    {
+      "template": "VIEW",
+      "components": [{
+        "libName": "sas.risk.scenariomanager.mashup",
+        "name": "ScenarioEditor"
+      }],
+      "visible": true,
+      "routePatterns": [{"pattern": "scenarios/{key}"}],
+      "pageId": "ScenarioEditor",
+      "actions": [{
+        "route": 1,
+        "navstyle": 10,
+        "event": "close_object",
+        "processor": "ScenarioManager"
+      }]
+    },
+    {
+      "template": "CPB_VIEW_TOOLBAR",
+      "components": [{
+        "libName": "sas.risk.rgf.ifrs9",
+        "name": "O_CustomObject1"
+      }],
+      "visible": true,
+      "routePatterns": [
+        {"pattern": "models/{key}/{variance}"},
+        {"pattern": "models/{key}"}
+      ],
+      "pageId": "models",
+      "actions": [
+        {
+          "route": 0,
+          "navstyle": 9,
+          "event": "close_object",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "object_selected",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "create_new",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 1,
+          "navstyle": 1,
+          "event": "edit_screen",
+          "processor": "rgf_actionProcessor"
+        }
+      ]
+    },
+    {
+      "template": "CPB_VIEW_TOOLBAR",
+      "components": [{
+        "libName": "sas.risk.rgf.ifrs9",
+        "name": "O_CustomObject201"
+      }],
+      "visible": true,
+      "routePatterns": [
+        {"pattern": "analysisRuns/{key}/{variance}"},
+        {"pattern": "analysisRuns/{key}"}
+      ],
+      "pageId": "analysisRuns",
+      "actions": [
+        {
+          "route": 0,
+          "navstyle": 9,
+          "event": "close_object",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "object_selected",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "create_new",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 1,
+          "navstyle": 1,
+          "event": "edit_screen",
+          "processor": "rgf_actionProcessor"
+        }
+      ]
+    },
+    {
+      "template": "CPB_VIEW_TOOLBAR",
+      "components": [{
+        "libName": "sas.risk.rgf.ifrs9",
+        "name": "O_CustomObject215"
+      }],
+      "visible": true,
+      "routePatterns": [
+        {"pattern": "analysisData/{key}/{variance}"},
+        {"pattern": "analysisData/{key}"}
+      ],
+      "pageId": "analysisData",
+      "actions": [
+        {
+          "route": 0,
+          "navstyle": 9,
+          "event": "close_object",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "object_selected",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 0,
+          "navstyle": 4,
+          "event": "create_new",
+          "processor": "rgf_actionProcessor"
+        },
+        {
+          "route": 1,
+          "navstyle": 1,
+          "event": "edit_screen",
+          "processor": "rgf_actionProcessor"
+        }
+      ]
+    }
+  ],
+  "id": "ifrs9",
+  "dependencies": [
+    {"name": "sas.risk.scenariomanager"},
+    {"name": "sas.risk.scenariomanager.mashup"},
+    {"name": "sas.ui.cpb3"},
+    {"name": "sas.risk.rgf"},
+    {"name": "sas.risk.rgf.rmc"}
+  ]
+}

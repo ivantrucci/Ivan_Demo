@@ -1,0 +1,272 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 153Reporting.txt Reporting
+
+
+\section ReportingIntro Introduction
+SAS Regulatory Content for IFRS9 offers various types of out-of-the box reporting:
+- \ref DisclosureIntro "IFRS9 Disclosure Sample" Reports
+- \ref FINREPIntro "FINREP" data for regulatory reporting for impairment losses
+- \ref DataQualityReporting_key "SAS Visual Analytics Reports"
+
+\section DisclosureIntro Disclosure Reporting
+
+SAS Disclosure Reporting in IFRS 9 provides various sample out-of-the-box reports. The sample reports can be modified to fit your organization's unique configuration and organizations can expand the reports to include their own reports. At the end of the IFRS 9 Planning Cycle flow is a step that involves the generation of disclosure reports. 
+
+This workflow stage is shown in the following screen capture of a Cycle business object.
+
+\image html  Disclosures1.png
+
+In this <b>Generate Disclosures</b> workflow stage, Risk Analysts can select the reports and analysis data tables that they want to use for report generation (for example, Financing Receivables/Held-to-Maturity).
+
+Click on the "Review Disclosure Reports" link to see all reports generated.
+
+\image html  Disclosures2.png
+
+Each report is designed to call a SAS program to do all of the data aggregation and then export the data to Excel.  The SAS programs reside in the federated area under the <tt>source/sas/nodes</tt> directory with a prefix of <tt>irmifrs9_task_rpt*</tt>. To find the location of the federated area for your solution, see \ref RegisteringData_key "Where to Find Preloaded Data".
+
+A report requires two items:
+- a SAS program that does the aggregation
+- a report template for that SAS program
+
+The report templates reside in the federated area under the reports directory.  When you select <b>Generate Disclosures</b> from the <b>Workflow actions</b> menu of the Cycle business object, the solution will do the following:
+- loop through all SAS report programs
+- export the data to the Excel templates
+- attach the final report to the Analysis Run object
+
+The final list of reports that have been generated will appear in the <b>Reports</b> tab as seen in the following example.
+
+\image html  Disclosures3.png
+
+\subsection OO2SampleReports_key Sample Disclosure Reports
+The disclosure reports provided with SAS Solution for IFRS9 are samples. This list of reports may be expanded to include any custom reports that are needed but have not been provided in the samples. A description of the sample reports and metadata about each report is listed below.  
+
+\subsubsection Collheld Collateral Held Carrying Value
+
+<b>Description</b>: Reports on the carrying value of collateral held by the bank to secure transactions in various counterparty categories<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_collheld.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CollHeld_CarryingValue.xlsx</tt><br>
+<b>Report Data Range Name</b>: CollHeld_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>
+
+\image html Disclosures4.png
+
+\subsubsection CredConAsset Credit Concentrations by Asset Type
+
+<b>Description</b>: Reports on the credit risk concentrations from loans, commitments, guarantees, and other investment debt securities<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_credit_con.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CreditConcentrationsByAssetType.xlsx</tt><br>
+<b>Report Data Range Name</b>: Credit_Concentrations_A_T_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>
+
+\image html Disclosures5.png
+
+\subsubsection CredConProd Credit Concentrations by Product
+
+<b>Description</b>: Reports on the credit risk concentrations on different product types<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_credit_con.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CreditConcentrationsByProduct.xlsx</tt><br>
+<b>Report Data Range Name</b>: Credit_Concentrations_Prod_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>
+
+\image html Disclosures6.png
+
+\subsubsection CredConReg Credit Concentrations by Region
+
+<b>Description</b>: Reports on credit risk concentrations towards counterparty groups<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_credit_con.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CreditConcentrationsByRegion.xlsx</tt><br>
+<b>Report Data Range Name</b>: Credit_Concentrations_Rgn_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>
+
+\image html Disclosures7.png
+
+\subsubsection CreditQualAllow  Credit Quality Allowance Overview
+
+<b>Description</b>: Reports on the gross carrying amounts of loans, according to credit quality and ECL impairment stage of each loan category at amortized cost<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_creditqual_ana.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CreditQualityAndAllowancesOverview.xlsx</tt><br>
+<b>Report Data Range Name</b>: Credit_Quality_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>   
+
+\image html Disclosures8.png
+
+\subsubsection CreditQualAna Credit Quality Analysis
+
+<b>Description</b>: Reports on the allowance coverage ratio by credit quality of financial assets measured at amortized cost, FVOCI debt instruments, and available for sale financial instruments<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_creditquality.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CreditQualityAnalysis.xlsx</tt><br>
+<b>Report Data Range Name</b>: CreditQualityAnal_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>      
+   
+\image html Disclosures9.png
+
+\subsubsection CreditLossRecon Credit Loss Reconciliation
+
+<b>Description</b>: Reports on the reconciliation of allowances for credit losses for each loan category at amortized cost according to ECL impairment stage<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_credloss_recon.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/CreditLoss_Reconciliation.xlsx</tt><br>
+<b>Report Data Range Name</b>: CredLossRecon_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted'<br>
+<br></br>      
+   
+\image html Disclosures10.png
+
+\subsubsection LTV Loan-to-Value
+
+<b>Description</b>: Report classifies secured loans by LTV ratio in relevant counterparty categories<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_ltv.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/Loan_to_Value.xlsx</tt><br>
+<b>Report Data Range Name</b>: LTV_Data<br>
+<b>Report Data Filter</b>: scenario_name='Weighted' and collateral_support_flg='Y'<br>
+<br></br>      
+   
+\image html Disclosures11.png
+
+\subsubsection ScenAtt Scenario Attribution
+
+<b>Description</b>: Reports on the predicted cumulative ECL and allowance amount impact due to changes in various economic factors<br>
+<b>Report Program</b>: <tt><i>federated_area</i>/source/sas/nodes/irmifrs9_task_rpt_scenatt.sas</tt><br>
+<b>Report Template</b>: <tt><i>federated_area</i>/reports/ScenarioAttribution.xlsx</tt><br>
+<b>Report Data Range Name</b>: Scen_Attr_Data<br>
+<br></br>      
+   
+\image html Disclosures12.png
+
+\subsection creatingCustomReports Creating Custom Disclosure Reports
+
+The disclosure report infrastructure provides the ability for new reports to be created and used within SAS Solution for IFRS9.  In order to add new disclosure reports, the following steps should be followed to extend the disclosure reports to include any new reports that may be desired.
+
+-# Verify that all data elements needed for the report are flowing to the Credit_Risk_Detail and/or Attribution tables.
+-# Create a new Microsoft Excel report template for the report. The new report template should be stored in the <tt><i>federated_area</i>/reports</tt> directory.
+-# Add the new report to the <tt><i>federated_area</i>/sampledata/config/ifrs9/static/report_config.sas</tt> file.
+-# Add the new report parameters to the <tt><i>federated_area</i>/sampledata/config/ifrs9/static/report_parameters.sas</tt> file.
+-# Create a new SAS program to generate the report.  The program should be stored in the <tt><i>federated_area</i>/source/sas/nodes</tt> directory. <b>Note: The program name needs to match the source_code parameter in the <tt><i>federated_area</i>/sampledata/config/ifrs9/static/report_config.sas</tt> file.</b>
+
+\section FINREPIntro FINREP Reporting
+
+The FINREP reports are not part of this IFRS9 release.  In order to faciliate FINREP reporting, the portfolio sample data has been modified to capture the additional data elements needed for FINREP reporting.  These new data elements will also flow to the CREDIT_RISK_DETAIL reporting data mart where additional post aggregation can be done to generate the data needed to recreate the FINREP reports.  
+
+\subsection FINREP43 FINREP 4.3 - Financial assets at fair value through other comprehensive income
+
+<b>Report Data Filter:</b> scenario_name='Weighted' and SPPI_Test='FAILED'</b><br>
+<b>* Indicates additional report fields needed that are currently unavailable in this release.</b>
+
+| Type      | Report Row/Column	            | Credit_Risk_Detail Column | Derived   |
+|-----------|-------------------------------|---------------------------|-----------|
+| Measure	| Carrying Amount	            | AMORTIZED_COST_AMT        |           |
+| Measure	| Gross Carrying Amount	        | UNPAID_BALANCE_AMT	       | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & LOW_CREDIT_RISK_FLG='Y' & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) |
+| Measure	| Accumulated Impairment	    | ECL	                      | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) |
+| Measure	| Accumulated partial write-offs	| PARTIAL_WRITE_OFF_AMT	    | ifn(round(CUM_WRITE_OFF_AMT)^=round(UNPAID_BALANCE_AMT) and IRRECOVERABLE_FLG='N',CUM_WRITE_OFF_AMT,0) *Calculation stored in calculation_config |                
+| Measure	| Accumulated total write-offs	| CUM_WRITE_OFF_AMT         |           |                                    
+| *Dimension	| FINREP_PRODUCT_CLASS           |                           |           |
+| *Dimension	| FINREP_COUNTERPARTY_CLASS      |                           |           |
+| *Dimension	| FINREP_PURCHASED_DESC          |                           |           |
+| *Dimension	| FINREP_T04_3_ROW_L1_TXT        |                           |           |
+| *Dimension	| FINREP_T04_3_ROW_L2_TXT        |                           |           |
+| *Dimension	| FINREP_T04_3_ROW_L3_TXT        |                           |           |
+
+\subsection FINREP44 FINREP 4.4 - Financial assets at amortized cost
+
+<b>Report Data Filter:</b> scenario_name='Weighted' and SPPI_Test='PASSED'
+
+| Type      | Report Row/Column	            | Credit_Risk_Detail Column | Derived   |
+|-----------|-------------------------------|---------------------------|-----------|
+| Measure	| Carrying Amount	            | AMORTIZED_COST_AMT        |           |
+| Measure	| Gross Carrying Amount	        | UNPAID_BALANCE_AMT	       | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & LOW_CREDIT_RISK_FLG='Y' & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) |
+| Measure	| Accumulated Impairment	    | ALLOWANCE_AMT             | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) |
+| Measure	| Accumulated partial write-offs	| PARTIAL_WRITE_OFF_AMT	    | ifn(round(CUM_WRITE_OFF_AMT)^=round(UNPAID_BALANCE_AMT) and IRRECOVERABLE_FLG='N',CUM_WRITE_OFF_AMT,0) *Calculation stored in calculation_config |                
+| Measure	| Accumulated total write-offs	| CUM_WRITE_OFF_AMT         |           |                                    
+| *Dimension	| FINREP_PRODUCT_CLASS           |                           |           |
+| *Dimension	| FINREP_COUNTERPARTY_CLASS      |                           |           |
+| *Dimension	| FINREP_PURCHASED_DESC          |                           |           |
+| *Dimension	| FINREP_T04_4_ROW_L1_TXT        |                           |           |
+| *Dimension	| FINREP_T04_4_ROW_L2_TXT        |                           |           |
+| *Dimension	| FINREP_T04_4_ROW_L3_TXT        |                           |           |
+
+\subsection FINREP61 FINREP 6.1 - Breakdown of loans and advances other than held for trading to non-financial corporations by NACE codes
+
+<b>Report Data Filter:</b> scenario_name='Weighted' and SPPI_Test='PASSED'
+
+| Type      | Report Row/Column	            | Credit_Risk_Detail Column | Derived   |
+|-----------|-------------------------------|---------------------------|-----------|
+| Measure	| Gross Carrying Amount	        | UNPAID_BALANCE_AMT	       | ECL_Stage='Stage 3' & FINREP_NON_PERFORMING_FLG='Y' & POCI_FLG='Y' |
+| Measure	| Accumulated Impairment	    | ALLOWANCE_AMT             | POCI_FLG='Y' |
+| Measure	| Accumulated negative changes in fair value due to credit risk on non-performing exposures	| NOMINAL_AMT  | FINREP_NON_PERFORMING_FLG='Y' |                                      
+| *Dimension	| FINREP_NACE_TYPE         |                           |           |
+| *Dimension	| FINREP_T06_1_ROW_L1_TXT  |                           |           |
+
+\subsection FINREP71 FINREP 7.1 -  Financial assets subject to impairment that are past due
+
+<b>Report Data Filter:</b> scenario_name='Weighted' and SPPI_Test='PASSED'
+
+| Type      | Report Row/Column	            | Credit_Risk_Detail Column | Derived   |
+|-----------|-------------------------------|---------------------------|-----------|
+| Measure	| Carrying Amount	            | AMORTIZED_COST_AMT	    | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) & DAYS_PAST_DUE_CNT & FINREP_PROJECT_FINANCE_FLG='Y' |                                 
+| Dimension	| ECL_STAGE                     | ECL_STAGE                 |           |
+| *Dimension | FINREP_DPD_CLASS             |                           |           |
+| *Dimension | FINREP_PURPOSE_TYPE          |                           |           |
+| *Dimension | FINREP_COLLATERAL_TYPE       |                           |           |     
+| *Dimension | FINREP_COUNTERPARTY_CLASS    |                           |           |
+| *Dimension | FINREP_PRODUCT_CLASS         |                           |           |
+| *Dimension | FINREP_PRODUCT_SUBCLASS      |                           |           |
+| *Dimension | FINREP_T07_1_COL_L1_TXT      |                           |           |
+| *Dimension | FINREP_T07_1_COL_L2_TXT      |                           |           |
+| *Dimension | FINREP_T07_1_ROW_L1_TXT      |                           |           |
+| *Dimension | FINREP_T07_1_ROW_L2_TXT      |                           |           |
+
+\subsection FINREP121 FINREP 12.1 -  Movements in allowances and provisions for credit losses 
+
+<b>Report Data Filter:</b> scenario_name='Weighted' and SPPI_Test='PASSED'
+
+| Type      | Report Row/Column	            | Credit_Risk_Detail Column | Derived   |
+|-----------|-------------------------------|---------------------------|-----------|
+| Measure	| Opening Balance	               | ALLOWANCE_AMT	       | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & FINREP_NON_PERFORMING_FLG='Y' & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) |                                 
+| Measure   | Increases due to origination and acquisition | ECL      | movement_category='New Originations' |
+| Measure   | Decreases due to derecognition | ECL                    | movement_category='Expired Positions' |
+| Measure   | Changes due to change in credit risk (net) | ECL        | (movement_category='Scenario (All Others)' or (movement_category='Stage Allocation' and movement_subcateogry='Stage Transfer') or (movement_category='Portfolio (All Others)' and modified_flg='N')) |
+| Measure   | Changes due to modifications without derecognition (net) | ECL | movement_category='Portfolio (All Others)' and modified_flg='Y' |
+| Measure   | Changes due to update in the institution's methodology for estimation (net) | ECL | if Current and Previous Period then (movement_category='Stage Allocation' and movement_subcateogry='Stage Rule Changes') or movement_category='Model Logic' |
+| Measure   | Decrease in allowance account due to write-offs | CUM_WRITE_OFF_AMT | max(CUM_WRITE_OFF_AMT,0) |
+| Measure   | Other Adjustments | ECL | movement_category='Other' |
+| Measure   | Closing Balance | ECL, ALLOWANCE_AMT | sum('Opening balance','Increases due to origination and acquisition',' Decreases due to derecognition','Changes due to change in credit risk (net)','Changes due to modifications without derecognition (net)','Changes due to update in the institutions methodology for estimation (net)','Decrease in allowance account due to write-offs','Other adjustments') |
+| Measure   | Recoveries of previously written-off amounts recorded directly to the statement of profit or loss | CUM_WRITE_OFF_AMT | max(-CUM_WRITE_OFF_AMT,0) |
+| Measure   | Amounts written-off  directly to the statement of profit or loss | CUM_WRITE_OFF_AMT | max(CUM_WRITE_OFF_AMT,0) |
+| Dimension	| ECL_STAGE                      |  ECL_STAGE                |           |
+| *Dimension | FINREP_MEASUREMENT_DESC       |                           |           |
+| *Dimension | FINREP_COUNTERPARTY_CLASS     |                           |           |
+| *Dimension | FINREP_PRODUCT_CLASS          |                           |           |
+| *Dimension | FINREP_PERFORMING_DESC        |                           |           |
+| *Dimension | FINREP_T12_1_ROW_L1_TXT       |                           |           |
+| *Dimension | FINREP_T12_1_ROW_L2_TXT       |                           |           |
+| *Dimension | FINREP_T12_1_ROW_L3_TXT       |                           |           |
+| *Dimension | FINREP_T12_1_ROW_2_L2_TXT     |                           |           |
+| *Dimension | FINREP_T12_1_ROW_3_L2_TXT     |                           |           |
+
+\subsection FINREP122 FINREP 12.2 -  Movements in allowances for credit losses, provisions: Transfers between impairment stages (gross basis presentation)
+
+<b>Report Data Filter:</b> scenario_name='Weighted' and SPPI_Test='PASSED'
+
+| Type      | Report Row/Column	            | Credit_Risk_Detail Column | Derived   |
+|-----------|-------------------------------|---------------------------|-----------|
+| Measure	| Opening Balance	            | AMORTIZED_COST_AMT        | ECL_Stage in ('Stage 1','Stage 2','Stage 3') & FINREP_NON_PERFORMING_FLG='Y' & POCI_FLG='Y' (ECL_STAGE='Stage 3' Only) |                                 
+| Dimension	| ECL_STAGE                     | ECL_STAGE                 |           |
+| *Dimension | FINREP_DPD_CLASS             |                           |           |
+| *Dimension | FINREP_PURPOSE_TYPE          |                           |           |
+| *Dimension | FINREP_COLLATERAL_TYPE       |                           |           |     
+| *Dimension | FINREP_COUNTERPARTY_CLASS    |                           |           |
+| *Dimension | FINREP_PRODUCT_CLASS         |                           |           |
+| *Dimension | FINREP_PRODUCT_SUBCLASS      |                           |           |
+| *Dimension | FINREP_T07_1_COL_L1_TXT      |                           |           |
+| *Dimension | FINREP_T07_1_COL_L2_TXT      |                           |           |
+| *Dimension | FINREP_T07_1_ROW_L1_TXT      |                           |           |
+| *Dimension | FINREP_T07_1_ROW_L2_TXT      |                           |           |
+*/

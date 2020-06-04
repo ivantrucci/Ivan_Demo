@@ -1,0 +1,54 @@
+# Input Libnames definition
+# All Keys should be upper case
+# Parameters:
+#   - %la -> Resolves to the Landing Area of the Federated Content
+#   - %bd -> Resolves to the Base Date (ddmmyyyy)
+#   - %cs -> Resolves to the Configuration Set
+#
+
+# ##########################
+# Global library
+# ##########################
+GLOBAL=%la/base/global
+
+
+# ##########################
+# Landing Area libraries
+# ##########################
+
+# Landing
+FRS9_LND=%la/%bd
+
+# Static
+FRS9_CFG=%la/base/%cs/static
+
+# Mapping
+FRS9_MAP=%la/base/%cs/mapping
+
+# Report templates
+FRS9_RPT=%fa/reports
+
+
+# ##########################
+# Temporary library 
+# ##########################
+
+TMPLIB=%TMPLIB
+
+
+# ##########################
+# Generic Libraries
+# ##########################
+
+# RGF Database (RMC schema)
+LIBREF RGFRMC=meta liburi="SASLibrary?@name='SAS Risk Management Core Database'" metaout=data;IRMAUTHDOMAIN=DefaultAuth
+
+# IFRS9 Data Repository
+LIBREF IFRS9DR=meta liburi="SASLibrary?@name='SAS IFRS9 Data Repository'" metaout=data;IRMAUTHDOMAIN=DefaultAuth
+
+# IFRS9 Reportmart
+LIBREF FRS9MART=meta liburi="SASLibrary?@name='SAS IFRS9 Reportmart'" metaout=data;IRMAUTHDOMAIN=DefaultAuth
+
+# IFRS9 LASR
+LIBREF FRS9LASR=meta liburi="SASLibrary?@name='SAS IFRS9 LASR'" metaout=data;IRMAUTHDOMAIN=DefaultAuth
+

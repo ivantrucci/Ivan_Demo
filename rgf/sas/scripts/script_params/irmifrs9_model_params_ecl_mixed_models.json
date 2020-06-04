@@ -1,0 +1,183 @@
+{
+   "limit": 8,
+   "count": 8,
+   "start": 0,
+   "items": [
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Select a counterparty data set",
+         "name": "Counterparty",
+         "config":
+         {
+            "depRestFilter": "contains($primary,dataCategoryCd,'COUNTERPARTY')",
+            "layout_placement": null,
+            "restFilter": "",
+            "func": "",
+            "layout_extend": null,
+            "type": "SINGLE",
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'COUNTERPARTY'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            },
+            "filter":
+            {
+               "children": [
+
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Counterparty",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P001_Counterparty",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "description": "Select the rule set to use for stage allocation.",
+         "name": "RuleSet",
+         "config":
+         {
+            "layout_placement": 2,
+            "restFilter": "and(eq($primary,ruleSetType,'BusinessRuleSet'),eq($primary,ruleSetCategoryCd,'STAGE'))",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "filter":
+            {
+               "children": [
+                  {
+                     "name": "ruleSetType",
+                     "value": "'BusinessRuleSet'",
+                     "type": "string",
+                     "operator": "eq"
+                  },
+                  {
+                    "name": "ruleSetCategoryCd",
+                    "value": "'STAGE'",
+                    "type": "string",
+                    "operator": "eq"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Stage Allocation Rules",
+         "type": "config_param_ruleSets",
+         "key": "P002_RuleSet"
+      },
+      {
+         "required_flg": "true",
+         "description": "Time interval: it must be consistent with the time interval of the scenario data",
+         "default_value": "Month",
+         "name": "mipInterval",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "list": [
+               "Month",
+               "Quarter",
+               "Year"
+            ],
+            "type": "SINGLE"
+         },
+         "label": "Time Interval",
+         "type": "config_param_list",
+         "key": "P003_Interval"
+      },
+      {
+         "required_flg": "true",
+         "description": "Maximum simulation horizon. Specify a positive number (integer) or MAX",
+         "default_value": "MAX",
+         "name": "mipHorizon",
+         "config":
+         {
+            "limit": "3",
+            "layout_placement": 2,
+            "layout_extend": 1
+         },
+         "label": "Max Simulation Horizon",
+         "type": "config_param_string",
+         "key": "P004_Horizon"
+      },
+      {
+         "required_flg": "true",
+         "description": "MIP Output Currency",
+         "default_value": "USD",
+         "name": "mipOutputCurrency",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "list": [
+               "USD"
+            ],
+            "type": "SINGLE"
+         },
+         "label": "Output Currency",
+         "type": "config_param_list",
+         "key": "P005_OutputCurrency"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "ALL",
+         "description": "Maximum number of MIP grid nodes used to distribute the portfolio data",
+         "name": "mipNumberNodes",
+         "config":
+         {
+            "limit": "3",
+            "layout_placement": 2,
+            "layout_extend": 1
+         },
+         "label": "Number of grid nodes",
+         "type": "config_param_string",
+         "key": "P006_numberNodes"
+      },
+      {
+         "required_flg": "true",
+         "default_value": 8,
+         "description": "Maximum number of threads",
+         "name": "mipNumberThreads",
+         "config":
+         {
+            "min": "1",
+            "max": "20",
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "max_inclusive": true,
+            "min_inclusive": true
+         },
+         "label": "Number of Threads",
+         "type": "config_param_number",
+         "key": "P007_numberThreads"
+      },
+      {
+         "required_flg": "true",
+         "description": "Number of simulations used in MonteCarlo models",
+         "default_value": 100,
+         "name": "mipNumberSimulations",
+         "config":
+         {
+            "min": "1",
+            "layout_placement": 2,
+            "max": "1000",
+            "layout_extend": 1,
+            "min_inclusive": false,
+            "max_inclusive": true
+         },
+         "label": "Number of Simulations",
+         "type": "config_param_number",
+         "key": "P008_mipNumberSimulations",
+         "default_expr": ""
+      }
+   ]
+}

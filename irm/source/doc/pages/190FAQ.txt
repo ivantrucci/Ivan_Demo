@@ -1,0 +1,51 @@
+/*
+Copyright (c) 2017, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 190FAQ Frequently Asked Questions (FAQ)
+\anchor    FAQIntroduction
+
+\section ModelRunAnalysisRun What is the difference between a model run and an analysis run?
+
+Multiple types of models (Analysis, Model, Allocation, Evolution) can be set up in the solution. An analysis run is a larger container of different types of model execution. 
+An analysis run that involves the execution of a model of run type 'Model', 'Allocation', or 'Evolution' generates a model run for the executed analysis run.
+
+For example, consider the execution of two models: <i>IFRS9 - Data Quality </i> and <i>IFRS9 - Credit Risk</i>. Both of these models have a Run Type of 'Analysis'.
+
+IFRS9 - Data Quality
+   - Execution of this model creates an analysis run but does NOT create a model run.
+
+
+IFRS9 - Credit Risk
+   - Execution of this model creates an analysis run and also creates a model run. A model run is created because one of the parameters of the credit risk model is a model of Run Type 'Model'. 
+
+\section adhocModelRun How can I run models without following the steps in a cycle?
+
+Models are typically triggered in the cycle flow. However, you might want to run an analysis outside the cycle several times before executing a final run 
+within the cycle. The adhoc execution of models can be performed using the Analysis Run business object.
+
+Every analysis run execution requires as input a Cycle which has completed the <i>Initialize Cycle</i> step.  This is because an analysis run requires libraries and path information in the analysis that are provided by a cycle with a completed initialization step. Every analysis run must also be tagged as a Production run or a Non-production run by selecting Yes or No for the "Is this a production run?" field.  If the run is marked as a production run, only Production models can be selected.  For models that create reportmart data (e.g. the Credit Risk Analysis model which creates the Credit Risk Detail table), this production flag controls value of the Load Id column in the table.
+
+In an analysis run, users can only select models that they either:
+
+1) previously had or currently have access to run in the selected Cycle's workflow
+- For example, say Cycle ABC was created with the out-of-the-box workflow and has been completed up to and including the Credit Risk Analysis step, so the active step is now Review Credit Risk Results.  If a Quantitative Analyst creates an analysis run and selects this cycle, he or she would only be able to select the Credit Risk Analysis model, because the only tasks he or she was able to run in the workflow were Credit Risk Analysis (which is mapped to the Credit Risk Analsis model) and Review Credit Risk Results (which has no model).  A Data Analyst, on the other hand, would be able to run the Data Preparation model, Data Quality model, etc.
+
+or
+
+2) have access to run based on their role for models that are marked as available for independent runs
+- Each model has a field "Can this model be run independently of a Cycle workflow?" that controls whether the model is available for independent runs.  If this field is set to Yes, the user must specify on the Roles tab which roles have access to run the model.  Once the model is saved, any user that belongs to the selected role(s) will be able to select that model in an analysis run.
+
+Super users are allowed to run any model in an analysis run by default.
+
+                                    
+                                                                                                            
+\section FAQContacts How Do I Contact SAS?
+
+For support requests and problem submissions, please create a track with SAS Technical Support via mailto:support@sas.com
+
+If you want to leave suggestions and ideas for SAS you can do so via this email address mailto:sasfrsII@sas.com. We do our best to pass on any ideas that users provide to the relevant teams.
+Although we cannot promise your ideas and suggestions will be implemented, we still encourage you to provide us with as much feedback as possible. Your insight is very important to us. Based on the nature of the message, we may include or redirect to the SAS Technical Support staff.
+
+*/
+

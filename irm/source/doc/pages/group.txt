@@ -1,0 +1,75 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! 
+
+\defgroup datamodel Input Data Model
+   Please refer to the \ref Architecture "Section on Architecture" for general background around the solution architecture and the various entry points. <br>
+     
+   The below table provides a high-level summary. 
+
+   | Module                 | Description                                                                                          | Example                                       |
+   |------------------------|------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+   | Configuration tables   | Parameter tables that contain configuration settings that influence analytical and reporting logic.  | \link run_option.sas \endlink                 |
+   | Mapping tables         | Parameter tables that translate input code values to system-relevant identifiers and labels.         | \link map_product_hierarchy.sas \endlink      |
+   | Staging tables         | Portfolio tables (granular and/or aggregated) that are subject to the calculation logic.             | \link credit_portfolio.sas \endlink           |
+
+@{
+   \defgroup ddlMapping Mapping tables  
+   Mapping tables are a collection of enrichment tables that influence the analytical or reporting processes in SAS Solution for IFRS9. They translate customer-specific codes to reserved words in the various processes and can be used to bin numeric variables. Please refer to the various files for more information. 
+  
+   \defgroup ddlStatic Configuration tables
+   
+   Configuration tables are a collection of parameter tables that influence the analytical or reporting processes in SAS Solution for IFRS 9. Please refer to the various files for more information about these configuration parameters. 
+   @{
+      \defgroup ddlStaticFlow Jobflow Parameters
+      
+      \defgroup ddlStaticAnalytics Analysis Configuration
+
+      \defgroup ddlStaticDQ Data Quality and Rule Sets
+      
+      \defgroup ddlStaticReporting Reporting Configuration
+   @}
+   
+   \defgroup ddlFact Staging tables
+   
+   Staging tables are a collection of tables that contain the entire relevant portfolio of the undertaking. The tables serve either analytical purposes, reporting purposes or both. 
+
+   @{
+      \defgroup ddlFactEntity Organizational setup
+                  
+      \defgroup ddlFactCreditRisk Portfolio and Counterparty data
+
+      \defgroup ddlFactRiskFactors Risk factor curves
+
+   @}
+             
+@}
+
+\defgroup nodes IFRS9 Nodes
+More information about the computational and reporting nodes that will be foreseen in SAS Solution for IFRS 9
+
+\defgroup analytics Analytics
+More information about the computational and reporting nodes that will be foreseen in SAS Solution for IFRS 9
+@{
+ \defgroup restInterface REST Interface
+   @{
+      Collection of SAS macro utilities for interacting with the REST service of the following SAS Applications:
+         - SAS Infrastructure for Risk Management
+         - SAS Risk Governance Framework
+         - SAS Model Implementation Platform
+         - SAS Risk Scenario Manager
+         
+      \defgroup irmRestUtils SAS Infrastructure for Risk Management REST Interface
+      \defgroup rgfRestUtils SAS Risk Governance Framework REST Interface
+      \defgroup mipRestUtils SAS Model Implementation Platform REST Interface
+      \defgroup rsmRestUtils SAS Risk Scenario Manager REST Interface
+   @}   
+ \defgroup macroUtils Macro Utilities
+ \defgroup DynamicPortfolio Dynamic Portfolio Analytics
+ \defgroup commonAnalytics Common Analytics
+@}
+
+
+*/

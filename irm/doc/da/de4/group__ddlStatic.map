@@ -1,0 +1,7 @@
+<map id="Configuration tables" name="Configuration tables">
+<area shape="rect" id="node2" href="$db/dee/group__ddlStaticAnalytics.html" title="Analysis Configuration" alt="" coords="527,5,769,32"/>
+<area shape="rect" id="node3" href="$da/dde/group__ddlStaticFlow.html" title="Jobflow Parameters" alt="" coords="547,56,749,83"/>
+<area shape="rect" id="node5" href="$d3/d40/group__ddlStaticReporting.html" title="Reporting Configuration" alt="" coords="522,107,774,133"/>
+<area shape="rect" id="node6" href="$d1/d6d/group__ddlStaticDQ.html" title="Data Quality and Rule Sets" alt="" coords="507,157,789,184"/>
+<area shape="rect" id="node4" href="$d5/df2/group__datamodel.html" title="Input Data Model" alt="" coords="5,81,188,108"/>
+</map>

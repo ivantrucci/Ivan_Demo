@@ -1,0 +1,79 @@
+{
+   "limit": 5,
+   "count": 5,
+   "start": 0,
+   "items": [{
+         "required_flg": "true",
+         "description": "Select the analysis data set that you want to adjust.",
+         "name": "AnalysisData",
+         "config": {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Analysis data",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P001_AnalysisData"
+      }, {
+         "required_flg": "true",
+         "description": "Select the rule set to use for the data adjustment.",
+         "name": "RuleSet",
+         "config": {
+            "layout_placement": 2,
+            "restFilter": "eq(ruleSetType,'BusinessRuleSet')",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "filter": {
+               "children": [
+                  {
+                    "name": "ruleSetType",
+                    "type": "string",
+                    "value": "'BusinessRuleSet'",
+                    "operator": "eq"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Rule set",
+         "type": "config_param_ruleSets",
+         "key": "P002_RuleSet"
+      }, {
+         "required_flg": "false",
+         "description": "Provide a name for the output analysis data instance",
+         "name": "OutAnalysisDataName",
+         "config": {
+            "layout_placement": 1,
+            "layout_extend": 1
+         },
+         "label": "Output analysis data name",
+         "type": "config_param_string",
+         "key": "P003_OutAnalysisDataName"
+      }, {
+         "required_flg": "false",
+         "description": "Provide a description for the output analysis data instance",
+         "name": "OutAnalysisDataDesc",
+         "config": {
+            "layout_placement": 2,
+            "layout_extend": 1
+         },
+         "label": "Output analysis data description",
+         "type": "config_param_string",
+         "key": "P004_OutAnalysisDataDesc"
+      }, {
+         "required_flg": "true",
+         "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE",
+         "default_value": "1",
+         "name": "LogLevel",
+         "config": {
+            "layout_placement": 1,
+            "function": "toJsonArray('[{label:\"Info\",value:\"1\"},{label:\"Debug\",value:\"2\"},{label:\"Verbose\",value:\"3\"},{label:\"Trace\",value:\"4\"}]')",
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Logging level",
+         "type": "config_param_list",
+         "key": "P005_LogLevel"
+      }
+   ]
+}

@@ -1,0 +1,141 @@
+{
+  "columns": [
+    {
+      "options": {
+        "quickSearch": true,
+        "id": "name",
+        "label": "Name"
+      },
+      "cellOptions": {"cellType": "string_fieldName_^[A-Za-z0-9]*$"}
+    },
+    {
+      "options": {
+        "id": "type",
+        "label": "Type"
+      },
+      "cellOptions": {
+        "cellType": "param_type",
+        "choices": [
+          {
+            "label": "Numeric",
+            "value": "config_param_number"
+          },
+          {
+            "label": "Character",
+            "value": "config_param_string"
+          },
+          {
+            "label": "Prompt",
+            "value": "config_param_list"
+          },
+          {
+            "label": "Spreadsheet",
+            "value": "config_param_spreadsheet"
+          },
+          {
+            "label": "Analysis Data",
+            "value": "config_param_dataDefinitions_analysisData"
+          },
+          {
+            "label": "Analysis Run",
+            "value": "config_param_analysisRuns"
+          },
+          {
+            "label": "Attribution Template",
+            "value": "config_param_attributionAnalyses"
+          },
+          {
+            "label": "Data Definition",
+            "value": "config_param_dataDefinitions"
+          },
+          {
+            "label": "Master Risk Scenario",
+            "value": "config_param_masterRiskScenarios"
+          },
+          {
+            "label": "Business Evolution Plan",
+            "value": "config_param_businessEvolutionPlans"
+          },
+          {
+            "label": "Model",
+            "value": "config_param_models"
+          },
+          {
+            "label": "Model Run",
+            "value": "config_param_modelRuns"
+          },
+          {
+            "label": "Rule Set",
+            "value": "config_param_ruleSets"
+          },
+          {
+            "label": "Data Map",
+            "value": "config_param_dataMaps"
+          }
+        ]
+      }
+    },
+    {
+      "options": {
+        "quickSearch": true,
+        "id": "label",
+        "label": "Label"
+      },
+      "cellOptions": {"cellType": "string"}
+    },
+    {
+      "options": {
+        "quickSearch": true,
+        "id": "description",
+        "label": "Description"
+      },
+      "cellOptions": {"cellType": "string"}
+    },
+    {
+      "options": {
+        "width": "200px",
+        "id": "required_flg",
+        "label": "Required at Run Time?"
+      },
+      "cellOptions": {
+        "cellType": "dropdown",
+        "choices": [
+          {
+            "label": "Yes",
+            "value": "true"
+          },
+          {
+            "label": "No",
+            "value": "false"
+          }
+        ]
+      }
+    },
+    {"options": {
+      "id": "config",
+      "label": "Configuration"
+    }},
+    {"options": {
+      "id": "default_value",
+      "label": "Default Value"
+    }},
+   {
+      "options": {
+         "id": "default_expr",
+         "label": "Default Expression"
+      }
+   }
+  ],
+  "table": {
+    "options": {
+      "fixedColumnCount": 0,
+      "selectionMode": "MultiToggle"
+    },
+    "columnOptions": {
+      "visible": true,
+      "autoResizable": true,
+      "defaultVisible": true
+    },
+    "cellOptions": {"readonly": false}
+  }
+}

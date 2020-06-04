@@ -1,0 +1,154 @@
+{
+  "limit": 6,
+  "count": 6,
+  "start": 0,
+  "items": [
+    {
+      "required_flg": "true",
+      "description": "Identify the configuration setup for the configuration and mapping data.",
+      "default_value": "IFRS9",
+      "name": "ConfigSetId",
+      "config": {
+        "layout_placement": 1,
+        "layout_extend": 1,
+        "function": "C_GetIrmConfigsets('irmifrs9_disclosure_reports.bpmn')",
+        "type": "SINGLE"
+      },
+      "label": "Configuration Set Id",
+      "type": "config_param_list",
+      "key": "P001_ConfigSetId"
+    },
+    {
+      "description": "Specify the maximum number of seconds the script will wait for the job to complete before giving up. The default is 3,600 seconds (1 hour).",
+      "default_value": 3600,
+      "name": "MaxWait",
+      "config": {
+        "layout_placement": 2,
+        "layout_extend": 1
+      },
+      "label": "Maximum wait time",
+      "type": "config_param_number",
+      "key": "P002_MaxWait"
+    },
+    {
+      "required_flg": "true",
+      "default_value": "1",
+      "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE",
+      "name": "LogLevel",
+      "config": {
+           "layout_placement": 1,
+           "layout_extend": 1,
+           "type": "SINGLE",
+           "function": "C_GetLogLevelCallback('LogLevel')"
+         },
+      "label": "Logging level",
+      "type": "config_param_list",
+      "key": "P003_LogLevel"
+    },
+    {
+      "required_flg": "false",
+      "default_value": [],
+      "description": "Select the reports that you want to run. All disclosure reports are created if none have been selected.",
+      "name": "ReportIdList",
+      "config": {
+        "onchange_exp": [
+           "<set-visible name=\"PARAMS.FRHTM\" test=\"if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CollHeld_CarryingValue') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Asset_Type') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Product') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Region') or contains(PARAMS.ReportIdList, 'Credit_Quality_Allowance') or contains(PARAMS.ReportIdList, 'Credit_Quality_Analysis') or contains(PARAMS.ReportIdList, 'LTV') or contains(PARAMS.ReportIdList, 'Scenario_Attribution'), true, false)\"/>",
+           "<set-required name=\"PARAMS.FRHTM\" test=\"if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CollHeld_CarryingValue') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Asset_Type') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Product') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Region') or contains(PARAMS.ReportIdList, 'Credit_Quality_Allowance') or contains(PARAMS.ReportIdList, 'Credit_Quality_Analysis') or contains(PARAMS.ReportIdList, 'LTV') or contains(PARAMS.ReportIdList, 'Scenario_Attribution'), true, false)\"/>",
+           "<set-visible name=\"PARAMS.AA\" test=\"if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CreditLoss_Reconciliation'), true, false)\"/>",
+           "<set-required name=\"PARAMS.AA\" test=\"if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CreditLoss_Reconciliation'), true, false)\"/>"
+        ],
+        "layout_placement": 1,
+        "function": "C_ReadDataToJson(\"get_static_table.sas\",\"{'static_table':'report_config','where_clause':''}\",\"report_config\",\"REPORT_ID|REPORT_NAME\")",
+        "layout_extend": 2,
+        "type": "ORDERED"
+      },
+      "label": "Reports to run",
+      "type": "config_param_list",
+      "key": "P004_ReportIdList"
+    },
+    {
+      "required_flg": "true",
+      "default_value": "",
+      "description": "Specify the analysis data containing the credit risk detail results",
+      "name": "FRHTM",
+      "config": {
+        "visible_exp": "if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CollHeld_CarryingValue') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Asset_Type') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Product') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Region') or contains(PARAMS.ReportIdList, 'Credit_Quality_Allowance') or contains(PARAMS.ReportIdList, 'Credit_Quality_Analysis') or contains(PARAMS.ReportIdList, 'LTV') or contains(PARAMS.ReportIdList, 'Scenario_Attribution'), true, false)",
+        "required_exp": "if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CollHeld_CarryingValue') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Asset_Type') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Product') or contains(PARAMS.ReportIdList, 'Credit_Concentrations_by_Region') or contains(PARAMS.ReportIdList, 'Credit_Quality_Allowance') or contains(PARAMS.ReportIdList, 'Credit_Quality_Analysis') or contains(PARAMS.ReportIdList, 'LTV') or contains(PARAMS.ReportIdList, 'Scenario_Attribution'), true, false)",
+        "depRestFilter": "eq(schemaName,'ifrs9_credit_risk_detail')",
+        "layout_placement": 1,
+        "restFilter": "contains($primary,resultsCategoryCd,'FR_HTM')",
+        "func": "",
+        "layout_extend": 1,
+        "type": "SINGLE",
+        "depFilter": {
+          "children": [
+            {
+              "name": "schemaName",
+              "value": "'ifrs9_credit_risk_detail'",
+              "type": "string",
+              "operator": "eq"
+            }
+          ],
+          "type": "and"
+        },
+        "filter": {
+          "children": [
+            {
+              "name": "resultsCategoryCd",
+              "value": "'FR_HTM'",
+              "type": "string",
+              "operator": "contains"
+            }
+          ],
+          "type": "and"
+        }
+      },
+      "label": "Credit risk detail results",
+      "type": "config_param_dataDefinitions_analysisData",
+      "key": "P005_FRHTM",
+      "default_expr": ""
+    },
+    {
+      "required_flg": "true",
+      "default_value": "",
+      "description": "Specify the analysis data containing the attribution analysis results",
+      "name": "AA",
+      "config": {
+        "visible_exp": "if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CreditLoss_Reconciliation'), true, false)",
+        "required_exp": "if(empty(PARAMS.ReportIdList) or contains(PARAMS.ReportIdList, 'CreditLoss_Reconciliation'), true, false)",
+        "depRestFilter": "eq(schemaName,'ifrs9_credit_risk_detail')",
+        "layout_placement": 2,
+        "restFilter": "eq($primary,resultsCategoryCd,'ATTRIBUTION')",
+        "func": "",
+        "layout_extend": 1,
+        "type": "SINGLE",
+        "depFilter": {
+          "children": [
+            {
+              "name": "schemaName",
+              "value": "'ifrs9_credit_risk_detail'",
+              "type": "string",
+              "operator": "eq"
+            }
+          ],
+          "type": "and"
+        },
+        "filter": {
+          "children": [
+            {
+              "name": "resultsCategoryCd",
+              "value": "'ATTRIBUTION'",
+              "type": "string",
+              "operator": "eq"
+            }
+          ],
+          "type": "and"
+        }
+      },
+      "label": "Attribution analysis results data",
+      "type": "config_param_dataDefinitions_analysisData",
+      "key": "P006_AA",
+      "default_expr": ""
+    }
+  ]
+}

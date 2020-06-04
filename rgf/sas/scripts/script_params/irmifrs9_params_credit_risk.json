@@ -1,0 +1,245 @@
+{
+   "limit": 11,
+   "count": 11,
+   "items": [
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Select a portfolio data set to use for the analysis",
+         "name": "Portfolio",
+         "config":
+         {
+            "depRestFilter": "eq(dataCategoryCd,'PORTFOLIO')",
+            "layout_placement": 1,
+            "restFilter": "",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'PORTFOLIO'",
+                     "type": "string",
+                     "operator": "eq"
+                  }
+               ],
+               "type": "and"
+            },
+            "filter":
+            {
+               "children": [],
+               "type": "and"
+            }
+         },
+         "label": "Portfolio data",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P001_Portfolio"
+      },
+      {
+         "required_flg": "false",
+         "description": "Select an individual assessment data set.",
+         "default_value": "",
+         "name": "IAData",
+         "config":
+         {
+            "depRestFilter": "contains($primary,dataCategoryCd,'INDIVIDUAL_ADJUSTMENT')",
+            "layout_placement": 2,
+            "restFilter": "",
+            "layout_extend": 1,
+            "func": "",
+            "type": "SINGLE",
+            "filter":
+            {
+               "children": [],
+               "type": "and"
+            },
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'INDIVIDUAL_ADJUSTMENT'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Individual Assessment Data",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P010_IAData",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "false",
+         "description": "Specify the data map to use to map the input data to the format required for the model",
+         "name": "ModelInputMap",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Model Input Mapping",
+         "type": "config_param_dataMaps",
+         "key": "P002_ModelInputMap"
+      },
+      {
+         "required_flg": "false",
+         "description": "Specify the data map to use to map the output data from the model to the format required for the solution",
+         "name": "ModelOutputMap",
+         "config":
+         {
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Model output mapping",
+         "type": "config_param_dataMaps",
+         "key": "P003_ModelOutputMap"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Select a model to calculate the Expected Credit Loss",
+         "name": "CreditModel",
+         "config":
+         {
+            "layout_placement": 1,
+            "restFilter": "and(eq($primary,runTypeCd,'MOD'),eq($primary,typeCd,'CRED'),eq($primary,subTypeCd,'ECL'))",
+            "layout_extend": 3,
+            "type": "SINGLE",
+            "filter":
+            {
+               "children": [
+                  {
+                     "name": "runTypeCd",
+                     "value": "'MOD'",
+                     "type": "string",
+                     "operator": "eq"
+                  },
+                  {
+                     "name": "typeCd",
+                     "value": "'CRED'",
+                     "type": "string",
+                     "operator": "eq"
+                  },
+                  {
+                     "name": "subTypeCd",
+                     "value": "'ECL'",
+                     "type": "string",
+                     "operator": "eq"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "ECL Model",
+         "type": "config_param_models",
+         "key": "P004_CreditModel"
+      },
+      {
+         "required_flg": "true",
+         "description": "Select the master risk scenarios to be used for the analysis.",
+         "name": "MRS",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 3,
+            "type": "MULTI"
+         },
+         "label": "Master Risk Scenarios",
+         "type": "config_param_masterRiskScenarios",
+         "key": "P005_MRS"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "IFRS9",
+         "description": "Identify the configuration setup for the configuration and mapping data.",
+         "name": "ConfigSetId",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "function": "C_GetIrmConfigsets('irmifrs9_credit_risk.bpmn')"
+         },
+         "label": "Configuration Set Id",
+         "type": "config_param_list",
+         "key": "P006_ConfigSetId"
+      },
+      {
+         "required_flg": "true",
+         "description": "Specify whether you want to save or discard the SAS Model Implementation Platform risk cube that was generated after the run completes",
+         "default_value": "N",
+         "name": "KeepMIPCube",
+         "config":
+         {
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "list": [
+               "Y",
+               "N"
+            ],
+            "type": "SINGLE"
+         },
+         "label": "Keep generated risk cube?",
+         "type": "config_param_list",
+         "key": "P007_KeepMIPCube"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "1",
+         "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE",
+         "name": "LogLevel",
+         "config":
+         {
+            "layout_placement": 1,
+            "function": "C_GetLogLevelCallback('LogLevel')",
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Logging Level",
+         "type": "config_param_list",
+         "key": "P008_LogLevel"
+      },
+      {
+         "required_flg": "true",
+         "description": "Specify the maximum number of seconds the script will wait for the job to complete before giving up. The default is 3,600 seconds (1 hour).",
+         "default_value": 3600,
+         "name": "MaxWait",
+         "config":
+         {
+            "min": "0",
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "min_inclusive": true
+         },
+         "label": "Maximum Wait Time",
+         "type": "config_param_number",
+         "key": "P009_MaxWait"
+      },
+      {
+         "required_flg": "true",
+         "description": "Specify whether the LASR reporting tables are loaded in append mode or with full replace.",
+         "default_value": "Append",
+         "name": "LasrLoadMethod",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "list": [
+               "Append",
+               "Replace"
+            ],
+            "type": "SINGLE"
+         },
+         "label": "LASR loading method",
+         "type": "config_param_list",
+         "key": "P010_LasrLoadMethod"
+      }
+   ],
+   "start": 0
+}

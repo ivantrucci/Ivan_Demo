@@ -1,0 +1,115 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 150configuringModels Configuring Models
+
+\anchor modelPage
+
+\anchor Model
+
+\section ModelIntro_key What are "Models" in SAS Solution for IFRS9?
+Models can be thought of as scripts, generally with some input and some output.  Models can be used for statistical calculations (for example, calculating Expected Credit Loss) or for more general tasks such as registering data into the solution or evaluating data quality rules.
+
+For a list of out-of-the-box models provided with the solution, see the \ref UsingTheModel_key "Models Used in SAS Solution for IFRS 9" section.
+
+Once a model is moved to "Production", the model becomes readonly.  To alter the model, a user would need to create a copy of the model, update the version of the model, and apply updates to the copy of the model.  To use the updated model in a Cycle workflow, see \ref UsingModelInCycleWorkflow "Using a Model in a Cycle Workflow".
+
+
+In general, models have parameters (configurable on the Parameters tab) and code (configurable on the Execution Configuration tab).  When executing a model through a Cycle or an Analysis Run, the user can specify values for the parameters that were configured for the model.  The user-specified values will be passed to the code during model execution.
+
+
+\section modelParam_key Configuring Model Parameters
+
+The parameters associated with a particular model can be viewed and edited from the Parameters tab of the given model.  Below is an example of the Parameters tab.
+
+\image html ModelParametersExample.png
+
+Each row in the table is a model parameter. Each column represents a parameter attribute, as described below.
+
+- <b>Name</b> - Name of the parameter (letters and numbers only, no spaces)
+- <b>Type</b> - Type of the parameter (e.g. Character, Numeric, Prompt, Analysis Data, ...)
+- <b>Label</b> - Label of the parameter (this is the label displayed to the user when executing the model)
+- <b>Description</b> - Description of the parameter (this is the text viewable if the user clicks on the question mark next to the parameter when executing the model)
+- <b>Required at Run Time?</b> - Flag to specify whether the parameter should be required at run time
+- <b>Configuration</b> - Additional configurations for the parameter
+- <b>Default Value</b> - Default value for the parameter
+- <b>Default Expression</b> - Default expression for the parameter (allows a custom function to be used to generate a default value)
+
+
+The additional configurations available in the Configuration screen depend on the parameter type.  For example, "Prompt" parameters allow a user to specify a function to generate the prompt values or a list of static prompt values.  "Analysis Data" parameters allow a user to specify filters based on the Analysis Data or the associated Data Definition.
+
+All parameters, regardless of type, allow the user to specify the field configuration and visual layout in the Configuration screen.  The syntax for the field configurations follows standard SAS Risk Governance Framework screen definition syntax.
+
+\image html ModelParamFieldConfiguration.png
+
+The field configuration of the parameter (Example B) is roughly equivalent to the field definition below.
+
+    <field name="exampleB" visible="exampleA eq 'Yes'" required="exampleA eq 'Yes'">
+        <label>Example B</label>
+        <on-change>
+            <set-visible name="exampleC" test="not empty(exampleB)" />
+            <set-required name="exampleC" test="not empty(exampleB)" />
+            <set-value name="exampleD" value="exampleB"/>
+        </on-change>
+    </field>
+
+The "Set visible condition" option on the field configuration screen allows the user to specify a condition to be used to check for visibility of the parameter.  This corresponds to the <i>visible</i> attribute in the screen definition.
+
+The "Set required condition" option on the field configuration screen allows the user to specify a condition to be used to check if the parameter should be required.  Note that if the user provides a valid required condition, this takes priority over the "Required at Run Time?" attribute of the parameter configured on the main parameters tab.  The "Set required condition" corresponds to the <i>required</i> attribute in the screen definition.
+
+The "Set on-change statements" option on the field configuration screen allows the user to specify one or more on-change statements for the parameter.  The statement types that are currently supported are <i>set-visible</i>, <i>set-required</i>, <i>set-value</i>, and <i>set-values</i>.  Each on-change statement must be on a separate line.
+
+
+The Visual Layout section of the Configuration screen allows the user to change the placement of the parameter on the screen.  More information can be found in the following section.
+
+
+\section modelParamLayout_key Configuring Model Parameters Layout
+
+The general layout of the model parameters (i.e. number of columns, space between columns, space between rows) can be configured by clicking the Configure Layout button on the toolbar of the table in the Parameters tab of the model.
+
+\image html ModelParamToolbar_ConfigureLayout.png
+
+Each parameter is displayed in the order that it is listed in the parameters table.  Parameters can be reordered by selecting the parameter and clicking the arrows on the toolbar.
+
+\image html ModelParamToolbar_Arrows.png
+
+The layout of a particular parameter (which column it is displayed on and how many columns it is extended across) can be configured in the Visual Layout section of the Configuration screen of the given parameter.
+
+\image html ModelParam_VisualLayout.png
+
+The layout of the model parameters can be previewed by selecting the Preview Layout button in the toolbar of the parameters table.
+
+\image html ModelParamToolbar_PreviewLayout.png
+
+Parameters can be added or deleted using the Add and Delete buttons in the toolbar of the parameters table.
+
+\image html ModelParamToolbar_AddDelete.png 
+
+\section modelCode_key Configuring Model Code (Execution Configuration)
+
+The Execution Configuration tab of the model contains the code to be executed for that model.
+
+\image html ModelExecutionConfigurationExample.png
+
+Parameter values can be referenced from the code using the following syntax: ${params.PARAMETERNAME} where PARAMETERNAME is the name of the parameter.  This parameter name must be capitalized, even if the parameter name in the Parameters tab is not capitalized.  The parameter value can be stored in a macro variable by using a let statement, as demonstrated below.
+
+    %let exampleb = ${params.EXAMPLEB};
+
+Some parameter types (e.g. Analysis Data) have additional attributes such as instance key that can be pulled using the following syntax: ${params.PARAMETERNAME.key}
+
+NOTE: For some models (e.g. models with Run Type "Model" and Engine "SAS Model Implementation Platform"), the Execution Configuration tab stores a pointer to the location in which the code is stored (e.g. a SAS MIP Modeling System) rather than storing the actual code of the model.  It also may have optional code editors where users can configure pre-run processing, post-run processing, pre-execution, and post-execution code.
+
+
+\section UsingModelInCycleWorkflow Using a Model in a Cycle Workflow
+
+Once you have created a new model or updated an existing model, you may want to run that model as part of a Cycle workflow.  The mapping between the models and the steps in the workflow are configured in the Workflow Template object.  Workflow templates are readonly once they have been used in a Cycle, so in order to update an existing workflow template you will need to create a copy of the workflow template by selecting Create New From in the Actions list for the workflow template.
+
+\image html workflowTemplateCreateNewFrom.png
+
+Change the id and the name of the workflow template, and then select the model that you wish to replace.  Once you select the model, a configuration button will appear in the cell.  Click on the configuration button to open a list of available models, and then select the model you want to use.  Save the workflow template.  Next time you create a Cycle, you can select this new workflow template which includes your new model.
+
+
+\image html workflowTemplateEdit.png
+
+*/

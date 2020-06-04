@@ -1,0 +1,133 @@
+{
+   "limit": 7,
+   "count": 7,
+   "start": 0,
+   "items": [{
+      "required_flg": "true",
+      "description": "Select a portfolio data set from the eligible analysis data sets.",
+      "name": "Portfolio",
+      "config": {
+         "depRestFilter": "eq(dataCategoryCd,'PORTFOLIO')",
+         "layout_placement": 1,
+         "restFilter": "",
+         "layout_extend": 1,
+         "type": "SINGLE",
+         "depFilter": {
+            "children": [{
+               "name": "dataCategoryCd",
+               "value": "'PORTFOLIO'",
+               "type": "string",
+               "operator": "eq"
+            }],
+            "type": "and"
+         },
+         "filter": {
+            "children": [],
+            "type": "and"
+         }
+      },
+      "label": "Portfolio data",
+      "type": "config_param_dataDefinitions_analysisData",
+      "key": "P001_Portfolio"
+   },
+   {
+      "required_flg": "true",
+      "description": "Select a data quality rule set.",
+      "name": "RuleSet",
+      "config": {
+         "layout_placement": 2,
+         "restFilter": "eq($primary,ruleSetCategoryCd,'DQ')",
+         "layout_extend": 1,
+         "type": "SINGLE",
+         "filter": {
+            "children": [
+               {
+                 "name": "ruleSetCategoryCd",
+                 "value": "'DQ'",
+                 "type": "string",
+                 "operator": "eq"
+               }
+            ],
+            "type": "and"
+         }
+      },
+      "label": "Rule set",
+      "type": "config_param_ruleSets",
+      "key": "P002_RuleSet"
+   },
+   {
+      "required_flg": "true",
+      "default_value": "Y",
+      "description": "Do you want to generate data quality details?",
+      "name": "DQDetails",
+      "config": {
+         "layout_placement": 1,
+         "list": ["Y", "N"],
+         "layout_extend": 1,
+         "type": "SINGLE"
+      },
+      "label": "Data quality details",
+      "type": "config_param_list",
+      "key": "P003_DQDetails"
+   },
+   {
+      "required_flg": "true",
+      "description": "Identify the configuration setup for the configuration and mapping data.",
+      "default_value": "IFRS9",
+      "name": "ConfigSetId",
+      "config": {
+         "layout_placement": 2,
+         "function": "C_GetIrmConfigsets('irmifrs9_data_quality.bpmn')",
+         "layout_extend": 1,
+         "type": "SINGLE"
+      },
+      "label": "Configuration set ID",
+      "type": "config_param_list",
+      "key": "P004_ConfigSetId"
+   },
+   {
+      "required_flg": "true",
+      "default_value": 3600,
+      "description": "Enter the maximum number of seconds the macro will wait for the job to complete before giving up. Default is 3,600 seconds (1 hour).",
+      "name": "MaxWait",
+      "config": {
+         "layout_placement": 1,
+         "layout_extend": 1
+      },
+      "label": "Maximum wait time",
+      "type": "config_param_number",
+      "key": "P005_MaxWait"
+   },
+   {
+      "required_flg": "true",
+      "default_value": "1",
+      "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE",
+      "name": "LogLevel",
+      "config": {
+         "layout_placement": 2,
+         "function": "C_GetLogLevelCallback('LogLevel')",
+         "layout_extend": 1,
+         "type": "SINGLE"
+      },
+      "label": "Logging level",
+      "type": "config_param_list",
+      "key": "P006_LogLevel"
+   },
+   {
+      "required_flg": "true",
+      "description": "Controls whether the LASR reporting tables are loaded in append mode or with full replace.",
+      "default_value": "Append",
+      "name": "LasrLoadMethod",
+      "config": {
+         "layout_placement": 1,
+         "layout_extend": 1,
+         "list": ["Append",
+         "Replace"],
+         "type": "SINGLE"
+      },
+      "label": "LASR loading method",
+      "type": "config_param_list",
+      "key": "P007_LasrLoadMethod"
+   }
+   ]
+}

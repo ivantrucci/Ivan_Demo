@@ -1,0 +1,49 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 225Versions Product Versions and Release Information
+   \anchor Versions
+
+\section Ver042019 SAS Solution for IFRS9 v01.2020
+
+Product update with various new features and enhancements.
+
+\subsection Ver052019Summary Summary
+SAS® Solution for IFRS9 is a content package that is sold as content package installed on the SAS® Risk Governance Framework. 
+The package contains pre-built content that can be customized to accelerate the implementation of the solution in order to address the various requirements of IFRS 9 credit impairment disclosures. 
+
+This pre-built content falls into the following categories:
+
+<b>Modeling and Analytics</b>
+  - pre-built templates and common credit risk model types for estimating expected credit loss
+  - an attribution model for computing the ECL impact of different scenarios
+  - pre-built templates for generating contractual cash flows and computing effective interest rates<br>
+
+<b>Aggregation and Reporting</b>
+   - pre-built IFRS 9 financial disclosure reports for detailing credit impairment
+   - pre-built SAS Visual Analytics reports
+   - worksheets to aggregate and merge ECL calculations with other financial data across entities
+   - a process dashboard to monitor the progress of each project cycle     <br>
+
+<b>Workflow</b>
+   - sample workflows to manage and track the process of computing ECL and producing the IFRS 9 reports 
+   - for individual assessment data for a simplified workflow using Q-factor adjustments
+   - for a single-workgroup environment (for example, one business unit)
+   - for a multi-workgroup/consolidated environment where data is being aggregated across a number of supporting workgroups
+   - additional scripts that add flexibility to the workflow and model execution <br>
+
+<b>Data Model </b>
+  - Embedded data quality rules with SAS Visual Analytics reports as well as customizable and extensible data model that can be used to support the out-of-the-box and custom models<br>
+
+
+\subsection Ver042019Compatibility Compatibility
+
+SAS Solution for IFRS9 v01.2020 is supported with the following products:
+- SAS Risk Governance Framework 7.4 with hot fix D4Z002
+- SAS Infrastructure for Risk Management 3.5 & 3.6
+- SAS Model Implementation Platform 3.1 & 3.2
+- SAS Visual Analytics 7.4 & 7.5 
+
+
+*/

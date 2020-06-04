@@ -1,0 +1,312 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 040DataQuality.txt Data Quality and Data Adjustment
+    \anchor DataQualityIntro
+
+\tableofcontents
+\section DataQualityIntroduction Introduction
+
+SAS Solution for IFRS 9 proactively identifies and reports data quality issues and enables you to adjust your data dynamically through rules.
+
+The solution contains a number of pre-configured data quality rules and data adjustment rules. These pre-configured rules are in line with the principles of the BCBS 239 regulation (https://www.bis.org/publ/bcbs239.pdf).
+However, the solution enables you to edit these pre-configured rules as needed and create your own rules for quality checking and adjustment.
+
+\section RuleSetOverview Rules and Rule Sets
+
+There are two primary ways in which SAS Solution for IFRS 9 uses rules:
+- <b>Data quality checking</b>: The solution evaluates the quality of the data using rules, and generates data quality reports that can be reviewed for issues that have been identified.
+- <b>Data adjustment</b>: The solution enables you to make manual adjustments to data using rules. 
+
+The Rule Set business object in SAS Solution for IFRS 9 is used for grouping these rules.
+
+The Rule Sets object supports four types of rule sets:
+
+-  <b><i>Business rule sets</i></b>: Used for checking data quality and performing data transformation tasks.
+-  <b><i>Allocation rule sets</i></b>: Used to define rules for allocating overlays and manual adjustments to detail data. 
+
+Business rule sets are defined using the data definition of the table for which the rules will be applied. The spreadsheet in the rule set 
+object is refreshed with metadata of the data definition that you select.
+
+There are two components that define a rule in a Business rule set: CONDITION and ACTION. The rules always work in this fashion: 
+
+If <i><b><conditions></b></i> then <i><b><actions></b></i>.
+
+Each individual component (condition or action) is a separate row in the rule set table. The action component is optional. A rule can have multiple conditions and actions. All components for a rule are 
+linked by the same Rule ID. For a given rule set object, you can add a rule by adding a new row in the Rule set component. 
+The following screen capture shows a Rule Set object with several columns in the rule set table highlighted. 
+
+\image html RuleSetCreation.png
+
+For a detailed description of each column in the rule set table, see \link irm_run_rules.sas \endlink.
+
+Rule sets can be applied to data in multiple ways:
+-   by completing the Data Quality and Data Adjustment steps in a cycle
+-   by running an Analysis run using the model <i>IFRS9 – Data Quality</i> or <i>IFRS9 – Data Adjustment</i> 
+-   by running a transformation on the data from the Analysis Data object using a rule set
+
+The first two options in the preceding list are the same except that the steps are initiated directly within the cycle in the first case and outside the cycle in the second case. 
+
+Some key considerations when using rule sets for data quality checking and data adjustment:
+- If a rule set has both Condition and Action type rules, only Condition type rules are applied on the data when using <i>IFRS9 – Data Quality</i> model. 
+- Data quality reports are populated only when the rule sets are applied using the <i>IFRS9 – Data Quality</i> model. 
+- The <i>IFRS9 – Data Adjustment</i> model does not update the reports. 
+
+\section DataQualityHow_key Data Quality Checking
+
+\subsection DataQualityConfiguration_key Data Quality Rule Set Configuration and Execution
+
+<b>Data Quality Rule Set Configuration</b>
+Values in data sets registered in the Analysis Data object can be programmatically checked for quality using rule sets. 
+The Rule Sets business object in the solution stores a repository of rules. Each rule set instance of a rule set object is associated with input data (for example, CREDIT_PORTFOLIO for credit portfolio data). 
+The solution contains pre-configured rules for credit portfolio data. These rules are registered in the Rule Sets object when the <i> IFRS9 – Data Preparation </i> model is executed in the cycle. 
+Each pre-configured rule is associated with a BCBS principle. Each rule can be given a weight for specifying rule importance.
+
+The pre-configured rules are setup in the Rule_Set_Config table located in the federated area under the <tt><i>federated_area</i>/landing_area/base/ifrs9/static</tt> directory. See \link rule_set_config.sas \endlink for the structure of the configuration table.
+Users can add additional rules or edit rules in any rule set that has been registered in the solution by updating the rule set in the UI. 
+
+<b>Data Quality Rule Set Execution</b><br>
+Data quality rules for the default credit portfolio project are executed when the <i>IFRS9 – Data Quality </i> model is executed in the cycle. This model only applies rules of type <i>Condition</i>. This step in the cycle creates an Analysis Run. 
+These rules can also be executed outside the cycle by running the <i>IFRS9 – Data Quality</i> model from within the Analysis Run object. The pre-configured <i> IFRS9 – Data Quality </i> model can be executed only for credit portfolio data. 
+If you want to perform data quality checks on other data sets, you must define new data quality models or modify the existing <i>IFRS9 – Data Quality</i> model. 
+
+Every data quality model execution creates two output data sets that are registered in the Analysis Data object: 
+- Data Quality Summary 
+- Data Quality Details
+
+These two data sets display detailed results from the data quality model execution. The relationships diagram in the Analysis Run instance shows all the inputs and outputs of the execution. Here is an example relationship 
+diagram that visualizes how the data quality analysis run is connected between the inputs (the Portfolio analysis data, the <i>IFRS9 – Data Quality</i> model, and the DQ Portfolio rule set) 
+and the outputs (the Data Quality Details and Data Quality Summary data sets). 
+
+\image html DataQualityExecution.png
+
+In addition, certain details regarding the cycle, such as base date and entity, can also be considered as an input to the Analysis Run. 
+
+Note that each analysis run of the same portfolio and rule set creates new analysis data objects (Data Quality Summary and Data Quality Details) 
+as output.
+
+\subsection DataQualityProvidedRules_key Pre-Configured Data Quality Rules
+
+The following table lists the data quality rules that are pre-configured in SAS Solution for IFRS 9, along with their underlying BCBS principle.
+
+|Rule ID|Column|Rule Description|Rule Type|Rule Details|BCBS Principle|
+|----------|--------|--------|---------|--------|--------|
+|PTF_RULE_01|CURRENCY|Check Missing Currency|MISSING||Completeness|
+|PTF_RULE_02|CURRENCY|Check Currency Length|NOT_FIXED_LENGTH|3|Accuracy & Integrity|
+|PTF_RULE_03|COLLATERAL_SUPPORT_FLG|Check Collateral Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_04|FINANCIAL_DIFFICULTIES_FLG|Check Financial Difficulties Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_05|UNCONDITIONALLY_CANCELABLE_FLG|Check Unconditionally Cancelable Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_06|RELATED_PARTY_FLG|Check Related Party Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_07|TDR_FLG|Check TDR Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_08|PCD_FLG|Check PCD Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_09|EVER_DELINQUENT_FLG|Check Ever Delinquent Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_10|DELINQUENCY_FLG|Check Delinquency Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_11|PENDING_OFFER_FLG|Check Pending Offer Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_12|DRAWDOWN_PERIOD_FLG|Check Drawdown Period Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_13|REVOLVING_FLG|Check Revolving Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_14|ISSUED_GUARANTEE_FLG|Check Guarantee Flag|NOT_LIST|"Y", "N"|Accuracy & Integrity|
+|PTF_RULE_15|DAY_BASIS_CD|Check Day Basis Code|NOT_LIST|"30/360", "ACT/360", "365", "ACT/ACT"|Accuracy & Integrity|
+|PTF_RULE_16|INTEREST_RATE_TYPE|Check Interest Type Code|NOT_LIST|"Fixed", "Variable", "ARM", "Hybrid"|Accuracy & Integrity|
+|PTF_RULE_17|PAYMENT_TYPE_CD|Check Payment Type Code|NOT_LIST|"Level Pay", "Straight Line", "Bullet"|Accuracy & Integrity|
+|PTF_RULE_18|START_DT|Check Missing Start Date|MISSING||Completeness|
+|PTF_RULE_19|MATURITY_DT|Check Missing Maturity Date|MISSING||Completeness|
+|PTF_RULE_20|EFFECTIVE_INTEREST_RT|Check Missing EIR|MISSING||Completeness|
+
+
+\subsection DataQualityReporting_key Data Quality Reporting
+
+\subsubsection DataQualitySummary_key The Data Quality Summary Report
+
+The following is a screen capture of the Data Quality Summary report that is available in the solution by default.
+
+\image html DataQualitySummary.png
+
+
+\subsubsection DataQualityDetails_key The Data Quality Details Report
+
+The following is a screen capture of the Data Quality Details report that is available in the solution by default.
+
+\image html DataQualityDetails.png
+
+
+\section DataAdjustmentHow_key  Data Adjustment
+\subsection DataAdjustConfiguration_key Data Adjustment Rule Set Configuration and Execution
+<b>Data Adjustment Rule Set Configuration</b>
+Values in data sets registered in the Analysis Data object can be programmatically adjusted using rule sets. Each rule set instance of the rule set object is associated with 
+a data definition of analysis data such as credit portfolio. Unlike the Data Quality check, which does not make adjustments (actions) when data quality issues are identified, both the Condition and Action components are required for the adjustment of data. 
+
+Pre-configured rules are provided in the product for the credit portfolio data. These rules are registered 
+in the Rule sets object when the <i>IFRS9 – Data Preparation</i> model is executed in the cycle. The pre-configured rules are setup in the Rule_Set_Config table in the <tt><i>federated_area</i>/landing_area/base/ifrs9/static</tt> directory. See \link rule_set_config.sas \endlink for the structure of this configuration table.
+Users can add additional rules to any rule set that is already registered in the solution directly from the rule set object screen. See \ref RuleSetOverview "Rules and Rule Sets" for more details.  
+
+<b>Data Adjustment Rule Set Execution</b>
+Data adjustment rules for the default credit portfolio project are automatically executed when the <i>IFRS9 – Data Adjustment</i> model is executed from within the cycle and an analysis run is created. 
+This model applies all the rules in the rule set and uses the rule of type Action to perform data adjustment. Data adjustment rules can also be executed outside the cycle by running the <i>IFRS9 – Data Adjustment</i> model 
+from within the Analysis Run business object. 
+Every data adjustment model execution creates two output data sets that are registered in the Analysis Data object. 
+
+-   Adjusted data (of the input data)
+-   Adjustments Summary 
+
+
+\subsection DataAdjustmentProvidedRules_key Pre-Configured Data Adjustment Rules
+The following table details the default rules for adjusting data for the CREDIT_PORTFOLIO project.
+
+|Rule ID|Column|Rule Description|Rule Type|Rule Details|
+|--------|--------|---------|--------|--------|
+|PTF_RULE_03|COLLATERAL_SUPPORT_FLG|Check Collateral Flag|SET|"N"|
+|PTF_RULE_04|FINANCIAL_DIFFICULTIES_FLG|Check Financial Difficulties Flag|SET|"N"|
+|PTF_RULE_05|UNCONDITIONALLY_CANCELABLE_FLG|Check Unconditionally Cancelable Flag|SET|"N"|
+|PTF_RULE_06|RELATED_PARTY_FLG|Check Related Party Flag|SET|"N"|
+|PTF_RULE_07|TDR_FLG|Check TDR Flag|SET|"N"|
+|PTF_RULE_08|PCD_FLG|Check PCD Flag|SET|"N"|
+|PTF_RULE_09|EVER_DELINQUENT_FLG|Check Ever Delinquent Flag|SET|"N"|
+|PTF_RULE_10|DELINQUENCY_FLG|Check Delinquency Flag|SET|"N"|
+|PTF_RULE_11|PENDING_OFFER_FLG|Check Pending Offer Flag|SET|"N"|
+|PTF_RULE_12|DRAWDOWN_PERIOD_FLG|Check Drawdown Period Flag|SET|"N"|
+|PTF_RULE_13|REVOLVING_FLG|Check Revolving Flag|SET|"N"|
+|PTF_RULE_14|ISSUED_GUARANTEE_FLG|Check Guarantee Flag|SET|"N"|
+|PTF_RULE_15|DAY_BASIS_CD|Check Day Basis Code|SET|"ACT/ACT"|
+
+In the preceding table, the rule with RULE_ID = PTF_RULE_03 is the Action component of the rule with the same Rule ID in the \ref DataQualityProvidedRules_key "Pre-Configured Data Quality Rules" table.
+
+\section DataClassifications_key Data Classification
+\subsection DC_RunSPPI_key Running SPPI Tests
+
+A series of business rules are available that will evaluate whether a credit portfolio passes the SPPI test or not. In general, the goal is to identify contractual provisions that modify the cash flows of an instrument such that they do not give rise to only a straightforward repayment of principal and interest.
+
+There are three potential outcomes of the classification:
+- SPPI not applicable
+- SPPI test passed
+- SPPI test failed
+
+SPPI Tests are conducted based on selected rule set, which contains a series of business rules that define conditions and actions  which are applied on the financial instruments 
+contained within the entity's portfolio. For convenience, the data required to run the SPPI test can be stored in a separate table (see \link portfolio_sppi_details.sas \endlink for some sample data).
+The SPPI test can be run on this separate table or on the credit portfolio table after it has been enriched with the data contained in the portfolio SPPI details table.
+ 
+To enrich credit portfolio data, select "Y" for "SPPI enrichment" during Data Preparation step:
+\image html sppiEnrichment.png
+ 
+To conduct SPPI Test, continue the cycle to Run Classification step, then select the appropriate "Analysis data" containing the SPPI Test related variables, and the "Rule set" containing the SPPI Test related rules:
+\image html sppiDataAdjParams.png
+ 
+And select "Run classification". The result will be available as a new analysis data. 
+
+\subsection Template_SPPI_key Template for SPPI Test
+The template SPPI test provided in the solution requires
+- SPPI sample data (\link portfolio_sppi_details.sas \endlink)
+- SPPI sample rules (\link rule_set_config.sas \endlink)
+
+The sample SPPI rules are designed under the assumption   that the portfolio instruments are particularly sensitive to the following features:
+   - Instrument characteristics:
+      - Verify whether the position pertains to a debt instrument
+      - Verify whether there exists a non-recourse condition that gives rise to non-SPPI cashflows
+   - Capital payments
+      - Verify whether the payments made at maturity satisfy the conditions of the SPPI test
+      - Verify whether interest is being compounded should for a reason the payment at maturity be deferred
+      - Verify whether any losses can be imposed on holders of the instruments
+   - Interest payments
+      - Verify whether the interest is being calculated on the outstanding debt
+      - Verify whether the payments of interest can be cancelled
+      - Verify whether the payments of interest can be deferred
+      - Verify whether the base of the floating interest rate is non-interest related
+      - Verify whether there exists an inverse floating rate
+      - Verify whether there exists financial leverage
+      - Verify whether the interest is externally fixed
+   - Prepayments
+      - Verify whether prepayment is possible
+   - Maturity Extension
+      - Verify whether the currency of the instrument can change
+      - Verify whether the maturity can be extended at market-conform interest rates
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section DataQualityAdditionalRules_key Configuring Additional Rules and Rule Sets
+
+Additional rules and rule sets can be configured in two ways:
+-   Programmatically by configuring rules through a back-end data loading and preparation script
+-   By creating rules directly in the Rule Set business object in the UI
+
+<b><i>Configuring Rules in the Back-End and Programmatically Loading Data in the Data Preparation Step of the Cycle</i></b>
+
+By default, the rules are configured in the Rule_Set_Config table in the <tt><i>federated_area</i>/landing_area/base/ifrs9/static</tt> directory. See \link rule_set_config.sas \endlink for the structure of the configuration table. All rules that correspond to the same rule set are grouped by the RULE_SET_GROUP_ID.
+The configuration of each input table that is loaded into the solution is performed in the Datastore_Config file. See \link datastore_config.sas \endlink for the structure of the configuration table. The RULE_SET_GROUP_ID that was defined in the Rule_Set_Config table
+is assigned to an input table related record in the Datastore_Config file. 
+
+In addition to this key connection between the configuration tables, information on the rule set name and description must also be specified in the Datastore_Config file. When the default <i>IFRS9 – Data Preparation </i> model 
+is executed, the code creates the data definition in the solution (if it does not already exist) for the input table, creates the analysis data for the input table, and creates the rule set instance with the rules. 
+
+<b><i>Creating Rules Directly in the Rule Set Object Using the Data Definition Table</i></b>
+
+Rules can also be added to an existing rule set or can be created directly from the Rule set object in the solution for analysis data that is already loaded into the system. For more 
+details on rules and rule sets, see \ref RuleSetOverview "Rules and Rule Sets". 
+
+\section AllocationAdjustments_key Overlays & Manual Adjustments
+\subsection AllocAdjustment_key Introduction
+Overlays and manual adjustments can be used to adjust the historical data to reflect both current and future conditions. To create these types of adjustments, create a rule set in the UI and select <b>Allocation Rule Set</b> as the <b>Rule set type</b>. 
+
+This will alter the rule set table to display a series of allocation adjustment related columns, as shown in the following screen capture.
+
+\image html AllocationRuleSet.png
+
+\subsection AllocAdjustment_details Adjustment Allocation Details
+
+Adjustments configured in an allocation rule set will be allocated down to the loan level in a manner configured on a rule-by-rule basis.  For details about the allocations, see \link irm_apply_allocation_rules.sas \endlink.
+
+
+
+\section RegulationLinks Regulation
+\subsection BCBSReferences References
+
+1. [BCBS2013JAN_BCBS239]
+Bank For International Settlements (2013). Principles for effective risk data aggregation and risk reporting
+Download here: https://www.bis.org/publ/bcbs239.pdf
+
+
+*/
+
+
+

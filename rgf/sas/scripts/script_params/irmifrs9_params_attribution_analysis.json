@@ -1,0 +1,253 @@
+{
+   "limit": 12,
+   "count": 12,
+   "start": 0,
+   "items": [
+      {
+         "required_flg": "true",
+         "description": "Provide a name for the output analysis data instance",
+         "default_value": "Attribution Analysis",
+         "name": "OutAnalysisDataName",
+         "config":
+         {
+            "limit": "150",
+            "layout_placement": 1,
+            "layout_extend": 1
+         },
+         "label": "Output analysis data name",
+         "type": "config_param_string",
+         "key": "P001_OutAnalysisDataName",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "description": "Provide a description for the output data analysis instance",
+         "default_value": "Detailed attribution analysis movements",
+         "name": "OutAnalysisDataDesc",
+         "config":
+         {
+            "limit": "512",
+            "layout_placement": 2,
+            "layout_extend": 1
+         },
+         "label": "Output analysis data description",
+         "type": "config_param_string",
+         "key": "P002_OutAnalysisDataDesc",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Specify the results from the previous period that you are using to compare with results from the current period",
+         "name": "PreviousResult",
+         "config":
+         {
+            "depRestFilter": "contains($primary,dataCategoryCd,'RESULTS')",
+            "layout_placement": 1,
+            "restFilter": "contains($primary,resultsCategoryCd,'FR_HTM')",
+            "func": "",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'RESULTS'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            },
+            "filter":
+            {
+               "children": [
+                  {
+                     "name": "resultsCategoryCd",
+                     "value": "'FR_HTM'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Previous period results",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P003_PreviousResult",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Specify the results from the current period that you are using to compare with results from the previous period",
+         "name": "CurrentResult",
+         "config":
+         {
+            "depRestFilter": "contains($primary,dataCategoryCd,'RESULTS')",
+            "layout_placement": 2,
+            "restFilter": "contains($primary,resultsCategoryCd,'FR_HTM')",
+            "func": "",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'RESULTS'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            },
+            "filter":
+            {
+               "children": [
+                  {
+                     "name": "resultsCategoryCd",
+                     "value": "'FR_HTM'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Current period results",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P004_CurrentResult",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Specify an attribution analysis template",
+         "name": "AttributionTemplate",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Attribution template",
+         "type": "config_param_attributionAnalyses",
+         "key": "P005_AttributionTemplate",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "default_value": "Auto",
+         "description": "Specify the number of processes used for parallel processing of the attribution runs",
+         "name": "NParallelRuns",
+         "config":
+         {
+            "layout_placement": 2,
+            "list": ["Auto", "1", "2", "3", "4", "6", "8", "10"],
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Parallelization level",
+         "type": "config_param_list",
+         "key": "P006_NParallelRuns"
+      },
+      {
+         "required_flg": "true",
+         "description": "Identify the configuration setup for the configuration and mapping data.",
+         "default_value": "IFRS9",
+         "name": "ConfigSetId",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "function": "C_GetIrmConfigsets('irmifrs9_attribution_analysis.bpmn')"
+         },
+         "label": "Configuration Set Id",
+         "type": "config_param_list",
+         "key": "P007_ConfigSetId"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "N",
+         "description": "Specify whether you want to save or discard the SAS Model Implementation Platform risk cube that was generated after the run completes",
+         "name": "KeepMIPCube",
+         "config":
+         {
+            "layout_placement": 2,
+            "list": ["Y", "N"],
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Keep generated risk cube?",
+         "type": "config_param_list",
+         "key": "P008_KeepMIPCube"
+      },
+      {
+         "required_flg": "true",
+         "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE",
+         "default_value": "1",
+         "name": "LogLevel",
+         "config":
+         {
+            "layout_placement": 1,
+            "function": "C_GetLogLevelCallback('LogLevel')",
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Logging Level",
+         "type": "config_param_list",
+         "key": "P009_LogLevel"
+      },
+      {
+         "required_flg": "true",
+         "default_value": 3600,
+         "description": "Specify the maximum number of seconds the script will wait for the job to complete before giving up. The default is 3,600 seconds (1 hour).",
+         "name": "MaxWait",
+         "config":
+         {
+            "min": "0",
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "min_inclusive": true
+         },
+         "label": "Maximum wait time",
+         "type": "config_param_number",
+         "key": "P010_MaxWait"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "Append",
+         "description": "Specify whether the LASR reporting tables should be loaded in append mode or with full replace.",
+         "name": "LasrLoadMethod",
+         "config":
+         {
+            "layout_placement": 1,
+            "list": ["Append", "Replace"],
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "LASR Loading Method",
+         "type": "config_param_list",
+         "key": "P011_LasrLoadMethod"
+      }, 
+      {
+         "required_flg": "true",
+         "default_value": "Stage",
+         "description": "The attribution method you select controls how the expected credit loss (ECL) change is decomposed into model contribution and stage change contribution when an instrument changes stage across the two runs. <br>The final result depends on the order in which the decomposition is computed. <br> - <i>Model First</i>: Model change -> Stage change<br> - <i>Stage First</i>: Stage change -> Model change",
+         "name": "StageAttributionMethod",
+         "config":
+         {
+            "layout_placement": 2,
+            "function": "toJsonArray('[{label:\"Model First\",value:\"Model\"},{label:\"Stage First\",value:\"Stage\"}]')",
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Stage attribution method",
+         "type": "config_param_list",
+         "key": "P012_StageAttributionMethod"
+      }
+   ]
+}

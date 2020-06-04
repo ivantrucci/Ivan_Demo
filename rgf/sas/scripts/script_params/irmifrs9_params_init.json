@@ -1,0 +1,20 @@
+{
+ "limit": 1,
+ "count": 1,
+ "start": 0,
+ "items": [{
+  "required_flg": "true",
+  "default_value": "1",
+  "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE.",
+  "name": "LogLevel",
+  "config": {
+   "layout_placement": null,
+   "function": "toJsonArray('[{label:\"Info\",value:\"1\"},{label:\"Debug\",value:\"2\"},{label:\"Verbose\",value:\"3\"},{label:\"Trace\",value:\"4\"}]')",
+   "layout_extend": null,
+   "type": "SINGLE"
+  },
+  "label": "Logging level",
+  "type": "config_param_list",
+  "key": "P001_LogLevel"
+ }]
+}

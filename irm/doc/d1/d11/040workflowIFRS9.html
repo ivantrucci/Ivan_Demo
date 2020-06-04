@@ -1,0 +1,380 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<title>SAS® Solution for IFRS9: Process Flow</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../SASDocumentationExtra.css" rel="stylesheet" type="text/css"/>
+<link href="../../SASDocumentationCustom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname" align="left"><a href="http://www.sas.com">
+       <img alt="SAS Documentation" 
+       src="data:image/jpeg;base64,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" width="250" height="57"></a>
+   <div id="projectbrief">SAS® Solution for IFRS9</div>
+   <div id="projectnumber">Reference manual - version 01.2020</div>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d11/040workflowIFRS9.html','../../');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Process Flow </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="IFRS9Cycle_key"></a>
+IFRS9 Planning Cycle</h1>
+<p>The IFRS9 planning cycle typically involves multiple groups across an institution that perform the following functions:</p><ul>
+<li>coordinate planning and analysis activity for different types of risk</li>
+<li>aggregate data from those groups for regulatory submission and internal use <br />
+ The SAS Solution for IFRS9 release includes a workflow definition for your IFRS9 analysis that can be viewed in the solution as shown in the following figure. <hr/>
+ <br />
+ <div class="image">
+<img src="../../WorkflowCycle_IFRS9.png" alt="WorkflowCycle_IFRS9.png"/>
+</div>
+</li>
+</ul>
+<hr/>
+<p> <br />
+ The planning cycle contains tasks that are largely automated (for example, running a model) as well as manual tasks (for example, review and sign-off). Any step that executes a model run uses the configuration that has been defined for that model in the Model business object and generates an instance of an Analysis Run business object. <br />
+The following table details the tasks involved in the sample workflow cycle, along with any subprocesses within the cycle.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Workflow task  </th><th class="markdownTableHeadNone">Purpose  </th><th class="markdownTableHeadNone">Completed by   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#intCycle">Initialize Cycle</a>  </td><td class="markdownTableBodyNone">Set up paths and directories required for the cycle  </td><td class="markdownTableBodyNone">Program Manager   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#dataPrep">(Data Processing) Data Preparation</a>  </td><td class="markdownTableBodyNone">Prepare input data required for analysis by reading from landing area and enriching the data  </td><td class="markdownTableBodyNone">Data Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#runDataQuality">(Data Processing) Run Data Quality</a>  </td><td class="markdownTableBodyNone">Apply data quality rules on input data and create data quality reports  </td><td class="markdownTableBodyNone">Data Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#reviewDataQuality">(Data Processing) Review Data Quality</a>  </td><td class="markdownTableBodyNone">Review report and approve or reject quality of data  </td><td class="markdownTableBodyNone">Data Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#manualAdj">(Data Processing) Manual Adjustments</a>  </td><td class="markdownTableBodyNone">Address data quality issues by adjusting data using rules  </td><td class="markdownTableBodyNone">Data Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#dataclassrun">(Data Classification) Run Classification</a>  </td><td class="markdownTableBodyNone">Apply classification rules on the input data  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#dataclassrev">(Data Classification) Review Classification</a>  </td><td class="markdownTableBodyNone">Review classification rules  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#dataclassadj">(Data Classification) Adjust Classification</a>  </td><td class="markdownTableBodyNone">Adjust classification results and approve or reject the results  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#prepMRS">(Prepare Scenarios) Configure Master Risk Scenarios</a>  </td><td class="markdownTableBodyNone">Configure master risk scenarios required for analysis  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#ECLAnalysis">(Credit Risk Analysis) Credit Risk Analysis</a>  </td><td class="markdownTableBodyNone">Execute the model template to calculate expected credit losses  </td><td class="markdownTableBodyNone">Quantitative Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#adjAndAlloc">(Credit Risk Analysis) Credit Risk Adjustments</a>  </td><td class="markdownTableBodyNone">Adjust ECL results and allocate to detail data  </td><td class="markdownTableBodyNone">Quantitative Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#reviewECLResults">(Credit Risk Analysis) Review Credit Risk Results</a>  </td><td class="markdownTableBodyNone">Review expected credit loss results  </td><td class="markdownTableBodyNone">Quantitative Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#prepAT">(Attribution) Prepare Attribution Template</a>  </td><td class="markdownTableBodyNone">Prepare attribution analysis templates required for analysis  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#AttrAnalysis">(Attribution) Attribution Analysis</a>  </td><td class="markdownTableBodyNone">Conduct an attribution analysis  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#reviewAttResults">(Attribution) Review Attribution Analysis Results</a>  </td><td class="markdownTableBodyNone">Review attribution analysis results and approve or reject the results  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#disclosures">(Generate Disclosures) Generate Disclosures</a>  </td><td class="markdownTableBodyNone">Generate disclosure reports  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#revDisclosures">(Generate Disclosures) Review Disclosure Reports</a>  </td><td class="markdownTableBodyNone">Review disclosure reports  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d11/040workflowIFRS9.html#signoff">Sign-off</a>  </td><td class="markdownTableBodyNone">Review and provide sign-off on the ECL analysis  </td><td class="markdownTableBodyNone">Risk Analyst   </td></tr>
+</table>
+<h2><a class="anchor" id="intCycle"></a>
+The Initialize Cycle Task</h2>
+<p>Users that belong to the IFRS9: Program Manager role can initialize the cycle by signing on to SAS Solution for IFRS 9. In order to initialize the cycle, the user must execute the model <em>IFRS9 - Init</em> through an analysis run. The analysis run creates a program (init.sas) that defines parameters and libraries used throughout the cycle by all subsequent analysis runs. In addition, an Analysis Data object instance is created for every input table that is created in the system.</p>
+<p>The Analysis Data business object can display the actual data and the visual relationship between other business objects (Cycle, Data Definition and Analysis Run) in a network diagram as shown in the following figure.</p>
+<div class="image">
+<img src="../../ProcessFlowCase2.png" alt="ProcessFlowCase2.png"/>
+</div>
+<h2><a class="anchor" id="dataPrep"></a>
+(Data Processing) The Data Preparation Task</h2>
+<p>Users that belong to the Data Analyst role are typically involved in the preparation of data. SAS Solution for IFRS 9 can be configured so that this business user can prepare the data in a transparent and organized fashion.</p>
+<p>To prepare your data, you must execute an analysis run using the model <em>IFRS9 - Data Preparation</em>. The Data Preparation analysis run performs the following steps:</p><ol type="1">
+<li>Reads data from the source systems into the landing area.</li>
+<li>Enriches the data with counterparty information, if needed. In order for the system to determine if counterparty information is required for the given data, the data analyst must specify Y for the Counterparty Enrichment Flag. This flag is a parameter option in the analysis run that determines whether the counterparty table should be joined to the portfolio table to create a final portfolio table that has all attributes (from portfolio and counterparty).</li>
+<li>Creates a data definition for each data set in a Data Definition business object.</li>
+<li>Registers data quality rule sets in the Rule Sets business object (based on the analysis run model parameter selection).</li>
+<li>Loads data to a robust data repository, the IFRS 9 Data Repository, for storing and tracking all data for analysis in one location. <br />
+-# Registers this data in the Analysis Data object in the solution.</li>
+</ol>
+<p>Data in the landing area is loaded into the repository by using the configuration details that are specified in the Datastore_Config file. Loading your data into the IFRS 9 Data Repository reduces the need to capture data as it moves between different products. The data repository is partitioned to provide improved performance. Configuration details are used to define data for the first time and capture details about what columns in the data set are used for partitioning. Note that any transformation that is made to the data will result in a new data set in the repository.</p>
+<p>The following table lists the default SAS data sets that are loaded to the IFRS 9 Data Repository and can be registered by the solution. </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Dataset Name  </th><th class="markdownTableHeadNone">Analysis data name inside the UI (for sample 2018-12-31 Cycle)   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">cashflow.sas7bdat  </td><td class="markdownTableBodyNone">Cashflow 2018-12-31   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">counterparty.sas7bdat  </td><td class="markdownTableBodyNone">Counterparty 2018-12-31   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">credit_portfolio.sas7bdat  </td><td class="markdownTableBodyNone">Portfolio 2018-12-31   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">individual_adjustment.sas7bdat  </td><td class="markdownTableBodyNone">Individual Adjustment 2018-12-31   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">rf_curve.sas7bdat  </td><td class="markdownTableBodyNone">Risk Factor Curve 2018-12-31   </td></tr>
+</table>
+<p>If you do not select any data sets to register in the UI, all enrichment tables that have been specified in the Datastore_Config file will be registered.</p>
+<p>Note: This is the default set of tables. You can easily onboard and register your own custom tables using the standard framework that supports the default data.</p>
+<h2><a class="anchor" id="runDataQuality"></a>
+(Data Processing) The Run Data Quality Task</h2>
+<p>Users that belong to the Data Analyst role are typically involved in the review of the registered data to determine that it is of sufficient quality to continue the credit risk analysis. SAS Solution for IFRS 9 uses the data quality rule sets that were registered in the Data Preparation task to automate this data quality check and provide a data quality report.</p>
+<p>To run the data quality check, you must execute an analysis run using the model <em>IFRS9 - Data Quality</em>. The Data Quality analysis run performs the following steps:</p><ol type="1">
+<li>Runs data quality rules.</li>
+<li>Stores results in the IFRS 9 Data Repository.</li>
+<li>Registers corresponding data objects in the solution (Data Definition, Analysis Data).</li>
+<li>Creates or Updates the Data Quality Reportmart.</li>
+<li>Loads the report mart to the SAS LASR server.</li>
+</ol>
+<p><b> Executing Data Quality Rules </b></p>
+<p>In order to execute the data quality rules on the analysis data, the data analyst must select the portfolio data and the rule set in the UI for the <em> IFRS9 - Data Quality </em> model. This model executes a process flow in SAS Infrastructure for Risk Management that applies the provided rules on the input data and returns results on the data quality check.</p>
+<h2><a class="anchor" id="reviewDataQuality"></a>
+(Data Processing) The Review Data Quality Task</h2>
+<p>Users that belong to the Data Analyst role must next review the results of the Data Quality task and approve or reject the data quality. This is a manual task that requires you to open the automatically generated data quality report and decide whether to approve the data quality, reject the data quality, or perform corrective adjustments to the data (upon which the data quality must be run and reviewed again).</p>
+<p>Here is an example of the Data Quality Summary reporting dashboard that you can review.</p>
+<div class="image">
+<img src="../../ProcessFlowCase1Step6.png" alt="ProcessFlowCase1Step6.png"/>
+</div>
+<p><br />
+ </p>
+<h2><a class="anchor" id="manualAdj"></a>
+(Data Processing) The Manual Adjustments Task</h2>
+<p>If adjustments to the data are required, users that belong to the Data Analyst role can use business rule sets to identify and correct any data that is not of sufficient quality. <br />
+To run the adjustments, you must execute an analysis run using the model <em>IFRS9 - Data Adjustment</em>. The Data Adjustment analysis run performs the following steps:</p><ol type="1">
+<li>Applies business rules to the specified input data objects.</li>
+<li>Stores the modified data to the IFRS 9 Data Repository.</li>
+<li>Registers corresponding Analysis Data business objects in the solution.</li>
+</ol>
+<h2><a class="anchor" id="dataclassrun"></a>
+(Data Classification) The Run Classification Task</h2>
+<p>After the Data Processing task is complete, the Risk Analyst has the option to apply classification rules on the input data. One example of these rules is the one related to the SPPI test. A series of business rules are available that will evaluate whether a credit portfolio passes the SPPI test or not. In general, the goal is to identify contractual provisions that modify the cash flows of an instrument such that they do not give rise to only a straightforward repayment of principal and interest.</p>
+<p>To run the SPPI test, you must execute an analysis run using the model <em>IFRS9 - Data Adjustment</em>. The Data Adjustment analysis run performs the following steps:</p><ol type="1">
+<li>Applies the <em>SPPI Test Set</em> to the specified input data objects.</li>
+<li>Stores the modified data to the IFRS 9 Data Repository.</li>
+<li>Registers corresponding Analysis Data business objects in the solution.</li>
+</ol>
+<h2><a class="anchor" id="dataclassrev"></a>
+(Data Classification) The Review Classification Task</h2>
+<p>Once the classfications are applied, the Risk Analyst reviews the analysis data with the new classification rules.</p>
+<h2><a class="anchor" id="dataclassadj"></a>
+(Data Classification) The Adjust Classification Task</h2>
+<p>If adjustments to the data is required, users that belong to the Risk Analyst role can use business rule sets to identify and correct or adjust the classification of the data. <br />
+To run the adjustments, you must execute an analysis run using the model <em>IFRS9 - Data Adjustment</em>. The Data Adjustment analysis run performs the following steps:</p><ol type="1">
+<li>Applies business rules to the specified input data objects.</li>
+<li>Stores the modified data to the IFRS 9 Data Repository.</li>
+<li>Registers corresponding Analysis Data business objects in the solution.</li>
+</ol>
+<h2><a class="anchor" id="prepMRS"></a>
+(Prepare Scenarios) The Configure Master Risk Scenarios Task</h2>
+<p>Risk Analysts create different risk factor scenarios, which are collections of individual risk factors, for the purpose of shocking portfolio and balance sheet assumptions. Examples of risk factor scenarios are:</p><ul>
+<li>base scenarios</li>
+<li>adverse scenarios</li>
+<li>severe scenarios</li>
+</ul>
+<p>Master risk scenarios are collections of all of these risk factor scenarios. Master risk scenarios are potentially reusable in the context of a regular regulatory cycle. A Master Risk Scenario business object that has been created for a previous cycle, if still valid, can be used for the current cycle.</p>
+<p>The Configure Master Risk Scenarios task involves creating a new Master Risk Scenario object and completing the required fields. There are two ways in which you can include risk factors:</p><ul>
+<li>By including risk factors if they are already available in the scenario library. You can include scenario data which has been imported in the past and exists in the library, or scenario data that has been created using SAS Risk Scenario Manager.</li>
+<li>By importing new scenarios into the system and including them in Master Risk Scenarios. Risk scenarios can be imported into the system either from a data file on the server or a data file on the local machine. The imported scenarios get registered in the Scenarios library of SAS Risk Scenario Manager. You can then include the imported risk scenarios into Master Risk Scenario object.</li>
+</ul>
+<p>A Microsoft Excel worksheet containing scenario data should satisfy the following structure.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Field  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Date  </td><td class="markdownTableBodyNone">Date for the economic value   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">variable1  </td><td class="markdownTableBodyNone">Name of the variable1, example : GBP, GBP_BELGIUM, HPI, HMI_FINLAND....   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">variable2  </td><td class="markdownTableBodyNone">Name of the variable2, example : GBP, GBP_BELGIUM, HPI, HMI_FINLAND....   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">...   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">variable&lt;n&gt;  </td><td class="markdownTableBodyNone">Name of the variable&lt;n&gt;, example : GBP, GBP_BELGIUM, HPI, HMI_FINLAND....   </td></tr>
+</table>
+<p>Here is an example showing one of the sample scenarios in a formatted Excel worksheet.</p>
+<div class="image">
+<img src="../../mrs_sample.png" alt="mrs_sample.png"/>
+</div>
+<p>After your scenario data has been loaded into the project, it is still possible to adjust scenario data directly in SAS Solution for IFRS 9 by selecting a scenario from the list of included scenarios in Master Risk Scenarios object and clicking <b>Edit</b>.</p>
+<p>Here is a figure showing the Master Risk Scenario business object open for edit in the UI. <br />
+ </p><div class="image">
+<img src="../../master_risk_ui.png" alt="master_risk_ui.png"/>
+</div>
+<p><b>Please note the following:</b></p><ul>
+<li>Weighting of the master risk scenarios is required by the UI. Depending on the scenarios chosen, the default weight is either already known to the person creating the master risk scenario, or the probability weighted value will have to be determined and added. Different master risk scenarios are then assigned different weights. When a risk analyst chooses one default weight, that weight is assigned to each scenario included in the master risk scenario.</li>
+<li>Chosen scenarios are merged into one data set and any matching columns will be merged, which can lead to lost data. To avoid this issue, if you have the similar column headings in each data set, you will either need to modify the logic or require a master risk scenario for each individual risk scenario.</li>
+</ul>
+<h2><a class="anchor" id="ECLAnalysis"></a>
+The Credit Risk Analysis Task</h2>
+<p>After the master risk scenarios have been created, a user with the Quantitative Analyst role can now the execute the "IFRS9 - Credit Risk" analysis model. The analysis run performs the following steps:</p><ol type="1">
+<li>Reads portfolio, counterparty, and cashflow data from the IFRS 9 Data Repository.</li>
+<li>Reads any scenarios you have selected from the scenario repository.</li>
+<li>Pushes the full portfolio to SAS Model Implementation Platform.</li>
+<li>Runs a SAS Model Implementation Platform analysis.</li>
+<li>Gets results and stores them in the IFRS 9 Data Repository.</li>
+<li>Creates or updates the report mart and the SAS LASR server tables.</li>
+</ol>
+<h2><a class="anchor" id="adjAndAlloc"></a>
+The Credit Risk Adjustments Task</h2>
+<p>If adjustments or allocations must be made, the Quantitative Analyst can make those adjustments and then re-execute the "IFRS9 - Credit Risk" analysis model that does the following:</p><ol type="1">
+<li>Applies Allocation Rules or an Individual Adjustment data set to the results.</li>
+<li>Stores modified data to the IFRS 9 Data Repository.</li>
+<li>Registers corresponding data objects in the solution (as an Analysis Data business object).</li>
+<li>Reloads and refreshes the report mart and the SAS LASR server tables.</li>
+</ol>
+<h2><a class="anchor" id="reviewECLResults"></a>
+The Review Credit Risk Results Task</h2>
+<p>After the credit risk analysis has completed, the Quantitative Analyst should next manually review the stressed ECL results using the generated report and approve or reject the analysis. If adjustments are required, the cycle then proceeds to the Adjustments &amp; Allocation task.</p>
+<h2><a class="anchor" id="prepAT"></a>
+(Prepare) The Prepare Attribution Templates Task</h2>
+<p>Attribution analysis enables customers to understand how changes in the inputs of an analysis run have impacted the outputs between the previous period and the current period. Attribution templates are used to streamline the creation of these reports.</p>
+<p>For more information about configuring an attribution analysis template, see the <a class="el" href="../../d0/d17/1522attribAnalysis.html#OO9Introduction_key">Attribution Analysis</a> section.</p>
+<h2><a class="anchor" id="AttrAnalysis"></a>
+(Attribution) The Attribution Analysis Task</h2>
+<p>After the risk analysis results have been approved, the Risk Analyst is now responsible for performing an attribution analysis based on the final adjusted ECL results.</p>
+<h2><a class="anchor" id="reviewAttResults"></a>
+(Attribution) The Review Attribution Analysis Results Task</h2>
+<p>After the attribution analysis has been performed, the Risk Analyst is now responsible for approving or rejecting the results of the attribution analysis.</p>
+<h2><a class="anchor" id="disclosures"></a>
+(Generate Disclosures) The Generate Disclosures Task</h2>
+<p>After the results have been approved, the Risk Analyst is now responsible for generating IFRS 9 disclosure reports based on the final adjusted ECL results. The generation of disclosures does the following:</p><ol type="1">
+<li>Aggregates the ECL results for each report as specified in the report task code.</li>
+<li>Populates the Excel report templates with aggregated data.</li>
+<li>Loads the populated Excel templates to the Analysis Run.</li>
+</ol>
+<p><b>Note:</b> When a user generates reports as part of a cycle, those reports become available inside the associated Analysis Run. To download the reports, open the analysis run associated with that process and click the <b>Results</b> tab. <br />
+</p>
+<p>In the <b>Reports</b> tab, the user can choose to download all reports by clicking <b>Download all Reports</b> from the UI, which will download a ZIP file containing all reports that were generated for that analysis run. To download a specific report only, click on the report name, or click the <b>Actions</b> button and select <b>Download</b>.</p>
+<h2><a class="anchor" id="revDisclosures"></a>
+(Generate Disclosures) The Review Reports Task</h2>
+<p>After disclosures have been generated, the Risk Analyst can next review the generated reports and approve or reject the results of those reports.</p>
+<h2><a class="anchor" id="signoff"></a>
+The Sign-Off Task</h2>
+<p>Finally, the Risk Analyst reviews and provides sign-off on the entire IFRS 9 analysis. Once the cycle is approved, it is locked. After a cycle has been locked, no more analysis runs or analysis data can be created for the cycle. </p>
+<p>The IFRS 9 Program Manager can opt to unlock and thus restart the cycle. </p><hr/>
+<p> <br />
+</p>
+<h2><a class="anchor" id="CreatingCycle"></a>
+Creating a New Cycle</h2>
+<p>The Cycle Details area should be filled out when creating a new cycle. There are several fields in this area that are required prior to initializing a cycle.</p>
+<div class="image">
+<img src="../../cycle_details.png" alt="cycle_details.png"/>
+</div>
+<p> <br />
+ <br />
+</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Field Name  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Cycle ID</b>  </td><td class="markdownTableBodyNone">A numeric key value that is automatically assigned when opening a new cycle.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Cycle title</b>  </td><td class="markdownTableBodyNone">A short name for the cycle.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Cycle description</b>  </td><td class="markdownTableBodyNone">(Optional) A longer description of the cycle.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Cycle initiator</b>  </td><td class="markdownTableBodyNone">The user that initiates the cycle is automatically made the cycle initiator.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Content version</b>  </td><td class="markdownTableBodyNone">A drop-down field with a list that is generated from any available content versions in SAS Infrastructure for Risk Management. If your data is not yet loaded into SAS Infrastructure for Risk Management, nothing will appear in the drop-down.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Base date</b>  </td><td class="markdownTableBodyNone">After a content version has been selected, this drop-down field displays only the available base dates for those data sets.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Entity</b>  </td><td class="markdownTableBodyNone">This drop-down field enables you to select only those entities associated with the previously selected <b>Content version</b> and <b>Base date</b>.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Is this an initial run?</b>  </td><td class="markdownTableBodyNone">If this is the first run in a cycle, the <b>Previous period result</b> field is not required.   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Previous period result</b>  </td><td class="markdownTableBodyNone">This allows you to select a data set previously run of this type. You will only see this if you selected <b>No</b> in the preceding field.   </td></tr>
+</table>
+<p><br />
+ <br />
+ </p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+      <a href="http://www.sas.com">SAS</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

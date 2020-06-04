@@ -1,0 +1,220 @@
+{
+   "limit": 9,
+   "count": 9,
+   "start": 0,
+   "items": [
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Data to be adjusted",
+         "name": "AnalysisData",
+         "config":
+         {
+            "depRestFilter": "and(eq($primary,dataCategoryCd,'RESULTS'),ne(reportmartGroupId,''))",
+            "layout_placement": 1,
+            "restFilter": "",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'RESULTS'",
+                     "type": "string",
+                     "operator": "eq"
+                  },
+                  {
+                     "name": "reportmartGroupId",
+                     "value": "'\"\"'",
+                     "type": "string",
+                     "operator": "ne"
+                  }
+               ],
+               "type": "and"
+            },
+            "filter":
+            {
+               "children": [],
+               "type": "and"
+            }
+         },
+         "label": "Analysis data",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P001_AnalysisData"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "IFRS9",
+         "description": "Identify the configuration setup for the configuration and mapping data.",
+         "name": "ConfigSetId",
+         "config":
+         {
+            "layout_placement": 2,
+            "function": "C_GetIrmConfigsets('irmifrs9_adjustment_allocation.bpmn')",
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Configuration set ID",
+         "type": "config_param_list",
+         "key": "P002_ConfigSetId"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Specifies the type of adjustment",
+         "name": "MovementTypeCd",
+         "config":
+         {
+            "onchange_exp": [
+               "<set-visible name=\"PARAMS.AdjustmentData\" test=\"PARAMS.MovementTypeCd = 'IA_ADJ'\"/>",
+               "<set-required name=\"PARAMS.AdjustmentData\" test=\"PARAMS.MovementTypeCd = 'IA_ADJ'\"/>",
+               "<set-visible name=\"PARAMS.MovementDesc\" test=\"not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'\"/>",
+               "<set-required name=\"PARAMS.MovementDesc\" test=\"not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'\"/>",
+               "<set-visible name=\"PARAMS.RuleSet\" test=\"not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'\"/>",
+               "<set-required name=\"PARAMS.RuleSet\" test=\"not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'\"/>"
+            ],
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "function": "toJsonArray('[{label:\"Credit Adjustment\",value:\"CR_ADJ\"},{label:\"Individual Assessment\",value:\"IA_ADJ\"}]')"
+         },
+         "label": "Adjustment type",
+         "type": "config_param_list",
+         "key": "P003_MovementTypeCd"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "1",
+         "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE.",
+         "name": "LogLevel",
+         "config":
+         {
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "function": "C_GetLogLevelCallback('LogLevel')"
+         },
+         "label": "Logging level",
+         "type": "config_param_list",
+         "key": "P004_LogLevel"
+      },
+      {
+         "required_flg": "false",
+         "default_value": "",
+         "description": "Select the data containing the adjustments.",
+         "name": "AdjustmentData",
+         "config":
+         {
+            "visible_exp": "PARAMS.MovementTypeCd = 'IA_ADJ'",
+            "required_exp": "PARAMS.MovementTypeCd = 'IA_ADJ'",
+            "depRestFilter": "contains($primary,dataCategoryCd,'INDIVIDUAL_ADJUSTMENT')",
+            "layout_placement": 1,
+            "restFilter": "",
+            "layout_extend": 1,
+            "func": "",
+            "type": "SINGLE",
+            "filter":
+            {
+               "children": [],
+               "type": "and"
+            },
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'INDIVIDUAL_ADJUSTMENT'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Adjustment analysis data",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P005_AdjustmentData",
+         "default_expr": ""
+      },
+      {
+         "required_flg": "true",
+         "description": "Enter the maximum number of seconds the macro will wait for the job to complete before giving up. Default is 3,600 seconds (1 hour).",
+         "default_value": 3600,
+         "name": "MaxWait",
+         "config":
+         {
+            "min": "0",
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "min_inclusive": true
+         },
+         "label": "Maximum wait time",
+         "type": "config_param_number",
+         "key": "P006_MaxWait"
+      },
+      {
+         "required_flg": "false",
+         "default_value": "",
+         "description": "Ruleset",
+         "name": "RuleSet",
+         "config":
+         {
+            "visible_exp": "not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'",
+            "required_exp": "not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'",
+            "layout_placement": 1,
+            "restFilter": "eq($primary,ruleSetType,'AllocationRuleSet')",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "filter":
+            {
+               "children": [
+                  {
+                    "name": "ruleSetType",
+                    "value": "'AllocationRuleSet'",
+                    "type": "string",
+                    "operator": "eq"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Rule set",
+         "type": "config_param_ruleSets",
+         "key": "P007_RuleSet"
+      },
+      {
+         "required_flg": "true",
+         "description": "Controls whether the LASR reporting tables are loaded in append mode or with full replace.",
+         "default_value": "Append",
+         "name": "LasrLoadMethod",
+         "config":
+         {
+            "layout_placement": 2,
+            "layout_extend": 1,
+            "list": ["Append", "Replace"],
+            "type": "SINGLE"
+         },
+         "label": "LASR loading method",
+         "type": "config_param_list",
+         "key": "P008_LasrLoadMethod"
+      },
+      {
+         "required_flg": "false",
+         "default_value": "",
+         "description": "Adjustment details",
+         "name": "MovementDesc",
+         "config":
+         {
+            "visible_exp": "not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'",
+            "required_exp": "not(empty(PARAMS.MovementTypeCd)) and PARAMS.MovementTypeCd ne 'IA_ADJ'",
+            "limit": "100",
+            "layout_placement": 1,
+            "layout_extend": 1
+         },
+         "label": "Adjustment details",
+         "type": "config_param_string",
+         "key": "P009_MovementDesc"
+      }
+   ]
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Yaoqiang BPMN Editor" exporterVersion="4.0" expressionLanguage="http://www.w3.org/1999/XPath" id="_1436907877938" name="" targetNamespace="http://sourceforge.net/bpmn/definitions/_1436907877938" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd"> 
+  <process id="PROCESS_1" isClosed="false" isExecutable="true" processType="None"> 
+    <extensionElements> 
+      <yaoqiang:pageFormat height="842.4" imageableHeight="832.4" imageableWidth="587.6" imageableX="5.0" imageableY="5.0" orientation="0" width="597.6"/>
+      <yaoqiang:page background="#FFFFFF" horizontalCount="5" verticalCount="1"/>
+    </extensionElements>
+    <startEvent id="_2" isInterrupting="true" name="." parallelMultiple="false">
+      <outgoing>_7</outgoing>
+    </startEvent> 
+    <subProcess completionQuantity="1" id="_3" isForCompensation="false" name="SP_00_irmifrs9_subflow_init" startQuantity="1" triggeredByEvent="false">
+      <incoming>_7</incoming>
+      <outgoing>_8</outgoing>
+      <property id="_3_P_1" itemSubjectRef="xsd:string" name="path=Miscellaneous/subflow/irmifrs9_init.bpmn"/>
+    </subProcess>
+    <sequenceFlow id="_7" sourceRef="_2" targetRef="_3"/>
+    <subProcess completionQuantity="1" id="_4" isForCompensation="false" name="SP_00_irmifrs9_subflow_adjustment_alloc" startQuantity="1" triggeredByEvent="false">
+      <incoming>_8</incoming>
+      <outgoing>_9</outgoing>
+      <property id="_4_P_1" itemSubjectRef="xsd:string" name="path=Miscellaneous/subflow/irmifrs9_adjustment_alloc.bpmn"/>
+    </subProcess>
+    <sequenceFlow id="_8" sourceRef="_3" targetRef="_4"/>
+    <subProcess completionQuantity="1" id="_5" isForCompensation="false" name="SP_00_irmifrs9_subflow_load_reportmart" startQuantity="1" triggeredByEvent="false">
+      <incoming>_9</incoming>
+      <outgoing>_10</outgoing>
+      <property id="_5_P_1" itemSubjectRef="xsd:string" name="path=Miscellaneous/subflow/irmifrs9_load_reportmart.bpmn"/>
+    </subProcess>
+    <sequenceFlow id="_9" sourceRef="_4" targetRef="_5"/>
+    <endEvent id="_6" name=".">
+      <incoming>_10</incoming>
+    </endEvent>
+    <sequenceFlow id="_10" sourceRef="_5" targetRef="_6"/>
+  </process>
+  <bpmndi:BPMNDiagram id="IRM_Diagram-Expand" name="Expanded Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="PROCESS_1">
+      <bpmndi:BPMNShape bpmnElement="_2" id="IRM-Expand_2">
+        <dc:Bounds height="32.0" width="32.0" x="84.0" y="111.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="95.0" y="117.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" id="IRM-Expand_3">
+        <dc:Bounds height="55.0" width="230.0" x="335.0" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="336.0" y="119.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" id="IRM-Expand_4">
+        <dc:Bounds height="55.0" width="230.0" x="685.0" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="686.0" y="119.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" id="IRM-Expand_5">
+        <dc:Bounds height="55.0" width="230.0" x="1035.0" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1036.0" y="119.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_6" id="IRM-Expand_6">
+        <dc:Bounds height="32.0" width="32.0" x="1484.0" y="111.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1495.0" y="117.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_7" id="IRM-Expand_7">
+        <di:waypoint x="116.0" y="127.5"/>
+        <di:waypoint x="335.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="225.5" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_8" id="IRM-Expand_8">
+        <di:waypoint x="565.0" y="127.5"/>
+        <di:waypoint x="685.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="625.0" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_9" id="IRM-Expand_9">
+        <di:waypoint x="915.0" y="127.5"/>
+        <di:waypoint x="1035.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="975.0" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_10" id="IRM-Expand_10">
+        <di:waypoint x="1265.0" y="127.5"/>
+        <di:waypoint x="1484.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1374.5" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="IRM_Diagram-Collapse" name="Collapsed Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="PROCESS_1">
+      <bpmndi:BPMNShape bpmnElement="_2" id="IRM-Collapse_2">
+        <dc:Bounds height="32.0" width="32.0" x="84.0" y="111.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="95.0" y="117.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" id="IRM-Collapse_3">
+        <dc:Bounds height="55.0" width="230.0" x="335.0" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="336.0" y="119.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" id="IRM-Collapse_4">
+        <dc:Bounds height="55.0" width="230.0" x="685.0" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="686.0" y="119.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" id="IRM-Collapse_5">
+        <dc:Bounds height="55.0" width="230.0" x="1035.0" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1036.0" y="119.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_6" id="IRM-Collapse_6">
+        <dc:Bounds height="32.0" width="32.0" x="1484.0" y="111.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1495.0" y="117.861328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_7" id="IRM-Collapse_7">
+        <di:waypoint x="116.0" y="127.5"/>
+        <di:waypoint x="335.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="225.5" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_8" id="IRM-Collapse_8">
+        <di:waypoint x="565.0" y="127.5"/>
+        <di:waypoint x="685.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="625.0" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_9" id="IRM-Collapse_9">
+        <di:waypoint x="915.0" y="127.5"/>
+        <di:waypoint x="1035.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="975.0" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_10" id="IRM-Collapse_10">
+        <di:waypoint x="1265.0" y="127.5"/>
+        <di:waypoint x="1484.0" y="127.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1374.5" y="127.5"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

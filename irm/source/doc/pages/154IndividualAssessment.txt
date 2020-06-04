@@ -1,0 +1,44 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 155individualAssessment Individual Assessment
+
+\anchor IndividualAssessment
+
+\section IndividudalAssessmentIntro Introduction to Individual Assessment
+
+While most loans go through a collective assessment to determine their expected credit losses, some loans may go through individual assessment where each instrument or counterparty is analyzed individually to determine the ECL amount.
+
+SAS Solution for IFRS 9 provides two different methods for joining individual assessment results to the collectively assessed results in the sample workflows:
+- Specify the Individual Assessment data set during the Credit Risk Analysis step (provided the individual assessment process has been completed prior to kicking off the credit risk analysis run).
+- During the Adjustment & Alloction step, select "Individual Assessment" as the Adjustment Type and select the Individual Assessment data set for the Adjustment Analysis Data parameter.
+
+\section IndividudalAssessmentDetails Individual Assessment Details
+
+The Individual Assessment data must be loaded to an individual_adjustment data set in the landing area of the federated area, and then must be registered in the solution via the Data Preparation step. If the individual assessment data is ready for consumption when the Data Preparation step is initially executed for a cycle, the data set can be registered as part of this Data Preparation step.  If the individual assessment data is not ready until later in the process, it can be registered via an ad hoc Data Preparation analyis run.
+
+The individual_adjustment data set must contain the following fields: <br>
+- Reporting Date
+- Entity Id
+- Instrument Id
+- Movement Type Code
+- Movement Description
+- Adjustment Type
+
+In addition, it should also have one or more adjustment variables (for example, ECL Lifetime) that are to be adjusted. Any numeric columns found in the Individual_Adjustment table that also exist on the Results table to which the adjustments are applied (excluding Reporting Date, Forecast Time, Processed Datetime, Project Id, and Table Id) will be considered adjustment variables. 
+
+The primary keys on this table are the following:
+- Reporting Date
+- Entity Id
+- Instrument Id.
+
+Below is an example of an input individual assessment data set in the required format.
+
+\image html IndividualAssessmentInputData.png
+
+The logic for the movement types is described in \link irm_apply_indiv_alloc_rules.sas \endlink.
+
+The adjustments will be applied as movements to the Results table provided in the model parameters. This means that instead of directly overwriting the value on the Results data set, the code computes the delta value for each adjustment variable, and writes a new record to the Results table (in a separate partition with a separate movement id) with this delta value. Character and date/time/datetime fields are preserved on the movement records to allow for proper filtering in the SAS Visual Analytics reports.
+
+*/

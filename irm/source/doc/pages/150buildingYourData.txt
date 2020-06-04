@@ -1,0 +1,238 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 150buildingYourData Building Your Data
+
+\anchor DataPage
+
+\anchor Data
+
+
+\section OOBProcess_key Guide to Registering Data
+
+\subsection RegisteringData_key Where to Find Preloaded Data
+In order to find (and then later modify) the data that has been preloaded into the SAS Infrastructure for Risk Management landing area, you must first find where the SAS Solution for IFRS 9 federated area has been installed.
+
+The optimal way to locate the federated area is to open SAS Management Console and look in the SAS Infrastructure for Risk Management properties, as shown in the following screen capture.
+
+\image html SASMC_IRM_Location.png
+
+To view these file locations, do the following:
+-# Sign on to SAS Management Console as a user with administrative privileges.
+-# On the <b>Plugins</b> tab, expand <b>Application Management > Configuration Manager > SAS Application Infrastructure</b>.
+-# Right-click <b>IRM Mid-Tier Server</b> and select <b>Properties</b>.
+-# Click the <b>Advanced</b> tab.
+-# View the locations of the registered federated areas. This should look something like the following:
+
+com.sas.solutions.risk.irm.fa.ifrs9.<i>base_date</i>
+
+The property value will give you the location of the federated area. 
+
+Next, navigate to that location and then the landing_area directory to view the preloaded data. If updating the preloaded data is required, place the updated data in the basedate subfolder(s) of the landing area so that SAS Infrastructure for Risk Management can use the data in the cycle. The location should now look similar to the following screen capture.
+
+\image html IRM_Landing_Area.png
+
+\section configTables_Key Static Configuration Tables
+
+There are a number of configuration tables that are used throughout the cycle in various analysis models. These tables exist in the <tt><i>federated_area</i>/landing_area/base/ifrs9/static</tt> directory, as shown in the following screen capture.
+
+\image html ConfigurationTables.png
+
+The following are descriptions of each configuration table in this directory (along with links to the corresponding ddl files).
+
+|Configuration Table         |DDL File                                     |Description                         |
+|----------------------------|---------------------------------------------|------------------------------------|
+|<b>Aggregation_Config*</b>  | \link aggregation_config.sas \endlink       |Defines aggregation rules for any given data definition. Any numeric column that needs to be aggregated should be defined in this table.|
+|Allocation_Config           | \link allocation_config.sas \endlink        |Contains runtime parameters for the Adjustment Allocation jobflow execution. |
+|Attribution_Scenario_Map    | \link attribution_scenario_map.sas \endlink |Contains runtime parameters for the jobflow execution. |
+|<b>Calculation_Config*</b>  | \link calculation_config.sas \endlink       |Contains a list of fields to calculate after model execution. This table enables the use of expressions based on previous period fields.   |
+|Credit_Risk_Config          | \link credit_risk_config.sas \endlink       |Contains runtime parameters for the Credit Risk Analysis jobflow execution. |
+|Data_Extraction_Config      | \link data_extraction_config.sas \endlink   |Contains configuration for the retrieval of any analysis data from the data repository. |
+|Data_Map_Config             | \link data_map_config.sas \endlink          |Generic mapper used to rename/map or compute new columns. If no data map is specified by the end user in the Credit Risk Analysis step, the mappings specified in this table will be applied. |
+|<b>Datastore_Config*</b>    | \link datastore_config.sas \endlink         |Defines details for storing data to the IFRS 9 Data Repository. |
+|DQ_Config                   | \link dq_config.sas \endlink                |Contains configuration parameters for the Data Quality jobflow execution. |
+|Enrichment_Config           | \link enrichment_config.sas \endlink        |Contains runtime parameters for the enrichment jobflow execution. |
+|<b>Execution_Config*</b>    | \link execution_config.sas \endlink         |Defines a configurable set of SAS programs to execute in pre-defined stages. |
+|<b>Report_Config*</b>       | \link report_config.sas \endlink            |Defines the list of report templates and report code for the generation of disclosure reports. |
+|Report_Option               | \link report_option.sas \endlink            |Contains global parameters used by the report generation process. |
+|<b>Report_Parameters*</b>   | \link report_parameters.sas \endlink        |Defines parameters that are specific to each report. |
+|Reportmart_Config           | \link reportmart_config.sas \endlink        |Contains details for storing data to the report mart. |
+|<b>Rule_Set_Config*</b>     | \link rule_set_config.sas \endlink          |Defines a list of pre-configured business rules definitions. |
+|Run_Option                  | \link run_option.sas \endlink               |Contains runtime parameters for the jobflow execution. |
+|<b>Var_Dependency_Config*</b> | \link var_dependency_config.sas \endlink |Defines dependency rules between variables. |
+|Va_Report_Config            | \link va_report_config.sas \endlink         |Defines a list of pre-configured metrics and categories. |
+
+Tables starred above (*) are likely to require customizations for any implementation.
+
+\section CustomDataLoad_key Loading New Data into the Solution
+
+In order to load new data into the solution, you must do the following:
+-# Place your analysis tables in the base date subfolders of the landing area.
+-# As needed, make entries for any new analysis data sets in the Datastore_Config configuration table.
+-# Create a base date subfolder (with an Entity table) in the input area and trigger the SAS Infrastructure for Risk Management Live ETL to register the new base date.
+-# Run the <i>IFRS9 - Data Preparation </i> model in the cycle (or directly using Analyis Run object) and select one or more tables to register.
+
+<b>Loading Analysis Tables to the Landing Area</b>
+
+SAS Solution for IFRS 9 includes a pre-configured list of default tables that are loaded into the system when the <i>IFRS9 – Data Preparation</i> model is executed. These tables are the key tables required for performing the analysis using the default content. Tables include the following:
+
+| TABLE                 |
+|-----------------------|
+|IFRS9_COUNTERPARTY       |
+|IFRS9_CREDIT_PORTFOLIO   |
+|IFRS9_RF_CURVE         |
+|IFRS9_CASHFLOW         |
+|IFRS9_INDIVIDUAL_ADJUSTMENT|
+
+These input tables are fetched from the landing area. It is important to note that not every table that is present in the landing area is loaded into the system. The data analyst is typically responsible for utilizing the existing framework and, as needed, adding additional custom tables for use in the analysis process. 
+
+<b>Creating Entries for New Tables in the Datastore_Config Configuration Table</b>
+
+If you have added any new tables, you must configure them in the Datastore_Config file with a Datastore Group Id of "Enrichment" in order for them to be available to be registered during the Data Preparation analysis run. See \link datastore_config.sas \endlink for the structure of the configuration table.
+
+<b>Create a Base Date Subfolder and Entity table and Trigger the Live ETL</b>
+
+In order to register a new base date in SAS Infrastructure for Risk Management (which will be picked up by SAS Solution for IFRS 9 and its UI) a new base date subfolder should first be created in the input area of the federated area. This subfolder should contain an Entity table with a structure similar to that of the sample entity tables. (See \link entity.sas \endlink for the structure of this table.)
+
+After the base date subfolder has been created along with the entity table, the Live ETL process should be invoked by updating the <tt>last_update.txt</tt> file in the input area (this file exists under the input_area folder, not in the base date subfolder). The <tt>last_update.txt</tt> file can be touched manually or through code. For more information about the Live ETL process, see the SAS Infrastructure for Risk Management documentation.
+
+After the ETL process has been invoked, the landing area for a given base date is now ready.
+
+<b>Run the IFRS9 - Data Preparation Model</b>
+
+Next, execute the <i>IFRS9 – Data Preparation</i> model. This model initiates a SAS Infrastructure for Risk Management job flow which does the following:
+-# pulls the user-selected tables from the landing area
+-# filters the data for entity
+-# performs data enrichment
+-# loads data to the IFRS 9 Data Repository
+-# registers data definition and analysis data objects in the solution
+
+Note: If the user does not select an item from the <b>Tables to Register</b> model parameter on the <i>IFRS9 - Data Preparation </i> model, all tables in the list will be registered.
+
+The following figure shows this overall data preparation process.
+
+\image html NewDataLoadFlow.png
+     
+\subsection IFRS9DR_key What is the IFRS 9 Data Repository?
+
+SAS Solution for IFRS 9 uses a centralized data repository to store all data sets that are used or generated during the cycle. This solution design heavily relies on views and avoids the movement of physical data between the solution components. The metadata library <i>SAS IFRS 9 Data Repository</i> is setup out of the box and points to this repository. 
+
+Here are some examples of usage of the IFRS 9 Data Repository during the cycle:
+-   <b>Data preparation step</b>: The data preparation step in the cycle ( \ref dataPrep "Data Preparation") reads data in the landing area (or a custom library) and copies the data to the IFRS 9 Data Repository. The data is stored in the repository as partitions using the partition scheme that was defined for the table in the configuration tables. Every data set that is registered is an Analysis Data business object.
+
+-   <b>Data analysis steps</b>: SAS Infrastructure for Risk Management jobs read data from the IFRS 9 Data Repository, perform calculations, and write back to the same repository.
+
+-   <b>Data exchange with SAS Model Implementation Platform</b>: SAS Model Implementation Platform allows you to define only a single SAS library to point to the input data. However, the IFRS 9 Data Repository has data partitioned and stored in different tables. In order for SAS Model Implementation Platform to use data stored in different partions, views are generated in the input portfolio that point to the IFRS 9 Data Repository. The generated view dynamically assigns the library when accessing the view. The results from SAS Model Implementation Platform are then written back to IFRS 9 Data Repository. 
+
+-   <b>Data input for reports</b>: SAS Infrastructure for Risk Management job flows create views for the analysis data in the report mart. When loading data to SAS LASR Analytic Server in-memory tables, the data is read from the IFRS 9 Data Repository using views from the views in the report mart. 
+
+\section ScenarioConfig_key Configuring and Importing Scenarios
+
+SAS Solution for IFRS 9 comes with two sample scenarios to choose from, one for December 2018 and one for January 2019. Each includes a base, adverse, and severe case to use. 
+
+Here is an Excel worksheet showing these scenarios.
+
+\image html Scenarios.png
+
+Users can load scenarios from the UI using the Master Risk Scenario business object that interfaces with SAS Risk Scenario Manager. 
+
+Here is a screen capture showing how scenarios are imported into the solution from SAS Risk Scenario Manager.
+
+\image html import_scenario.PNG
+
+After you click <b>Apply</b>, these scenarios are then added to the Master Risk Scenario instance as shown in the following screen capture.
+ 
+\image html select_scen.PNG
+
+\section UsingTheModel_key Models Used in SAS Solution for IFRS 9
+
+Models are used at various stages of a given cycle. It is important to note that the term "models" in this documentation refers to the specific Model business object in the solution, and not only to statistical models. Models in SAS Soluton for IFRS 9 can be SAS scripts (for example, a script that loads data into the solution, a script that executes data quality checks) or can reference SAS Model Implementation Platform modeling systems.
+
+<b>Note:</b> ECL Curves and Mixed Models (as seen below) are <i>sample</i> loss calculation models that can be used to calculate expected credit losses.
+
+The following table lists the data processing procedure models provided in SAS Solution for IFRS 9. 
+
+|Model Name                     |Model Description                                                                            |
+|------------------------------|-----------------------------------------------------------------------------------------|
+|IFRS9 - Init                  |Creates a program (init.sas) that defines parameters and libraries used throughout the cycle by all subsequent analysis runs|
+|IFRS9 - Data Preparation      |Creates an Analysis Run to perform the following steps: Data enrichment|
+|IFRS9 - Data Quality          |Creates an Analysis Run to perform the following steps: Run data quality rules|
+|IFRS9 - Data Adjustment        |Creates an Analysis Run to perform the following steps: Apply Business Rules |
+|IFRS9 - Credit Risk            |Creates an Analysis Run to perform the following steps: Read Portfolio/Counterparty/Cashflow data|
+|IFRS9 - Adjustment Allocation  |Creates an Analysis Run to perform the following steps: Apply Allocation Rules to the specified Results    |
+|\ref ECL_curves_key "ECL - ECL Curves"             |Computes Lifetime ECL based on PD/LGD or Loss Rate curves  |
+|\ref ECL_mixed_models_key "ECL - Mixed Models"              |Computes Lifetime ECL based on three different models for three different types of instruments  |
+|IFRS9 - Disclosure Reports    |Generates Disclosure Reports|
+|IFRS9 - Attribution Analysis  |Runs Attribution Analysis and produces the waterfall report|
+|IFRS9 - Individual Adjustment |Creates an Analysis Run to perform the following steps: Apply Adjustments/Store modified data/Reload/Refresh the report mart and the SAS LASR Analytic Server tables|
+
+\subsection IFRS9Models Models to Evaluate the Current Expected Credit Loss
+The content package contains two sample model templates for the evaluation of the Current Expected Credit Loss.
+Both the ECL - ECL Curves and ECL - Mixed Models templates are provided in the form of a modeling system executable on Model Implementation Platform (MIP). However, the solution does not preclude you from creating templates such as SAS Scripts that can be executed as part of an analysis run.
+
+\subsubsection ECL_curves_key The ECL - ECL Curves Template
+This sample model template is based on a curve methodology and it is referred to as <i>ECL - ECL Curves</i>. It evaluates the Current Expected 
+            Credit Loss when the Loss Ratio (LR) curve  or the Probability of Default (PD) and the Loss-Given-Default (LGD) curves are provided.
+            Additionally, prepayment (PP) is also considered through a curve methodology.
+            Specifically, the following elements characterize its implementation in SAS Model Implementation Platform: 
+            
+<b>Modeling System: IFRS9_Curves</b><br>
+<b>Model Group: MG_IFRS9_Curve.</b> This calculates IFRS 9 given PD, LGD, LR and PP curves.<br>
+<b>Parameter Matrix Data Sets:</b> <br>
+It is important to note that the package includes sample PD, LGD, and PP curve data that should be replaced by properly calculated data. The following are required parameter matrix data sets: <br>
+- model_options: User defined options<br>
+- lgd_curve: loss given default<br>
+- lr_curve:  loss ratio<br>
+- pd_curve:  cumulative probability of default<br>
+- pp_curve:  cumulative prepayment<br>
+
+<b>Input Data Sets:</b><br>
+The required input data sets are:<br>
+- Portfolio Data<br>
+- Scenario Data<br>
+
+<p>
+<b>Output Variables:</b><br>
+These are the output variables associated with this model:<br>
+- PD_12m: Probability of Default (12 months)
+- PD_Lifetime: Probability of Default over the lifetime of the loan
+- LAPD: Lifetime Annualized Probability of Default
+- LFPD: Levelized Forward Probability of Default
+- ECL_12m: 12 months ECL 
+- ECL_Lifetime: ECL over the lifetime of the loan
+- ECL: Staged ECL
+
+
+
+\subsubsection ECL_mixed_models_key The ECL - Mixed Models Template
+This sample model template includes three different methodologies and it is referred to as <i>ECL - Mixed Models</i>. It evaluates the Current Expected 
+         Credit Loss using Monte Carlo simulations, Hazard functions and models based on factors.
+         Specifically, the following elements characterize its implementation in SAS Model Implementation Platform:
+
+<b>Modeling System: IFRS9_RetCom_HzrdMonteCarloTran</b><br>
+<b>Model Group: MG_IFRS9_Com_TransCurve_Score.</b> This model group evaluates the Marginal Probability of Default. Intended for COUNTERPARTYTYPE="Commercial".<br>
+<b>Model Group: MG_IFRS9_Ret_Empty_Score.</b> This model group is an empty placeholder for using a scoring method intended for COUNTERPARTYTYPE="Retail".<br>
+<b>Model Group: MG_IFRS9_Ret_MonteCarlo_Eval.</b> This model group performs a Monte Carlo evaluation of IFRS 9 intended for INSTYTPEs associated with COUNTERPARTYTYPE="Retail".<br>
+<b>Model Group: MG_IFRS9_Ret_Hazard_Eval.</b> This model group performs a Hazard function evaluation of IFRS 9 intended for INSTYTPEs associated with COUNTERPARTYTYPE="Retail".<br>
+<b>Model Group: MG_IFRS9_Com_TransCurve_Eval.</b> This model group evaluates IFRS 9 for INSTYTPEs associated with COUNTERPARTYTYPE="Commercial".<br>
+<b>Pre-execution program: Commercial_Pre_Execution.</b> Definition of a macro factor variable used in the scoring where COUNTERPARTYTYPE="Commercial".<br>
+<b>PostProcess Method: PP_IFRS9_RetCom_CondProbability.</b> Definition of additional output variables.<br>
+<p>
+<b>Input Data Sets:</b><br>
+The required input data sets are:
+- Portfolio Data
+- Counterparty Data
+- Scenario Data
+.
+<b>Output Variables:</b><br>
+These are the output variables associated with this model:
+- PD_12m: Probability of Default (12 months)
+- PD_Lifetime: Probability of Default over the lifetime of the loan
+- LAPD: Lifetime Annualized Probability of Default
+- LFPD: Levelized Forward Probability of Default
+- ECL_12m: 12 months ECL 
+- ECL_Lifetime: ECL over the lifetime of the loan
+- ECL: Staged ECL          
+
+*/

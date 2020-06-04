@@ -1,0 +1,184 @@
+{
+   "limit": 9,
+   "count": 9,
+   "start": 0,
+   "items": [
+      {
+         "required_flg": "true",
+         "default_value": "",
+         "description": "Select loss curves dataset",
+         "name": "Curves",
+         "config":
+         {
+            "depRestFilter": "contains($primary,dataCategoryCd,'RF_CURVE')",
+            "layout_placement": 1,
+            "restFilter": "",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "depFilter":
+            {
+               "children": [
+                  {
+                     "name": "dataCategoryCd",
+                     "value": "'RF_CURVE'",
+                     "type": "string",
+                     "operator": "contains"
+                  }
+               ],
+               "type": "and"
+            },
+            "filter":
+            {
+               "children": [],
+               "type": "and"
+            }
+         },
+         "label": "Loss Curves",
+         "type": "config_param_dataDefinitions_analysisData",
+         "key": "P001_Curves"
+      },
+      {
+         "required_flg": "true",
+         "description": "Select the rule set to use for stage allocation.",
+         "name": "RuleSet",
+         "config": {
+            "layout_placement": 2,
+            "restFilter": "and(eq($primary,ruleSetType,'BusinessRuleSet'),eq($primary,ruleSetCategoryCd,'STAGE'))",
+            "layout_extend": 1,
+            "type": "SINGLE",
+            "filter": {
+               "children": [
+                  {
+                    "name": "ruleSetType",
+                    "value": "'BusinessRuleSet'",
+                    "type": "string",
+                    "operator": "eq"
+                  },
+                  {
+                    "name": "ruleSetCategoryCd",
+                    "value": "'STAGE'",
+                    "type": "string",
+                    "operator": "eq"
+                  }
+               ],
+               "type": "and"
+            }
+         },
+         "label": "Stage Allocation Rules",
+         "type": "config_param_ruleSets",
+         "key": "P002_RuleSet"
+      },
+      {
+         "required_flg": "true",
+         "description": "Time interval: it must be consistent with the time interval of the scenario data",
+         "default_value": "Month",
+         "name": "mipInterval",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "list": ["Month", "Quarter", "Year"],
+            "type": "SINGLE"
+         },
+         "label": "Time Interval",
+         "type": "config_param_list",
+         "key": "P003_Interval"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "Current Balance",
+         "description": "Specifes if the loss rates are applied to the current balance or to the balance at origination",
+         "name": "lossRateBalanceType",
+         "config":
+         {
+            "layout_placement": 2,
+            "list": ["Current Balance", "Balance at Origination"],
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Apply loss rates to",
+         "type": "config_param_list",
+         "key": "P004_lossRateBalanceType"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "Hold",
+         "description": "Treatment of missing curve values",
+         "name": "missingTreatment",
+         "config":
+         {
+            "layout_placement": 1,
+            "list": ["Hold", "Average"],
+            "layout_extend": 1,
+            "type": "SINGLE"
+         },
+         "label": "Missing Treatment",
+         "type": "config_param_list",
+         "key": "P005_MissingTreatment"
+      },
+      {
+         "required_flg": "true",
+         "description": "Maximum simulation horizon. Specify a positive number (integer) or MAX",
+         "default_value": "MAX",
+         "name": "mipHorizon",
+         "config":
+         {
+            "limit": "3",
+            "layout_placement": 2,
+            "layout_extend": 1
+         },
+         "label": "Max Simulation Horizon",
+         "type": "config_param_string",
+         "key": "P006_Horizon"
+      },
+      {
+         "required_flg": "true",
+         "description": "MIP Output Currency",
+         "default_value": "USD",
+         "name": "mipOutputCurrency",
+         "config":
+         {
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "list": ["USD"],
+            "type": "SINGLE"
+         },
+         "label": "Output Currency",
+         "type": "config_param_list",
+         "key": "P007_OutputCurrency"
+      },
+      {
+         "required_flg": "true",
+         "default_value": "ALL",
+         "description": "Maximum number of MIP grid nodes used to distribute the portfolio data",
+         "name": "mipNumberNodes",
+         "config":
+         {
+            "limit": "3",
+            "layout_placement": 2,
+            "layout_extend": 1
+         },
+         "label": "Number of grid nodes",
+         "type": "config_param_string",
+         "key": "P008_numberNodes"
+      },
+      {
+         "required_flg": "true",
+         "default_value": 8,
+         "description": "Maximum number of threads",
+         "name": "mipNumberThreads",
+         "config":
+         {
+            "min": "1",
+            "max": "20",
+            "layout_placement": 1,
+            "layout_extend": 1,
+            "max_inclusive": true,
+            "min_inclusive": true
+         },
+         "label": "Number of Threads",
+         "type": "config_param_number",
+         "key": "P009_numberThreads"
+      }
+   ]
+}

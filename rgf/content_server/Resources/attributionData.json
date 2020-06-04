@@ -1,0 +1,88 @@
+{
+   "start":0,
+   "limit":10,
+   "count":10,
+   "items":[
+   {
+      "name":"Expired Positions",
+      "attributionGroupName":"Expired Positions",
+      "members": "",
+      "description": "Expired Positions",
+      "type": "Derecognition",
+      "key":"expired",
+      "source":"Portfolio"
+   },{
+      "name": "Portfolio Aging",
+      "attributionGroupName":"Portfolio Aging",
+      "members": "",
+      "description": "Changes due to base date",
+      "type": "PortfolioAging",
+      "key":"_port_scenBoundU",
+      "source":"Portfolio"
+   },{
+      "name": "Portfolio (All Others)",
+      "attributionGroupName":"Portfolio (All Others)",
+      "members": "",
+      "description": "All Other Portfolio Variables",
+      "type": "PortfolioSwitch",
+      "key":"_portBoundL",
+      "source":"Portfolio"
+   },{
+      "name": "Scenario (All Others)",
+      "attributionGroupName":"Scenario (All Others)",
+      "members": "",
+      "description": "All Other Scenario Variables",
+      "type": "ScenarioSwitch",
+      "key":"_scenBoundL",
+      "source":"Scenario"
+   },{
+      "name": "Model Logic",
+      "attributionGroupName":"Model Logic",
+      "members": "",
+      "description": "Changes to Model Logic",
+      "type": "Model",
+      "key":"model",
+      "source":"Other"
+   },{
+      "name": "Individual Assessment",
+      "attributionGroupName":"Individual Assessment",
+      "members": "",
+      "description": "Changes due to Individual Assessment differences",
+      "type": "IndividualAssessment",
+      "key":"indAsmnt",
+      "source":"Other"
+   },{
+      "name":"Stage Allocation",
+      "attributionGroupName":"Stage Allocation",
+      "members": "",
+      "description": "Stage Allocation",
+      "type": "StageAllocation",
+      "key":"stageAllocation",
+      "source":"Other"
+   },{
+      "name":"Manual Adjustments",
+      "attributionGroupName":"Manual Adjustments",
+      "members": "",
+      "description": "Impact of Manual Adjustments",
+      "type": "ManAdjust",
+      "key":"manadjust",
+      "source":"Other"
+   },{
+      "name": "New Originations",
+      "attributionGroupName":"New Originations",
+      "members": "",
+      "description": "Changes Due to new originations",
+      "type": "Origination",
+      "key":"newOrig",
+      "source":"Portfolio"
+   },{
+      "name": "Other",
+      "attributionGroupName":"Other",
+      "members": "",
+      "description": "Change due to all other differences",
+      "type": "Other",
+      "key":"_fixedBottom1",
+      "source":"Other"
+   }
+   ]
+}

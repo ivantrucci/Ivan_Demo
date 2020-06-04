@@ -1,0 +1,2 @@
+{"modelTypes": ["DATA","SCRIPT","CRED","RPT","OTH"],
+ "modelSubTypes": ["INIT","ENRICH","DA","DQ","ECL","ATT","MGMTRPT","DISCRPT","OTH"]}

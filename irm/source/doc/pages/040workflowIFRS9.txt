@@ -1,0 +1,249 @@
+/*
+Copyright (c) 2017, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 040workflowIFRS9 Process Flow
+
+
+\section IFRS9Cycle_key IFRS9 Planning Cycle
+The IFRS9 planning cycle typically involves multiple groups across an institution that perform the following functions: 
+- coordinate planning and analysis activity for different types of risk 
+- aggregate data from those groups for regulatory submission and internal use  
+
+The SAS Solution for IFRS9 release includes a workflow definition for your IFRS9 analysis that can be viewed in the solution as shown in the following figure. 
+<hr>
+<br>
+\image html WorkflowCycle_IFRS9.png
+
+<hr>
+<br>
+The planning cycle contains tasks that are largely automated (for example, running a model) as well as manual tasks (for example, review and sign-off). Any step that executes a model run uses the configuration that has been defined for that model in the Model business object and generates an instance of an Analysis Run business object.   
+The following table details the tasks involved in the sample workflow cycle, along with any subprocesses within the cycle.
+
+|Workflow task                                               |Purpose                                                                                                   |Completed by                        |
+|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-----------------------------------|
+|\ref intCycle "Initialize Cycle"                               | Set up paths and directories required for the cycle                                            |Program Manager             |
+|\ref dataPrep "(Data Processing) Data Preparation"                               | Prepare input data required for analysis by reading from landing area and enriching the data            |Data Analyst        |
+|\ref runDataQuality "(Data Processing) Run Data Quality"                            | Apply data quality rules on input data and create data quality reports                                  |Data Analyst        |
+|\ref reviewDataQuality "(Data Processing) Review Data Quality"                    | Review report and approve or reject quality of data                                                       |Data Analyst      |
+|\ref manualAdj "(Data Processing) Manual Adjustments"                           | Address data quality issues by adjusting data using rules                                               |Data Analyst        |
+|\ref dataclassrun "(Data Classification) Run Classification"       | Apply classification rules on the input data   | Risk Analyst |  
+|\ref dataclassrev "(Data Classification) Review Classification"    | Review classification rules   | Risk Analyst |  
+|\ref dataclassadj "(Data Classification) Adjust Classification"    | Adjust classification results and approve or reject the results   | Risk Analyst |  
+|\ref prepMRS "(Prepare Scenarios) Configure Master Risk Scenarios"               | Configure master risk scenarios required for analysis                                           |Risk Analyst        |
+|\ref ECLAnalysis "(Credit Risk Analysis) Credit Risk Analysis"                   | Execute the model template to calculate expected credit losses                                                  |Quantitative Analyst|
+|\ref adjAndAlloc "(Credit Risk Analysis) Credit Risk Adjustments"                   | Adjust ECL results and allocate to detail data                                                  |Quantitative Analyst|
+|\ref reviewECLResults "(Credit Risk Analysis) Review Credit Risk Results"                    | Review expected credit loss results                                                     |Quantitative Analyst|
+|\ref prepAT "(Attribution) Prepare Attribution Template"               | Prepare attribution analysis templates required for analysis                                           |Risk Analyst        |
+|\ref AttrAnalysis "(Attribution) Attribution Analysis"      | Conduct an attribution analysis                                               |Risk Analyst|
+|\ref reviewAttResults "(Attribution) Review Attribution Analysis Results"                   | Review attribution analysis results and approve or reject the results                                              |Risk Analyst|
+|\ref disclosures "(Generate Disclosures) Generate Disclosures"                | Generate disclosure reports                                         |Risk Analyst|
+|\ref revDisclosures "(Generate Disclosures) Review Disclosure Reports"                | Review disclosure reports                                         |Risk Analyst|
+|\ref signoff "Sign-off"                                       | Review and provide sign-off on the ECL analysis                                                 |Risk Analyst            |
+
+\subsection intCycle The Initialize Cycle Task
+   Users that belong to the IFRS9: Program Manager role can initialize the cycle by signing on to SAS Solution for IFRS 9. In order to initialize the cycle, the user must execute the model <i>IFRS9 - Init</i> through an analysis run. The analysis run creates a program (init.sas) that defines parameters and libraries used throughout the cycle by all subsequent analysis runs. 
+   In addition, an Analysis Data object instance is created for every input table that is created in the system. 
+   
+   The Analysis Data business object can display the actual data and the visual relationship between other business objects 
+(Cycle, Data Definition and Analysis Run) in a network diagram as shown in the following figure.
+
+\image html ProcessFlowCase2.png
+
+\subsection dataPrep (Data Processing) The Data Preparation Task
+    Users that belong to the Data Analyst role are typically involved in the preparation of data. SAS Solution for IFRS 9 can be configured so that this business user can prepare the data in a transparent and organized fashion. 
+
+To prepare your data, you must execute an analysis run using the model <i>IFRS9 - Data Preparation</i>. The Data Preparation analysis run performs the following steps:
+-# Reads data from the source systems into the landing area.
+-# Enriches the data with counterparty information, if needed. In order for the system to determine if counterparty information is required for the given data, the data analyst must specify Y for the Counterparty Enrichment Flag. This flag is a parameter option in the analysis run that determines whether the counterparty table should be joined to the portfolio table to create a final portfolio table that has all attributes (from portfolio and counterparty). 
+-# Creates a data definition for each data set in a Data Definition business object.
+-# Registers data quality rule sets in the Rule Sets business object (based on the analysis run model parameter selection).
+-# Loads data to a robust data repository, the IFRS 9 Data Repository, for storing and tracking all data for analysis in one location.  
+-# Registers this data in the Analysis Data object in the solution.
+
+Data in the landing area is loaded into the repository by using the configuration details that are specified in the Datastore_Config file. Loading your data into the IFRS 9 Data Repository reduces the need to capture data as it moves between different
+products. The data repository is partitioned to provide improved performance. Configuration details are used to define data for the first time and capture details about what columns in the data set are used for 
+partitioning. Note that any transformation that is made to the data will result in a new data set in the repository. 
+
+The following table lists the default SAS data sets that are loaded to the IFRS 9 Data Repository and can be registered by the solution. 
+|Dataset Name         |Analysis data name inside the UI (for sample 2018-12-31 Cycle)                         |
+|--------------|-------------------------------------------------------------------------|
+|cashflow.sas7bdat            | Cashflow 2018-12-31   |
+|counterparty.sas7bdat            |Counterparty 2018-12-31  |
+|credit_portfolio.sas7bdat            | Portfolio 2018-12-31   |
+|individual_adjustment.sas7bdat            | Individual Adjustment 2018-12-31   |
+|rf_curve.sas7bdat             | Risk Factor Curve 2018-12-31   |
+
+If you do not select any data sets to register in the UI, all enrichment tables that have been specified in the Datastore_Config file will be registered. 
+
+Note: This is the default set of tables. You can easily onboard and register your own custom tables using the standard framework that supports the default data. 
+      
+\subsection runDataQuality (Data Processing) The Run Data Quality Task
+   Users that belong to the Data Analyst role are typically involved in the review of the registered data to determine that it is of sufficient quality to continue the credit risk analysis. SAS Solution for IFRS 9 uses the data quality rule sets that were registered in the Data Preparation task to automate this data quality check and provide a data quality report.
+   
+   To run the data quality check, you must execute an analysis run using the model <i>IFRS9 - Data Quality</i>. The Data Quality analysis run performs the following steps:
+-# Runs data quality rules.
+-# Stores results in the IFRS 9 Data Repository.
+-# Registers corresponding data objects in the solution (Data Definition, Analysis Data).
+-# Creates or Updates the Data Quality Reportmart.
+-# Loads the report mart to the SAS LASR server.
+      
+<b> Executing Data Quality Rules   </b>
+
+In order to execute the data quality rules on the analysis data, the data analyst must select the portfolio data and the rule set in the UI for the <i> IFRS9 - Data Quality </i> model. This model executes a process flow in SAS Infrastructure for Risk Management that applies the provided rules on the input data and returns results on the data quality check.
+
+\subsection reviewDataQuality (Data Processing) The Review Data Quality Task
+Users that belong to the Data Analyst role must next review the results of the Data Quality task and approve or reject the data quality. This is a manual task that requires you to open the automatically generated data quality report and decide whether to approve the data quality, reject the data quality, or perform corrective adjustments to the data (upon which the data quality must be run and reviewed again).
+
+Here is an example of the Data Quality Summary reporting dashboard that you can review.
+
+\image html ProcessFlowCase1Step6.png
+
+\n
+
+\subsection manualAdj (Data Processing) The Manual Adjustments Task
+If adjustments to the data are required, users that belong to the Data Analyst role can use business rule sets to identify and correct any data that is not of sufficient quality.   
+To run the adjustments, you must execute an analysis run using the model <i>IFRS9 - Data Adjustment</i>. The Data Adjustment analysis run performs the following steps:
+-# Applies business rules to the specified input data objects.
+-# Stores the modified data to the IFRS 9 Data Repository.
+-# Registers corresponding Analysis Data business objects in the solution.
+
+\subsection dataclassrun (Data Classification) The Run Classification Task
+
+After the Data Processing task is complete, the Risk Analyst has the option to apply classification rules on the input data. One example of these rules is the one related to the SPPI test.
+A series of business rules are available that will evaluate whether a credit portfolio passes the SPPI test or not. In general, the goal is to identify contractual provisions that modify the cash flows of an instrument 
+such that they do not give rise to only a straightforward repayment of principal and interest.
+
+To run the SPPI test, you must execute an analysis run using the model <i>IFRS9 - Data Adjustment</i>. The Data Adjustment analysis run performs the following steps:
+-# Applies the <i>SPPI Test Set</i> to the specified input data objects.
+-# Stores the modified data to the IFRS 9 Data Repository.
+-# Registers corresponding Analysis Data business objects in the solution.
+
+
+\subsection dataclassrev (Data Classification) The Review Classification Task
+
+Once the classfications are applied, the Risk Analyst reviews the analysis data with the new classification rules.
+
+\subsection dataclassadj (Data Classification) The Adjust Classification Task
+
+If adjustments to the data is required, users that belong to the Risk Analyst role can use business rule sets to identify and correct or adjust the classification of the data.   
+To run the adjustments, you must execute an analysis run using the model <i>IFRS9 - Data Adjustment</i>. The Data Adjustment analysis run performs the following steps:
+-# Applies business rules to the specified input data objects.
+-# Stores the modified data to the IFRS 9 Data Repository.
+-# Registers corresponding Analysis Data business objects in the solution.
+
+\subsection prepMRS (Prepare Scenarios) The Configure Master Risk Scenarios Task
+
+Risk Analysts create different risk factor scenarios, which are collections of individual risk factors, for the purpose of shocking portfolio and balance sheet assumptions. Examples of risk factor scenarios are:
+- base scenarios
+- adverse scenarios
+- severe scenarios
+
+Master risk scenarios are collections of all of these risk factor scenarios. Master risk scenarios are potentially reusable in the context of a regular regulatory cycle. A Master Risk Scenario business object that has been created for a previous cycle, if still valid, can be used for the current cycle. 
+
+The Configure Master Risk Scenarios task involves creating a new Master Risk Scenario object and completing the required fields. There are two ways in which you can include risk factors:
+- By including risk factors if they are already available in the scenario library. You can include scenario data which has been imported in the past and exists in the library, or scenario data that has been created using SAS Risk Scenario Manager. 
+- By importing new scenarios into the system and including them in Master Risk Scenarios. Risk scenarios can be imported into the system either from a data file on the server or a data file on the local machine. The imported scenarios get registered in the Scenarios library of SAS Risk Scenario Manager. You can then include the imported risk scenarios into Master Risk Scenario object.
+
+A Microsoft Excel worksheet containing scenario data should satisfy the following structure.
+
+|Field         |Description                                                              |
+|--------------|-------------------------------------------------------------------------|
+|Date            |Date for the economic value                                              |
+|variable1      |Name of the variable1, example : GBP, GBP_BELGIUM, HPI, HMI_FINLAND....  |
+|variable2      |Name of the variable2, example : GBP, GBP_BELGIUM, HPI, HMI_FINLAND....  |
+|...            |...                                                                      |
+|variable<n>   |Name of the variable<n>, example : GBP, GBP_BELGIUM, HPI, HMI_FINLAND....|
+
+Here is an example showing one of the sample scenarios in a formatted Excel worksheet.
+
+\image html  mrs_sample.png
+
+After your scenario data has been loaded into the project, it is still possible to adjust scenario data directly in SAS Solution for IFRS 9 by selecting a scenario from the list of included scenarios in Master Risk Scenarios object and clicking <b>Edit</b>.
+
+Here is a figure showing the Master Risk Scenario business object open for edit in the UI.  
+
+ \image html master_risk_ui.png
+
+    <b>Please note the following:</b>
+    - Weighting of the master risk scenarios is required by the UI. Depending on the scenarios chosen, the default weight is either already known to the person creating the master risk scenario, or the probability weighted value will have to be
+     determined and added. Different master risk scenarios are then assigned different weights. When a risk analyst chooses one default weight, that weight is assigned to each scenario included in the master risk scenario. 
+    - Chosen scenarios are merged into one data set and any matching columns will be merged, which can lead to lost data. To avoid this issue, if you have the similar column headings in each data set, you will either need to modify the logic or require a master risk scenario for each individual risk scenario.
+ 
+\subsection ECLAnalysis The Credit Risk Analysis Task
+ After the master risk scenarios have been created, a user with the Quantitative Analyst role can now the execute the "IFRS9 - Credit Risk" analysis model. The analysis run performs the following steps:
+      -# Reads portfolio, counterparty, and cashflow data from the IFRS 9 Data Repository.
+      -# Reads any scenarios you have selected from the scenario repository.
+      -# Pushes the full portfolio to SAS Model Implementation Platform.
+      -# Runs a SAS Model Implementation Platform analysis.
+      -# Gets results and stores them in the IFRS 9 Data Repository.
+      -# Creates or updates the report mart and the SAS LASR server tables.
+
+\subsection adjAndAlloc The Credit Risk Adjustments Task
+ If adjustments or allocations must be made, the Quantitative Analyst can make those adjustments and then re-execute the "IFRS9 - Credit Risk" analysis model that does the following:
+      -# Applies Allocation Rules or an Individual Adjustment data set to the results.
+      -# Stores modified data to the IFRS 9 Data Repository.
+      -# Registers corresponding data objects in the solution (as an Analysis Data business object).
+      -# Reloads and refreshes the report mart and the SAS LASR server tables.
+
+\subsection reviewECLResults The Review Credit Risk Results Task
+ After the credit risk analysis has completed, the Quantitative Analyst should next manually review the stressed ECL results using the generated report and approve or reject the analysis. If adjustments are required, the cycle then proceeds to the Adjustments & Allocation task.
+
+\subsection prepAT (Prepare) The Prepare Attribution Templates Task
+
+Attribution analysis enables customers to understand how changes in the inputs of an analysis run have impacted the outputs between the previous period and the current period. Attribution templates are used to streamline the creation of these reports.
+
+For more information about configuring an attribution analysis template, see the \ref OO9Introduction_key "Attribution Analysis" section.
+
+\subsection AttrAnalysis (Attribution) The Attribution Analysis Task
+ After the risk analysis results have been approved, the Risk Analyst is now responsible for performing an attribution analysis based on the final adjusted ECL results. 
+   
+\subsection reviewAttResults (Attribution) The Review Attribution Analysis Results Task
+ After the attribution analysis has been performed, the Risk Analyst is now responsible for approving or rejecting the results of the attribution analysis. 
+
+\subsection disclosures (Generate Disclosures) The Generate Disclosures Task
+ After the results have been approved, the Risk Analyst is now responsible for generating IFRS 9 disclosure reports based on the final adjusted ECL results. The generation of disclosures does the following:
+      -# Aggregates the ECL results for each report as specified in the report task code.
+      -# Populates the Excel report templates with aggregated data.
+      -# Loads the populated Excel templates to the Analysis Run.
+   
+<b>Note:</b> When a user generates reports as part of a cycle, those reports become available inside the associated Analysis Run. To download the reports, open the analysis run associated with that process and click the <b>Results</b> tab.  
+<p>
+In the <b>Reports</b> tab, the user can choose to download all reports by clicking <b>Download all Reports</b> from the UI, which will download a ZIP file containing all reports that were generated for that analysis run. To download a specific report only, click on the report name, or click the <b>Actions</b> button and select <b>Download</b>. 
+
+\subsection revDisclosures (Generate Disclosures) The Review Reports Task
+ After disclosures have been generated, the Risk Analyst can next review the generated reports and approve or reject the results of those reports. 
+
+ \subsection signoff The Sign-Off Task
+ Finally, the Risk Analyst reviews and provides sign-off on the entire IFRS 9 analysis.
+ Once the cycle is approved, it is locked. After a cycle has been locked, no more analysis runs or analysis data can be created for the cycle. 
+<p>
+The IFRS 9 Program Manager can opt to unlock and thus restart the cycle.
+<hr>
+<br>
+
+\subsection CreatingCycle Creating a New Cycle
+
+The Cycle Details area should be filled out when creating a new cycle. There are several fields in this area that are required prior to initializing a cycle.
+
+\image html cycle_details.png
+<br>
+<br>
+
+|Field Name                  |Description                                            |
+|--------------------------|-----------------------------------------------------|
+|<b>Cycle ID</b>                    |A numeric key value that is automatically assigned when opening a new cycle.  |
+|<b>Cycle title</b>               |A short name for the cycle.|
+|<b>Cycle description</b>         |(Optional) A longer description of the cycle.|
+|<b>Cycle initiator</b>         |The user that initiates the cycle is automatically made the cycle initiator.|
+|<b>Content version</b>      |A drop-down field with a list that is generated from any available content versions in SAS Infrastructure for Risk Management. If your data is not yet loaded into SAS Infrastructure for Risk Management, nothing will appear in the drop-down.|
+|<b>Base date</b>               |After a content version has been selected, this drop-down field displays only the available base dates for those data sets.|
+|<b>Entity</b>                  |This drop-down field enables you to select only those entities associated with the previously selected <b>Content version</b> and <b>Base date</b>.|
+|<b>Is this an initial run?</b>   |If this is the first run in a cycle, the <b>Previous period result</b> field is not required.|
+|<b>Previous period result</b>|This allows you to select a data set previously run of this type. You will only see this if you selected <b>No</b> in the preceding field.|
+<br>
+<br>
+
+
+
+*/

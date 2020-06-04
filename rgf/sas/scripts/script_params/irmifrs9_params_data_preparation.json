@@ -1,0 +1,101 @@
+{
+    "start": 0,
+    "limit": 7,
+    "count": 7,
+    "items": [{
+            "required_flg": "true",
+            "default_expr": "",
+            "name": "SppiEnrichment",
+            "description": "Do you want to enrich the portfolio table with data from the SPPI table?",
+            "default_value": "N",
+            "label": "SPPI enrichment",
+            "type": "config_param_list",
+            "config": {
+                "list": ["Y", "N"],
+                "type": "SINGLE"
+            },
+            "key": "_draft_quFnpOd7"
+        }, {
+            "required_flg": "true",
+            "name": "ConfigSetId",
+            "description": "Identify the configuration setup for the configuration and mapping data.",
+            "default_value": "IFRS9",
+            "label": "Configuration set Id",
+            "type": "config_param_list",
+            "config": {
+                "layout_placement": 1,
+                "function": "C_GetIrmConfigsets('irmifrs9_data_preparation.bpmn')",
+                "type": "SINGLE",
+                "layout_extend": 1
+            },
+            "key": "P001_ConfigSetId"
+        }, {
+            "name": "MaxWait",
+            "description": "Enter the maximum number of seconds the macro will wait for the job to complete before giving up. The default is 3,600 seconds (1 hour).",
+            "default_value": 3600,
+            "label": "Maximum wait time",
+            "type": "config_param_number",
+            "config": {
+                "layout_placement": 2,
+                "layout_extend": 1
+            },
+            "key": "P002_MaxWait"
+        }, {
+            "required_flg": "true",
+            "name": "CounterpartyEnrichment",
+            "description": "Do you want to enrich the portfolio table with data from the counterparty table?",
+            "default_value": "N",
+            "label": "Counterparty enrichment",
+            "type": "config_param_list",
+            "config": {
+                "layout_placement": 1,
+                "list": ["Y", "N"],
+                "type": "SINGLE",
+                "layout_extend": 1
+            },
+            "key": "P003_CounterpartyEnrichment"
+        }, {
+            "required_flg": "true",
+            "name": "RuleSetRegistration",
+            "description": "Do you want to register data quality rule sets?",
+            "default_value": "N",
+            "label": "Rule set registration",
+            "type": "config_param_list",
+            "config": {
+                "layout_placement": 2,
+                "list": ["Y", "N"],
+                "type": "SINGLE",
+                "layout_extend": 1
+            },
+            "key": "P004_RuleSetRegistration"
+        }, {
+            "required_flg": "true",
+            "name": "LogLevel",
+            "description": "Select a logging level to set the threshold for reporting details to the log file (from least detailed to most detailed): 1 - INFO, 2 - DEBUG, 3 - VERBOSE, 4 - TRACE",
+            "default_value": "1",
+            "label": "Logging level",
+            "type": "config_param_list",
+            "config": {
+                "layout_placement": 1,
+                "function": "toJsonArray('[{label:\"Info\",value:\"1\"},{label:\"Debug\",value:\"2\"},{label:\"Verbose\",value:\"3\"},{label:\"Trace\",value:\"4\"}]')",
+                "type": "SINGLE",
+                "layout_extend": 1
+            },
+            "key": "P005_LogLevel"
+        }, {
+            "required_flg": "false",
+            "name": "DataStoreTableList",
+            "description": "Select the tables to be registered. All available tables will be registered if none have been selected.",
+            "default_value": [],
+            "label": "Tables to register",
+            "type": "config_param_list",
+            "config": {
+                "layout_placement": 1,
+                "function": "C_ReadDataToJson(\"get_static_table.sas\",\"{'static_table':'datastore_config','where_clause':'datastore_group_id=\\\"Enrichment\\\"'}\",\"datastore_config\",\"SCHEMA_NAME\")",
+                "type": "ORDERED",
+                "layout_extend": 1
+            },
+            "key": "P006_DataStoreTableList"
+        }
+    ]
+}

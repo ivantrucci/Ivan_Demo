@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Yaoqiang BPMN Editor" exporterVersion="4.0" expressionLanguage="http://www.w3.org/1999/XPath" id="_1436907877938" name="" targetNamespace="http://sourceforge.net/bpmn/definitions/_1436907877938" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd"> 
+  <process id="PROCESS_1" isClosed="false" isExecutable="true" processType="None"> 
+    <extensionElements> 
+      <yaoqiang:pageFormat height="842.4" imageableHeight="832.4" imageableWidth="587.6" imageableX="5.0" imageableY="5.0" orientation="0" width="597.6"/>
+      <yaoqiang:page background="#FFFFFF" horizontalCount="6" verticalCount="2"/>
+    </extensionElements>
+    <startEvent id="_2" isInterrupting="true" name="." parallelMultiple="false">
+      <outgoing>_46</outgoing>
+    </startEvent> 
+    <serviceTask completionQuantity="1" id="_3" implementation="##WebService" isForCompensation="false" name="STS_00_irmifrs9_node_attribution_init" startQuantity="1">
+      <documentation id="_3_D_1" textFormat="text/plain"><![CDATA[document=d0/d67/irmifrs9__node__attribution__init_8sas.html]]></documentation>
+      <documentation id="_3_D_2" textFormat="text/plain"><![CDATA[tooltip=tooltip/d0/d67/irmifrs9_node_attribution_init.tooltip]]></documentation>
+      <incoming>_46</incoming>
+      <outgoing>_47</outgoing>
+      <ioSpecification>
+        <dataInput id="Din_3_4" isCollection="false" name="FRS9_PRM.RUN_OPTION.SAS7BDAT"/>
+        <dataInput id="Din_3_5" isCollection="false" name="FRS9_CFG.CREDIT_RISK_CONFIG.SAS7BDAT"/>
+        <dataOutput id="Dout_3_6" isCollection="false" name="FRS9_STG.ATTRIBUTION_CONFIG.SAS7BDAT"/>
+        <dataOutput id="Dout_3_7" isCollection="false" name="FRS9_STG.ATTRIBUTION_RUN_CONFIG.SAS7BDAT"/>
+        <dataOutput id="Dout_3_8" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+        <inputSet>
+          <dataInputRefs>Din_3_4</dataInputRefs>
+          <dataInputRefs>Din_3_5</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>Dout_3_6</dataOutputRefs>
+          <dataOutputRefs>Dout_3_7</dataOutputRefs>
+          <dataOutputRefs>Dout_3_8</dataOutputRefs>
+          </outputSet>
+      </ioSpecification>
+      <property id="_3_P_1" itemSubjectRef="xsd:string" name="type=sas"/>
+      <property id="_3_P_2" itemSubjectRef="xsd:string" name="source=irmifrs9_node_attribution_init.sas"/>
+      <property id="_3_P_3" itemSubjectRef="xsd:string" name="credentials=1"/>
+      <dataInputAssociation id="_52" > 
+        <sourceRef>_4</sourceRef>
+        <targetRef>Din_3_4</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_53" > 
+        <sourceRef>_5</sourceRef>
+        <targetRef>Din_3_5</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="_81" > 
+        <sourceRef>Dout_3_6</sourceRef>
+        <targetRef>_6</targetRef>
+      </dataOutputAssociation>
+      <dataOutputAssociation id="_82" > 
+        <sourceRef>Dout_3_7</sourceRef>
+        <targetRef>_7</targetRef>
+      </dataOutputAssociation>
+      <dataOutputAssociation id="_83" > 
+        <sourceRef>Dout_3_8</sourceRef>
+        <targetRef>_8</targetRef>
+      </dataOutputAssociation>
+    </serviceTask>
+    <sequenceFlow id="_46" sourceRef="_2" targetRef="_3"/>
+    <dataObject id="DATA_4" isCollection="false" name="FRS9_PRM.RUN_OPTION.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_4" id="_4">
+      <dataState name="%ds_in_run_option"/>
+    </dataObjectReference>
+    <dataObject id="DATA_5" isCollection="false" name="FRS9_CFG.CREDIT_RISK_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_5" id="_5"/>
+    <dataObject id="DATA_6" isCollection="false" name="FRS9_STG.ATTRIBUTION_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_6" id="_6">
+      <dataState name="%ds_out_attribution_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_7" isCollection="false" name="FRS9_STG.ATTRIBUTION_RUN_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_7" id="_7">
+      <dataState name="%ds_out_attribution_run_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_8" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_8" id="_8">
+      <dataState name="%ds_out_attribution_option"/>
+    </dataObjectReference>
+    <serviceTask completionQuantity="1" id="_9" implementation="##WebService" isForCompensation="false" name="STS_00_irmifrs9_node_set_cardinality_byn" startQuantity="1">
+      <documentation id="_9_D_1" textFormat="text/plain"><![CDATA[document=d8/d23/irmifrs9__node__set__cardinality__byn_8sas.html]]></documentation>
+      <documentation id="_9_D_2" textFormat="text/plain"><![CDATA[tooltip=tooltip/d8/d23/irmifrs9_node_set_cardinality_byn.tooltip]]></documentation>
+      <incoming>_47</incoming>
+      <outgoing>_48</outgoing>
+      <ioSpecification>
+        <dataInput id="Din_9_10" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+        <dataInput id="Din_9_11" isCollection="false" name="FRS9_STG.ATTRIBUTION_RUN_CONFIG.SAS7BDAT"/>
+        <dataOutput id="Dout_9_12" isCollection="false" name="FRS9_STG.ATTRIBUTION_CARDINALITY.SAS7BDAT"/>
+        <inputSet>
+          <dataInputRefs>Din_9_10</dataInputRefs>
+          <dataInputRefs>Din_9_11</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>Dout_9_12</dataOutputRefs>
+          </outputSet>
+      </ioSpecification>
+      <property id="_9_P_1" itemSubjectRef="xsd:string" name="type=sas"/>
+      <property id="_9_P_2" itemSubjectRef="xsd:string" name="source=irmifrs9_node_set_cardinality_byn.sas"/>
+      <dataInputAssociation id="_54" > 
+        <sourceRef>_10</sourceRef>
+        <targetRef>Din_9_10</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_55" > 
+        <sourceRef>_11</sourceRef>
+        <targetRef>Din_9_11</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="_84" > 
+        <sourceRef>Dout_9_12</sourceRef>
+        <targetRef>_12</targetRef>
+      </dataOutputAssociation>
+    </serviceTask>
+    <sequenceFlow id="_47" sourceRef="_3" targetRef="_9"/>
+    <dataObject id="DATA_10" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_10" id="_10"/>
+    <dataObject id="DATA_11" isCollection="false" name="FRS9_STG.ATTRIBUTION_RUN_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_11" id="_11">
+      <dataState name="%ds_in"/>
+    </dataObjectReference>
+    <dataObject id="DATA_12" isCollection="false" name="FRS9_STG.ATTRIBUTION_CARDINALITY.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_12" id="_12">
+      <dataState name="%ds_out_cardinality"/>
+    </dataObjectReference>
+    <serviceTask completionQuantity="1" id="_13" implementation="##WebService" isForCompensation="false" name="STS_00_irmifrs9_node_attribution_run" startQuantity="1">
+      <documentation id="_13_D_1" textFormat="text/plain"><![CDATA[document=d0/d87/irmifrs9__node__attribution__run_8sas.html]]></documentation>
+      <documentation id="_13_D_2" textFormat="text/plain"><![CDATA[tooltip=tooltip/d0/d87/irmifrs9_node_attribution_run.tooltip]]></documentation>
+      <incoming>_48</incoming>
+      <outgoing>_49</outgoing>
+      <ioSpecification>
+        <dataInput id="Din_13_14" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+        <dataInput id="Din_13_15" isCollection="false" name="FRS9_STG.ATTRIBUTION_CARDINALITY.SAS7BDAT"/>
+        <dataInput id="Din_13_16" isCollection="false" name="FRS9_STG.ATTRIBUTION_RUN_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_13_17" isCollection="false" name="FRS9_CFG.CREDIT_RISK_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_13_18" isCollection="false" name="FRS9_CFG.ATTRIBUTION_SCENARIO_MAP.SAS7BDAT"/>
+        <dataInput id="Din_13_19" isCollection="false" name="FRS9_CFG.AGGREGATION_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_13_20" isCollection="false" name="FRS9_CFG.CALCULATION_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_13_21" isCollection="false" name="FRS9_CFG.DATA_MAP_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_13_22" isCollection="false" name="FRS9_MAP.MAP_MOVEMENT_TYPE.SAS7BDAT"/>
+        <dataInput id="Din_13_23" isCollection="false" name="FRS9_STG.SCENARIO_INFO.SAS7BDAT"/>
+        <dataInput id="Din_13_24" isCollection="false" name="FRS9_STG.SCENARIO_DATA.SAS7BDAT"/>
+        <dataInput id="Din_13_25" isCollection="false" name="IFRS9DR"/>
+        <dataInput id="Din_13_26" isCollection="false" name="TMPLIB"/>
+        <dataOutput id="Dout_13_27" isCollection="false" name="FRS9_PT.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+        <inputSet>
+          <dataInputRefs>Din_13_14</dataInputRefs>
+          <dataInputRefs>Din_13_15</dataInputRefs>
+          <dataInputRefs>Din_13_16</dataInputRefs>
+          <dataInputRefs>Din_13_17</dataInputRefs>
+          <dataInputRefs>Din_13_18</dataInputRefs>
+          <dataInputRefs>Din_13_19</dataInputRefs>
+          <dataInputRefs>Din_13_20</dataInputRefs>
+          <dataInputRefs>Din_13_21</dataInputRefs>
+          <dataInputRefs>Din_13_22</dataInputRefs>
+          <dataInputRefs>Din_13_23</dataInputRefs>
+          <dataInputRefs>Din_13_24</dataInputRefs>
+          <dataInputRefs>Din_13_25</dataInputRefs>
+          <dataInputRefs>Din_13_26</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>Dout_13_27</dataOutputRefs>
+          </outputSet>
+      </ioSpecification>
+      <property id="_13_P_1" itemSubjectRef="xsd:string" name="type=sas"/>
+      <property id="_13_P_2" itemSubjectRef="xsd:string" name="source=irmifrs9_node_attribution_run.sas"/>
+      <property id="_13_P_3" itemSubjectRef="xsd:string" name="cardinality=FRS9_STG.ATTRIBUTION_CARDINALITY.SAS7BDAT"/>
+      <property id="_13_P_4" itemSubjectRef="xsd:string" name="credentials=1"/>
+      <dataInputAssociation id="_56" > 
+        <sourceRef>_14</sourceRef>
+        <targetRef>Din_13_14</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_57" > 
+        <sourceRef>_15</sourceRef>
+        <targetRef>Din_13_15</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_58" > 
+        <sourceRef>_16</sourceRef>
+        <targetRef>Din_13_16</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_59" > 
+        <sourceRef>_17</sourceRef>
+        <targetRef>Din_13_17</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_60" > 
+        <sourceRef>_18</sourceRef>
+        <targetRef>Din_13_18</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_61" > 
+        <sourceRef>_19</sourceRef>
+        <targetRef>Din_13_19</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_62" > 
+        <sourceRef>_20</sourceRef>
+        <targetRef>Din_13_20</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_63" > 
+        <sourceRef>_21</sourceRef>
+        <targetRef>Din_13_21</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_64" > 
+        <sourceRef>_22</sourceRef>
+        <targetRef>Din_13_22</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_65" > 
+        <sourceRef>_23</sourceRef>
+        <targetRef>Din_13_23</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_66" > 
+        <sourceRef>_24</sourceRef>
+        <targetRef>Din_13_24</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_67" > 
+        <sourceRef>_25</sourceRef>
+        <targetRef>Din_13_25</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_68" > 
+        <sourceRef>_26</sourceRef>
+        <targetRef>Din_13_26</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="_85" > 
+        <sourceRef>Dout_13_27</sourceRef>
+        <targetRef>_27</targetRef>
+      </dataOutputAssociation>
+    </serviceTask>
+    <sequenceFlow id="_48" sourceRef="_9" targetRef="_13"/>
+    <dataObject id="DATA_14" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_14" id="_14"/>
+    <dataObject id="DATA_15" isCollection="false" name="FRS9_STG.ATTRIBUTION_CARDINALITY.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_15" id="_15">
+      <dataState name="%ds_in_cardinality"/>
+    </dataObjectReference>
+    <dataObject id="DATA_16" isCollection="false" name="FRS9_STG.ATTRIBUTION_RUN_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_16" id="_16">
+      <dataState name="%ds_in_run_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_17" isCollection="false" name="FRS9_CFG.CREDIT_RISK_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_17" id="_17"/>
+    <dataObject id="DATA_18" isCollection="false" name="FRS9_CFG.ATTRIBUTION_SCENARIO_MAP.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_18" id="_18">
+      <dataState name="%ds_in_scenario_map"/>
+    </dataObjectReference>
+    <dataObject id="DATA_19" isCollection="false" name="FRS9_CFG.AGGREGATION_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_19" id="_19">
+      <dataState name="%ds_in_aggregation_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_20" isCollection="false" name="FRS9_CFG.CALCULATION_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_20" id="_20">
+      <dataState name="%ds_in_calculation_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_21" isCollection="false" name="FRS9_CFG.DATA_MAP_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_21" id="_21">
+      <dataState name="%ds_in_map_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_22" isCollection="false" name="FRS9_MAP.MAP_MOVEMENT_TYPE.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_22" id="_22">
+      <dataState name="%ds_in_map_movement"/>
+    </dataObjectReference>
+    <dataObject id="DATA_23" isCollection="false" name="FRS9_STG.SCENARIO_INFO.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_23" id="_23">
+      <dataState name="%ds_in_scenario_info"/>
+    </dataObjectReference>
+    <dataObject id="DATA_24" isCollection="false" name="FRS9_STG.SCENARIO_DATA.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_24" id="_24">
+      <dataState name="%ds_in_scenario_data"/>
+    </dataObjectReference>
+    <dataObject id="DATA_25" isCollection="true" name="IFRS9DR"/>
+    <dataObjectReference dataObjectRef="DATA_25" id="_25">
+      <dataState name="%dr_libref"/>
+    </dataObjectReference>
+    <dataObject id="DATA_26" isCollection="true" name="TMPLIB"/>
+    <dataObjectReference dataObjectRef="DATA_26" id="_26">
+      <dataState name="%tmp_libref"/>
+    </dataObjectReference>
+    <dataObject id="DATA_27" isCollection="false" name="FRS9_PT.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_27" id="_27">
+      <dataState name="partition, %ds_out_sync"/>
+    </dataObjectReference>
+    <serviceTask completionQuantity="1" id="_28" implementation="##WebService" isForCompensation="false" name="STS_00_irmifrs9_node_recombine" startQuantity="1">
+      <documentation id="_28_D_1" textFormat="text/plain"><![CDATA[document=db/dbe/irmifrs9__node__recombine_8sas.html]]></documentation>
+      <documentation id="_28_D_2" textFormat="text/plain"><![CDATA[tooltip=tooltip/db/dbe/irmifrs9_node_recombine.tooltip]]></documentation>
+      <incoming>_49</incoming>
+      <outgoing>_50</outgoing>
+      <ioSpecification>
+        <dataInput id="Din_28_29" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+        <dataInput id="Din_28_30" isCollection="false" name="FRS9_PT.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+        <dataOutput id="Dout_28_31" isCollection="false" name="FRS9_TMP.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+        <inputSet>
+          <dataInputRefs>Din_28_29</dataInputRefs>
+          <dataInputRefs>Din_28_30</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>Dout_28_31</dataOutputRefs>
+          </outputSet>
+      </ioSpecification>
+      <property id="_28_P_1" itemSubjectRef="xsd:string" name="type=sas"/>
+      <property id="_28_P_2" itemSubjectRef="xsd:string" name="source=irmifrs9_node_recombine.sas"/>
+      <dataInputAssociation id="_69" > 
+        <sourceRef>_29</sourceRef>
+        <targetRef>Din_28_29</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_70" > 
+        <sourceRef>_30</sourceRef>
+        <targetRef>Din_28_30</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="_86" > 
+        <sourceRef>Dout_28_31</sourceRef>
+        <targetRef>_31</targetRef>
+      </dataOutputAssociation>
+    </serviceTask>
+    <sequenceFlow id="_49" sourceRef="_13" targetRef="_28"/>
+    <dataObject id="DATA_29" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_29" id="_29"/>
+    <dataObject id="DATA_30" isCollection="false" name="FRS9_PT.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_30" id="_30">
+      <dataState name="partition, %ds_in"/>
+    </dataObjectReference>
+    <dataObject id="DATA_31" isCollection="false" name="FRS9_TMP.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_31" id="_31">
+      <dataState name="%ds_out"/>
+    </dataObjectReference>
+    <serviceTask completionQuantity="1" id="_32" implementation="##WebService" isForCompensation="false" name="STS_00_irmifrs9_node_attribution_finalize" startQuantity="1">
+      <documentation id="_32_D_1" textFormat="text/plain"><![CDATA[document=df/d32/irmifrs9__node__attribution__finalize_8sas.html]]></documentation>
+      <documentation id="_32_D_2" textFormat="text/plain"><![CDATA[tooltip=tooltip/df/d32/irmifrs9_node_attribution_finalize.tooltip]]></documentation>
+      <incoming>_50</incoming>
+      <outgoing>_51</outgoing>
+      <ioSpecification>
+        <dataInput id="Din_32_33" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+        <dataInput id="Din_32_34" isCollection="false" name="FRS9_CFG.CREDIT_RISK_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_32_35" isCollection="false" name="FRS9_STG.ATTRIBUTION_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_32_36" isCollection="false" name="FRS9_CFG.AGGREGATION_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_32_37" isCollection="false" name="FRS9_CFG.DATASTORE_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_32_38" isCollection="false" name="FRS9_CFG.VAR_DEPENDENCY_CONFIG.SAS7BDAT"/>
+        <dataInput id="Din_32_39" isCollection="false" name="FRS9_MAP.MAP_MOVEMENT_TYPE.SAS7BDAT"/>
+        <dataInput id="Din_32_40" isCollection="false" name="FRS9_TMP.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+        <dataInput id="Din_32_41" isCollection="false" name="IFRS9DR"/>
+        <dataInput id="Din_32_42" isCollection="false" name="TMPLIB"/>
+        <dataOutput id="Dout_32_43" isCollection="false" name="FRS9_STG.SYNC_MART_RESULT.SAS7BDAT"/>
+        <dataOutput id="Dout_32_44" isCollection="false" name="FRS9_STG.DATASTORE_CONFIG.SAS7BDAT"/>
+        <inputSet>
+          <dataInputRefs>Din_32_33</dataInputRefs>
+          <dataInputRefs>Din_32_34</dataInputRefs>
+          <dataInputRefs>Din_32_35</dataInputRefs>
+          <dataInputRefs>Din_32_36</dataInputRefs>
+          <dataInputRefs>Din_32_37</dataInputRefs>
+          <dataInputRefs>Din_32_38</dataInputRefs>
+          <dataInputRefs>Din_32_39</dataInputRefs>
+          <dataInputRefs>Din_32_40</dataInputRefs>
+          <dataInputRefs>Din_32_41</dataInputRefs>
+          <dataInputRefs>Din_32_42</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>Dout_32_43</dataOutputRefs>
+          <dataOutputRefs>Dout_32_44</dataOutputRefs>
+          </outputSet>
+      </ioSpecification>
+      <property id="_32_P_1" itemSubjectRef="xsd:string" name="type=sas"/>
+      <property id="_32_P_2" itemSubjectRef="xsd:string" name="source=irmifrs9_node_attribution_finalize.sas"/>
+      <property id="_32_P_3" itemSubjectRef="xsd:string" name="credentials=1"/>
+      <dataInputAssociation id="_71" > 
+        <sourceRef>_33</sourceRef>
+        <targetRef>Din_32_33</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_72" > 
+        <sourceRef>_34</sourceRef>
+        <targetRef>Din_32_34</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_73" > 
+        <sourceRef>_35</sourceRef>
+        <targetRef>Din_32_35</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_74" > 
+        <sourceRef>_36</sourceRef>
+        <targetRef>Din_32_36</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_75" > 
+        <sourceRef>_37</sourceRef>
+        <targetRef>Din_32_37</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_76" > 
+        <sourceRef>_38</sourceRef>
+        <targetRef>Din_32_38</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_77" > 
+        <sourceRef>_39</sourceRef>
+        <targetRef>Din_32_39</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_78" > 
+        <sourceRef>_40</sourceRef>
+        <targetRef>Din_32_40</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_79" > 
+        <sourceRef>_41</sourceRef>
+        <targetRef>Din_32_41</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation id="_80" > 
+        <sourceRef>_42</sourceRef>
+        <targetRef>Din_32_42</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="_87" > 
+        <sourceRef>Dout_32_43</sourceRef>
+        <targetRef>_43</targetRef>
+      </dataOutputAssociation>
+      <dataOutputAssociation id="_88" > 
+        <sourceRef>Dout_32_44</sourceRef>
+        <targetRef>_44</targetRef>
+      </dataOutputAssociation>
+    </serviceTask>
+    <sequenceFlow id="_50" sourceRef="_28" targetRef="_32"/>
+    <dataObject id="DATA_33" isCollection="false" name="FRS9_PRM.ATTRIBUTION_OPTION.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_33" id="_33"/>
+    <dataObject id="DATA_34" isCollection="false" name="FRS9_CFG.CREDIT_RISK_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_34" id="_34"/>
+    <dataObject id="DATA_35" isCollection="false" name="FRS9_STG.ATTRIBUTION_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_35" id="_35">
+      <dataState name="%ds_in_attribution_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_36" isCollection="false" name="FRS9_CFG.AGGREGATION_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_36" id="_36">
+      <dataState name="%ds_in_aggregation_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_37" isCollection="false" name="FRS9_CFG.DATASTORE_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_37" id="_37">
+      <dataState name="%ds_in_datastore_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_38" isCollection="false" name="FRS9_CFG.VAR_DEPENDENCY_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_38" id="_38">
+      <dataState name="%ds_in_dependency_config"/>
+    </dataObjectReference>
+    <dataObject id="DATA_39" isCollection="false" name="FRS9_MAP.MAP_MOVEMENT_TYPE.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_39" id="_39">
+      <dataState name="%ds_in_map_movement"/>
+    </dataObjectReference>
+    <dataObject id="DATA_40" isCollection="false" name="FRS9_TMP.SYNC_ATTRIB_MODEL_RESULT.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_40" id="_40">
+      <dataState name="%ds_in_sync_result"/>
+    </dataObjectReference>
+    <dataObject id="DATA_41" isCollection="true" name="IFRS9DR"/>
+    <dataObjectReference dataObjectRef="DATA_41" id="_41">
+      <dataState name="%dr_libref"/>
+    </dataObjectReference>
+    <dataObject id="DATA_42" isCollection="true" name="TMPLIB"/>
+    <dataObjectReference dataObjectRef="DATA_42" id="_42">
+      <dataState name="%tmp_libref"/>
+    </dataObjectReference>
+    <dataObject id="DATA_43" isCollection="false" name="FRS9_STG.SYNC_MART_RESULT.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_43" id="_43">
+      <dataState name="%ds_out_sync"/>
+    </dataObjectReference>
+    <dataObject id="DATA_44" isCollection="false" name="FRS9_STG.DATASTORE_CONFIG.SAS7BDAT"/>
+    <dataObjectReference dataObjectRef="DATA_44" id="_44">
+      <dataState name="%ds_out_datastore_config"/>
+    </dataObjectReference>
+    <endEvent id="_45" name=".">
+      <incoming>_51</incoming>
+    </endEvent>
+    <sequenceFlow id="_51" sourceRef="_32" targetRef="_45"/>
+  </process>
+  <bpmndi:BPMNDiagram id="IRM_Diagram-Expand" name="Expanded Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="PROCESS_1">
+      <bpmndi:BPMNShape bpmnElement="_2" id="IRM-Expand_2">
+        <dc:Bounds height="32.0" width="32.0" x="84.0" y="856.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="95.0" y="862.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" id="IRM-Expand_3">
+        <dc:Bounds height="55.0" width="230.0" x="335.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="336.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" id="IRM-Expand_4">
+        <dc:Bounds height="38.0" width="29.0" x="320.5" y="716.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="242.0" y="756.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" id="IRM-Expand_5">
+        <dc:Bounds height="38.0" width="29.0" x="320.5" y="772.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="242.0" y="812.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_6" id="IRM-Expand_6">
+        <dc:Bounds height="38.0" width="29.0" x="550.5" y="925.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="472.0" y="965.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_7" id="IRM-Expand_7">
+        <dc:Bounds height="38.0" width="29.0" x="550.5" y="981.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="472.0" y="1021.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8" id="IRM-Expand_8">
+        <dc:Bounds height="38.0" width="29.0" x="550.5" y="1037.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="472.0" y="1077.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9" id="IRM-Expand_9">
+        <dc:Bounds height="55.0" width="230.0" x="685.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="686.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_10" id="IRM-Expand_10">
+        <dc:Bounds height="38.0" width="29.0" x="670.5" y="716.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="592.0" y="756.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11" id="IRM-Expand_11">
+        <dc:Bounds height="38.0" width="29.0" x="670.5" y="772.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="592.0" y="812.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_12" id="IRM-Expand_12">
+        <dc:Bounds height="38.0" width="29.0" x="900.5" y="925.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="822.0" y="965.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_13" id="IRM-Expand_13">
+        <dc:Bounds height="55.0" width="230.0" x="1035.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1036.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_14" id="IRM-Expand_14">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="100.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="140.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_15" id="IRM-Expand_15">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="156.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="196.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_16" id="IRM-Expand_16">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="212.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="252.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_17" id="IRM-Expand_17">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="268.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="308.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_18" id="IRM-Expand_18">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="324.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="364.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_19" id="IRM-Expand_19">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="380.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="420.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_20" id="IRM-Expand_20">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="436.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="476.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_21" id="IRM-Expand_21">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="492.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="532.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_22" id="IRM-Expand_22">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="548.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="588.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_23" id="IRM-Expand_23">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="604.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="644.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_24" id="IRM-Expand_24">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="660.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="700.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_25" id="IRM-Expand_25">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="716.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="756.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_26" id="IRM-Expand_26">
+        <dc:Bounds height="38.0" width="29.0" x="1020.5" y="772.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="942.0" y="812.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_27" id="IRM-Expand_27">
+        <dc:Bounds height="38.0" width="29.0" x="1250.5" y="925.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1172.0" y="965.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_28" id="IRM-Expand_28">
+        <dc:Bounds height="55.0" width="230.0" x="1385.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1386.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_29" id="IRM-Expand_29">
+        <dc:Bounds height="38.0" width="29.0" x="1370.5" y="716.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1292.0" y="756.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_30" id="IRM-Expand_30">
+        <dc:Bounds height="38.0" width="29.0" x="1370.5" y="772.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1292.0" y="812.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_31" id="IRM-Expand_31">
+        <dc:Bounds height="38.0" width="29.0" x="1600.5" y="925.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1522.0" y="965.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_32" id="IRM-Expand_32">
+        <dc:Bounds height="55.0" width="230.0" x="1735.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1736.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_33" id="IRM-Expand_33">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="268.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="308.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_34" id="IRM-Expand_34">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="324.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="364.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_35" id="IRM-Expand_35">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="380.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="420.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_36" id="IRM-Expand_36">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="436.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="476.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_37" id="IRM-Expand_37">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="492.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="532.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_38" id="IRM-Expand_38">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="548.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="588.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_39" id="IRM-Expand_39">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="604.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="644.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_40" id="IRM-Expand_40">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="660.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="700.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_41" id="IRM-Expand_41">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="716.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="756.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_42" id="IRM-Expand_42">
+        <dc:Bounds height="38.0" width="29.0" x="1720.5" y="772.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1642.0" y="812.0"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_43" id="IRM-Expand_43">
+        <dc:Bounds height="38.0" width="29.0" x="1950.5" y="925.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1872.0" y="965.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_44" id="IRM-Expand_44">
+        <dc:Bounds height="38.0" width="29.0" x="1950.5" y="981.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="186.0" x="1872.0" y="1021.5"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_45" id="IRM-Expand_45">
+        <dc:Bounds height="32.0" width="32.0" x="2184.0" y="856.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="2195.0" y="862.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_46" id="IRM-Expand_46">
+        <di:waypoint x="116.0" y="872.0"/>
+        <di:waypoint x="335.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="225.5" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_52" id="IRM-Expand_52">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="320.5" y="735.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="565.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_53" id="IRM-Expand_53">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="320.5" y="791.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="565.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_81" id="IRM-Expand_81">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="550.5" y="944.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="565.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_82" id="IRM-Expand_82">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="550.5" y="1000.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="565.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_83" id="IRM-Expand_83">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="550.5" y="1056.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="565.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_47" id="IRM-Expand_47">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="685.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="625.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_54" id="IRM-Expand_54">
+        <di:waypoint x="915.0" y="872.0"/>
+        <di:waypoint x="670.5" y="735.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="915.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_55" id="IRM-Expand_55">
+        <di:waypoint x="915.0" y="872.0"/>
+        <di:waypoint x="670.5" y="791.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="915.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_84" id="IRM-Expand_84">
+        <di:waypoint x="915.0" y="872.0"/>
+        <di:waypoint x="900.5" y="944.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="915.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_48" id="IRM-Expand_48">
+        <di:waypoint x="915.0" y="872.0"/>
+        <di:waypoint x="1035.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="975.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_56" id="IRM-Expand_56">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="119.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_57" id="IRM-Expand_57">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="175.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_58" id="IRM-Expand_58">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="231.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_59" id="IRM-Expand_59">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="287.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_60" id="IRM-Expand_60">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="343.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_61" id="IRM-Expand_61">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="399.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_62" id="IRM-Expand_62">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="455.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_63" id="IRM-Expand_63">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="511.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_64" id="IRM-Expand_64">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="567.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_65" id="IRM-Expand_65">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="623.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_66" id="IRM-Expand_66">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="679.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_67" id="IRM-Expand_67">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="735.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_68" id="IRM-Expand_68">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1020.5" y="791.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_85" id="IRM-Expand_85">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1250.5" y="944.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1265.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_49" id="IRM-Expand_49">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1385.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1325.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_69" id="IRM-Expand_69">
+        <di:waypoint x="1615.0" y="872.0"/>
+        <di:waypoint x="1370.5" y="735.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1615.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_70" id="IRM-Expand_70">
+        <di:waypoint x="1615.0" y="872.0"/>
+        <di:waypoint x="1370.5" y="791.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1615.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_86" id="IRM-Expand_86">
+        <di:waypoint x="1615.0" y="872.0"/>
+        <di:waypoint x="1600.5" y="944.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1615.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_50" id="IRM-Expand_50">
+        <di:waypoint x="1615.0" y="872.0"/>
+        <di:waypoint x="1735.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1675.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_71" id="IRM-Expand_71">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="287.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_72" id="IRM-Expand_72">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="343.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_73" id="IRM-Expand_73">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="399.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_74" id="IRM-Expand_74">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="455.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_75" id="IRM-Expand_75">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="511.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_76" id="IRM-Expand_76">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="567.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_77" id="IRM-Expand_77">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="623.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_78" id="IRM-Expand_78">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="679.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_79" id="IRM-Expand_79">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="735.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_80" id="IRM-Expand_80">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1720.5" y="791.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_87" id="IRM-Expand_87">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1950.5" y="944.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_88" id="IRM-Expand_88">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="1950.5" y="1000.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1965.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_51" id="IRM-Expand_51">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="2184.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="2074.5" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="IRM_Diagram-Collapse" name="Collapsed Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="PROCESS_1">
+      <bpmndi:BPMNShape bpmnElement="_2" id="IRM-Collapse_2">
+        <dc:Bounds height="32.0" width="32.0" x="84.0" y="856.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="95.0" y="862.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" id="IRM-Collapse_3">
+        <dc:Bounds height="55.0" width="230.0" x="335.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="336.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9" id="IRM-Collapse_9">
+        <dc:Bounds height="55.0" width="230.0" x="685.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="686.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_13" id="IRM-Collapse_13">
+        <dc:Bounds height="55.0" width="230.0" x="1035.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1036.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_28" id="IRM-Collapse_28">
+        <dc:Bounds height="55.0" width="230.0" x="1385.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1386.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_32" id="IRM-Collapse_32">
+        <dc:Bounds height="55.0" width="230.0" x="1735.0" y="844.5"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="200.0" x="1736.0" y="864.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_45" id="IRM-Collapse_45">
+        <dc:Bounds height="32.0" width="32.0" x="2184.0" y="856.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="2195.0" y="862.361328125"/> 
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_46" id="IRM-Collapse_46">
+        <di:waypoint x="116.0" y="872.0"/>
+        <di:waypoint x="335.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="225.5" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_47" id="IRM-Collapse_47">
+        <di:waypoint x="565.0" y="872.0"/>
+        <di:waypoint x="685.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="625.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_48" id="IRM-Collapse_48">
+        <di:waypoint x="915.0" y="872.0"/>
+        <di:waypoint x="1035.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="975.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_49" id="IRM-Collapse_49">
+        <di:waypoint x="1265.0" y="872.0"/>
+        <di:waypoint x="1385.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1325.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_50" id="IRM-Collapse_50">
+        <di:waypoint x="1615.0" y="872.0"/>
+        <di:waypoint x="1735.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="1675.0" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_51" id="IRM-Collapse_51">
+        <di:waypoint x="1965.0" y="872.0"/>
+        <di:waypoint x="2184.0" y="872.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.27734375" width="10.0" x="2074.5" y="872.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

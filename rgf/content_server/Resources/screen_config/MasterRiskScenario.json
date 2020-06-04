@@ -1,0 +1,13 @@
+{
+   "defaultValues":
+   {
+      "assignWeight": "Y",
+      "multiForecastFlg": "N"
+   },
+   "visibility":
+   {
+      "assignWeight": false,
+      "multiForecastFlg": false,
+      "AttrWarningMsg": true
+   }
+}

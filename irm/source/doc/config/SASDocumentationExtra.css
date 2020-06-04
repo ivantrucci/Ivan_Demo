@@ -1,0 +1,85 @@
+#projectname
+{
+    font-size: 16px;
+    padding: 1em;
+}
+
+#projectbrief
+{
+    font-family: 'Merriweather Sans', serif;
+    font-size: 120%;
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+#projectnumber
+{
+    font-family: 'Merriweather Sans', serif;
+    font-size: 100%;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+dl.precondition
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: orange;
+}
+
+dl.postcondition
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: orange;
+}
+
+dl.preprocessing
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: sandybrown;
+}
+
+dl.postprocessing
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: sandybrown;
+}
+
+dl.sequence
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: green;
+}
+
+dl.modifications
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: sandybrown;
+}
+
+dl.assumptions
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: sandybrown;
+}
+
+dl.node_logic
+{
+        margin-left:-7px;
+        padding-left: 3px;
+        border-left:4px solid;
+        border-color: purple;
+}

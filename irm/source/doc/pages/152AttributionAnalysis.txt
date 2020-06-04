@@ -1,0 +1,138 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 1522attribAnalysis Attribution Analysis
+
+\anchor AttributionAnalysis
+
+\section OO9Introduction_key Introduction to Attribution Analysis
+
+Attribution analysis for SAS risk solutions allows customers to:
+
+- Create waterfall reports detailing how changes in an analysis run's inputs have impacted the outputs.
+- Create multiple attribution templates to streamline the creation of these reports.
+- Quickly and easily run an attribution analysis using an attribution template, as part of a cycle or as a separate analysis run.
+- Compare any two runs of the same analysis model, whether the underlying models are SAS Model Implementation Platform models, Python models, R models, or SAS scripts.
+
+The attribution analysis makes incremental changes to the analysis performed in a previous period and records the values of user-specified output variables with each change. Specifically, the previous period's analysis is altered by replacing components with components from the analysis performed in the current period. For example, if you estimated ECL last quarter and this quarter, you would use an attribution analysis to determine how changes to the portfolio, models, and scenarios have individually contributed to the overall change in ECL. You could then answer questions such as the following:
+- How much has the ECL changed due to newly acquired positions?
+- What was the impact of changes to our projected GDP growth on ECL?
+- How have the new credit models impacted our ECL estimates?
+
+Because the attribution analysis works by running the analysis repeatedly, the order in which the changes are made will impact the results. For example, suppose you change the scenario risk factors so that they match the current period, and then change the portfolio to match the current period. This will likely yield different contributions to the change in ECL than if those changes had been made in the reverse order. In addition, it is not practical, nor useful, to re-run the analysis for every possible portfolio variable and every possible scenario risk factor. You will instead likely be interested in the impact of a few of these and might also want to see the impact of changing several of them together. 
+
+For this reason, SAS Solution for IFRS 9 enables you to sort and group attribution factors. Attribution factors are processed in the order they appear in the Attribution Factors Order table, from the top down. If three attribution factors are grouped, then the analysis is only run once for the group rather than three times. All three factors will be changed at once and the report will show the impact of having changed all three, but will not include individual impacts for the members of the groups. As such, factors should only be grouped if the individual impact of the factors is not of interest.
+
+Any attribution factors that are not listed in the Attribution Factors Order table are by default included with the Other factor, which is always the last factor to be evaluated and cannot be removed. Any remaining difference between the value of the previous period and the value of the current period after evaluating all other factors is attributed to Other.
+
+<b>IMPORTANT:</b> Master Risk Scenarios used in the previous and current period models must share the same <b><i>short name</i></b> in order for the attribution analysis to know that they are related. Risk factors from a Master Risk Scenario in the current period that are part of the attribution analysis will replace values in a Master Risk Scenario from the previous period, provided that the two Master Risk Scenarios have the same <b><i>short name</i></b>.
+
+The Attribution Template business object defines which attribution factors will be used in an attribution analysis and in which order they will be processed. It also defines the output variables that are tracked in the attribution analysis.
+
+\section OO9Creating_key Creating Attribution Templates
+The first step in an attribution analysis is the creation of an attribution template which will later be used during an analysis run in order to create reports. The attribution template has several key areas which must be filled out. 
+
+\subsection AFDEtails Attribution Template Details
+
+| Inputs                |  Description |
+|-----------------------|-----------------|
+|Attribution Template Name | The name for the template. |
+|Attribution Template Description | Any major details describing the use of the template.|
+|Input Table Definition | This table selection determines which data set variables will be available to show attribution. When choosing a portfolio data definition, all variables in the data definition that are flagged as Attributable are made available in the attribution factors table when you click the Add button on the toolbar.|
+|Output Table Definition| This table selection determines which output variables will be available for attribution analysis. When you choose an output data definition, all variables in there that are both attributable and numeric are available in the Output Variables table when you click the Add button on the toolbar.|
+|Master Risk Scenario   | This scenario selection determines which risk factors will be available to show attribution. When you select a Master Risk Scenario, all risk factors across all scenarios in the Master Risk Scenario will become available when you click the Add button in the Attribution Factors table. |
+|Label for reclassified instruments (From)|Label to be used when providing details about the origin of reclassfication. |
+|Label for reclassified instruments (To)  |Label to be used when providing details about the destination of reclassfication.|
+
+
+Here is an example from the UI of the <b>Attribution Template Details</b> section.
+\image html Attrib_Template_Screen1.png
+
+
+
+
+\subsection AFOrder Attribution Factors Order
+
+By default, the Attribution Factors Order table includes the following items:
+
+| Attribution Factor | Description |
+|--------------------|-------------|
+|Expired Positions | Used to assess changes due to positions that were active in the previous period having expired in the current period.|
+|Portfolio Aging | Used to assess changes due to portfolio aging – the effect of the base date having changed. This factor must be above all Portfolio and Risk Factor attributes in the table. The row movement buttons will not allow you to move rows in a way that breaks this condition.|
+|Portfolio (All Others) | Used to assess the impact of changes to all portfolio variables that were not explicitly added to the table. When this point is reached, the portfolio is completely switched to the current period values. This factor, when present, is always below all other portfolio variables. The row movement buttons will not allow rows to move in a way that breaks this condition.|
+|Scenario (All Others) | Used to assess the impact of changes to all risk factor variables that were not explicitly added to the table. When this point is reached, the scenario is completely switched to the current period values. This factor, when present, is always below all other scenario risk factors. The row movement buttons will not allow to move rows in a way that breaks this condition.|
+|Model Logic | Used to assess the effect of running the analysis with the model logic as it exists in the current period instead of as it was in the previous period. This is only meaningful if the models (or any auxiliary data consumed by the models, such as Counterparty, Risk Mitigants, Parameter Matrices, and so on) have changed in this time.|
+|Individual Assessment | Used to assess the change in the output measures across the two periods with respect to instruments that were individually assessed.|
+|Q-Factor Adjustments | Used to assess the change in the output measures across the two periods with respect to Qualitative Factor Adjustments (Q-Factor Adjustments).|
+|Manual Adjustments | Used to assess the change in the output measures across the two periods with respect to Manual Adjustments.|
+|New Originations | Used to assess the impact of any positions that were not in the portfolio in the previous period and are in the portfolio in the current period.|
+|Other | Used to assess the change due to any factors not listed in this table – excluding those that are absorbed by the Portfolio (All Others) and Scenario (All Others) factors. Note that if those factors are deleted, then this factor takes them on as well. “Other” is always included and is always last. As such it can not be moved or deleted.|
+
+With the exception of Other, these can be deleted and rearranged. Some risk factors can not be moved above or below others – details of these rules are in the descriptions of the Portfolio (All Others), Scenario (All Others), and Portfolio Aging factors above. Once deleted, they can be added back into the table.
+
+\subsubsection AFAddFacs Adding Additional Attribution Factors
+Portfolio Variables and Scenario Risk Factors can be added to the list of attribution factors. You must specify the Data Definition and the Master Risk Scenario for a given portfolio to pull them from as described above. You can add additional attribution factors by clicking the Add button on the toolbar of the Attrubution Factors Order table.
+
+Here is a screen capture from the UI showing how you can add additional attribution factors.
+\image html AttrAddFactor.png
+
+\subsubsection AFOrderFacs Ordering Attribution Factors
+The order the attribution factors appear in the <b>Attribution Factors Order</b> table is the order in which they will be processed in the attribution analysis. To move an attribution factor in the table, select it and press one of the arrow buttons on the toolbar. Multiple factors can be moved at the same time. From left to right, the arrow buttons perform the following actions: 
+- move the selected items up one row.
+- move the selected items as far up as possible.
+- move the selected items as far down as possible.
+- move the selected items down one row.
+
+There are limits to the movements of certain attribution factors within the table as follows:
+- The Portfolio (All Others) row must be below any portfolio variables. 
+- The Scenario (All Others) row must be below any scenario risk factors. 
+- The Portfolio Aging row must be above all scenario and portfolio variables, including the All Others factors. 
+- The Other row is always last in the table.
+
+Here is a screen capture from the UI showing how you can order attribution factors within a table.
+\image html AttrMoveRows.png
+
+\subsubsection AFGroupFacs Grouping Factors
+To place attribution factors in a group, first move the desired factors so that they are adjacent. When your selection includes only attribution factors that are adjacent, the group rows toolbar button is enabled. Clicking this button will move the Name value for each factor to the Members column and will create a new row above the grouped items. The default name of the group is 'New Group', which you can change. Once factors are grouped, selecting the group row will automatically cause all members to be selected. 
+
+Here is a screen capture from the UI showing how you can group factors together.
+\image html AttrMakeGroup.png
+
+\subsubsection AFAddToGroup Adding to a Group
+You can add attribution factors to a group by moving them so that they are adjacent to the group (either above or below) and pressing the group rows button with those rows AND the group rows selected. Note that when your selection enables you to add factors to a group, the group rows button will change to include a plus ('+') symbol.
+
+Here is a screen capture from the UI showing how you can add factors to a group.
+\image html AttrAddToGroup.png
+
+\subsubsection AFUngroupFacs Ungrouping Rows
+To ungroup rows, select the entire group and press the ungroup rows button. You cannot remove individual factors from a group.
+
+Here is a screen capture from the UI showing how you can ungroup rows.
+\image html AttrUngroupRows.png
+
+\subsubsection AFMoveWithGroups Moving With Groups
+If you select a subset of the rows in a group, then those rows can be moved within the group, but can not be moved out of the group. Similarly, rows that are outside of a group can not be moved into it with the row movement buttons. If the entire group is selected, then the row movement buttons will move the entire group as one unit. Note that in this case, any row boundaries that apply to a member of the group apply to the entire group. So, if your group contains a portfolio variable, the entire group will not be able to move beneath the Portfolio (All Others) factor.
+
+\subsubsection AFAddWithGroups Adding new Factors With Groups
+It is possible to have a group that forces a newly added attribution factor to fall inside the group. For example, if your group contains both the Portfolio Aging and the Portfolio (All Others) factors, then any portfolio variable that is added will enter the table as a member of that group.
+
+\subsection O12SelectOutput_key Choosing Output Variables
+
+After choosing attribution factors, as well as their groupings and order, a user performing attribution analysis must choose output variables. The available variables will show on the screen for selection based on the data in the previous output table definition chosen. 
+
+After the variables have been chosen, grouped, and ordered properly, the user can then move on to the other necessary components for attribution analysis. 
+
+Here is a screen capture from the UI showing how you can add output variables for the attribution analysis.<br>
+\image html OutputVariables.png
+
+
+\section AttributionModels The Attribution Analysis Model
+
+Here is a screen capture of the default attribution analysis model as it appears in the UI.<br>
+\image html AttribModel1.png
+
+
+
+
+*/

@@ -1,0 +1,142 @@
+﻿/*
+ Copyright (C) 2019 SAS Institute Inc. Cary, NC, USA
+*/
+
+/*! \mainpage Introduction
+\tableofcontents
+\section IntroPlatform Overview of SAS Solution for IFRS 9
+
+
+SAS<sup>®</sup> Solution for IFRS 9 addresses the regulatory requirements and business challenges related to the IFRS 9 reporting standard by integrating a set of powerful analytics for process management. 
+
+The solution contains pre-built content that can be configured or customized to address the various requirements of the IFRS 9 regulation's credit impairment disclosures, and offers the following features:
+
+- robust data quality validation
+- strong analytical model development capabilities
+- a solid control and governance environment
+- a seamless platform for risk and finance collaboration
+- a process workflow to orchestrate IFRS 9 activities between relevant parties
+
+The result is a holistic view of balance sheets, income statements, liquidity positions and capital requirements. 
+
+At a high level, SAS Solution for IFRS 9 supports an end-to-end functional process (Cycle) from data preparation to reporting, as shown in the following figure.
+
+\image html IFRS9Process.png
+
+While this process can be modified to fit individual business needs, a typical process should include the following steps: 
+-# Data is placed into a landing area from existing financial record keeping systems and initially populated.
+-# The data is prepared, processed, and reviewed to ensure it meets data quality standards.
+-# Scenarios (macroeconomic data or other risk factors) are configured for consumption by the ECL models.
+-# Models are run and results are reported, reviewed, and adjusted as needed.
+-# After the results are deemed adequate, sign-off occurs.
+
+\n
+
+\section IntroFrameworkElements SAS Solution for IFRS9 Framework
+
+\image html FrameworkElements.png
+
+
+\subsection DataManagement Data Management, Data Quality, and Overrides
+
+SAS Solution for IFRS 9 provides the following features as it relates to the management of data:
+- a customizable and extensible data model that can be used to support various analytical and reporting requirements
+- easily configured pre-defined rules and related actions that are mapped to BCBS239 principles (accuracy, integrity, completeness, and so on) and can operate on individual or aggregated data to perform quality checks
+- network diagrams that enable you to track usage, determine data lineage, and understand data associations across the various process activities of a cycle
+- an analysis data inventory that aggregates all analysis data types (portfolios, data quality results, financial information, and so on), enables analysis of individual records, and enables you to apply business and allocation rules to modify and adjust (override) the data
+
+\subsection ScenarioManagement Scenario Design
+
+SAS Solution for IFRS 9 has the following features as they relate to scenario design:
+- a centralized scenario repository manager that enables you to define scenarios or load external scenarios, change or enrich scenarios with relevant risk factor data, apply scenarios to selected portfolios, and explore scenario results to understand the potential impacts
+- an inventory of master risk scenarios for exploring and comparing risks under different levels of severity
+
+Here is a screen capture of the risk scenario manager page.
+
+\image html RSMView.png
+
+\subsection Models Execution Engine and Simulation Environment
+
+SAS Solution for IFRS 9 contains the following features pertaining to model execution and simulation:
+- a centralized model inventory that keeps track of all the models, scripts and versions
+- support for the configuration of parameters that can be created, edited, categorized, and called by any model run to support the quantification of impacts of stress scenarios
+- the ability to run models on a stand-alone basis or as part of a model group that incorporates dependencies and aggregation logic through the configuration of user-defined logic (UDL)
+- an efficient execution process that leverages high-performance (parallel) computing and memory optimization
+- a robust calculation infrastructure that provides an efficient simulation environment and supports multiple executions of different assumptions and inputs  
+- the ability to perform what-if analyses and define relative or absolute variations on risk factors and portfolio attributes
+- pre-built methodology templates for expected credit loss
+
+Here is a screen capture of the model inventory page.
+
+\image html modelPic.png
+
+
+\subsection Orchestration Orchestration and Risk Consolidation
+
+SAS Solution for IFRS 9 provides the following orchestration and risk consolidation capabilities:
+- a configurable analysis run environment that orchestrates the timely execution of a combination of models and master risk scenarios
+- a sample workflow that maps all relevant activities and assigns individual tasks to respective organizational units
+- task-level status tracking capabilities for monitoring the project and identifying performance issues
+
+\subsection Reporting Dynamic Reporting
+
+SAS Solution for IFRS 9 has the following dashboarding and reporting features:
+- pre-built SAS Visual Analytics reports to display overall data quality metrics based on the individual results obtained for each data quality rule and the weight assigned to each rule
+- drill-down capabilities to support root-cause analysis of data quality issues, to track data quality issues to individual records, and to remediate and correct data quality issues
+
+The reporting dashboard enables users to visually communicate stress testing data and trends to auditors, regulators, and internal stakeholders. 
+By default, the dashboard contains a powerful set of dynamic reports that show the overall state of an organizationâ€™s model ecosystem. 
+It enables users to interactively explore and drill into information, from high-level graphs and figures down to individual data points. 
+The dashboard is designed to work with tablets as well as browsers for portability and ease-of-use. 
+Reports within the dashboard can also be imported into Microsoft Office documents, and those documents can be easily refreshed with current information as needed. 
+Reports can also be edited and enhanced by power users.
+
+For example, the <b>Data Quality Report</b>, as shown in the following screen capture, enables you to review the key performance indicators (KPI) during the data quality check part of the cycle, and to drill into any data quality issues.
+
+\image html dataQualityDash.png
+
+Similarly, the <b>Management Report</b> shows the results of a stress test and compiles these results into a dynamic report on the SAS Visual Analytics Report Viewer. This report provides a summary of results, details about the scenarios, and adjustments made to the data. 
+
+\image html managementRev.png
+
+\n
+
+\section IntroComponents Products Involved and Their Various Roles
+
+SAS Solution for IFRS 9 utilizes a powerful and integrated set of SAS products and solutions to help financial institutions. SAS Solution for IFRS 9 includes the following products from the SAS risk portfolio.
+
+-   SAS Risk Governance Framework
+-   SAS Infrastructure for Risk Management
+-   SAS Risk Scenario Manager
+-   SAS Model Implementation Platform
+-   SAS Visual Analytics
+
+\subsection RGF SAS Risk Governance Framework
+
+SAS Solution for IFRS 9 leverages SAS Risk Governance Framework to:
+-   provide a common interface to perform end-to-end stress testing activities
+-   control and govern centralized workflows to orchestrate the IFRS 9 process with complete auditability and traceability
+-   provide a transparent platform for processing large volumes of data, performing transformations on data, initiating analysis runs, and recording data lineage using relationships 
+-   provide a robust documentation management platform with version controls and user entitlements
+
+\subsection MIP SAS Model Implementation Platform 
+
+SAS Solution for IFRS 9 leverages SAS Model Implementation Platform to:
+
+-   provide a controlled environment where complex systems of loan-level risk models can be implemented quickly and transparently
+-   offer full integration with both SAS Risk Governance Framework and SAS Infrastructure for Risk Management for high-performance analytics
+
+\subsection IRM SAS Infrastructure for Risk Management
+
+SAS Solution for IFRS 9 leverages SAS Infrastructure for Risk Management to:
+-   provide high-performance analytics and data manipulations
+-   leverage in-memory analytical capabilities
+
+
+
+\section disclaimer Disclaimer
+
+SAS and all other SAS Institute Inc. product or service names are registered trademarks or trademarks of SAS Institute Inc. in the USA and other countries. ® indicates USA registration.
+Other brand and product names are registered trademarks or trademarks of their respective companies.
+
+*/

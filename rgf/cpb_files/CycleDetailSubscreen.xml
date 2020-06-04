@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui-definition SYSTEM "uiDefinition.dtd">
+<ui-definition id="cycleDetailSubscreen.ifrs9" type="SubScreen">
+   <title>Cycle Detail Subscreen</title>
+   <screen id="detail-subscreen">
+      <initialize>
+         <!-- Initialize filter for previous results -->
+         <set name="TEMP.htmDataFilter" value="'and(hasObjectLinkToEq(&quot;RMC&quot;,&quot;analysisData_dataDefinition&quot;,&quot;dataCategoryCd&quot;,&quot;RESULTS&quot;,0),eq(resultsCategoryCd,&quot;FR_HTM&quot;))'"/>
+         <set name="TEMP.filterObj_htm" value="toJson('{&quot;type&quot;:&quot;FilterExpression&quot;}')" />
+         <set name="TEMP.filterObj_htm" value="JPath('put', TEMP.filterObj_htm,'$','filter', TEMP.htmDataFilter)" />
+      </initialize>
+
+      <field name="initialRunFlg" type="boolean" required="false" readonly="TEMP.statusCheck" align="left" escape-xml="true" displayLabelOnTop="false" hideLabel="false" default="false">
+         <label separator-visible="true">
+            <message key="customObject214.field.initialRunFlg.displayName.txt" />
+         </label>
+         <on-change>
+            <set-visible name="TEMP.htmResultsChooser" test="not initialRunFlg" />
+            <set-required name="TEMP.htmResultsChooser" test="not initialRunFlg" />
+         </on-change>
+      </field>
+      <field name="TEMP.htmResultsChooser" type="component" component-name="LinkedBusinessObjectChooser" readonly="TEMP.statusCheck" align="left" escape-xml="true" displayLabelOnTop="false" hideLabel="false" visible="not initialRunFlg" required="not initialRunFlg" >
+         <label separator-visible="true">
+           <message key="customObject214.linkedBusinessObjects.htmResults.displayName.txt" />
+         </label>
+         <param name="linkTypeSourceSystemCd" value="'RMC'" />
+         <param name="linkTypeId" value="'cycle_analysisData_prev'" />
+         <param name="showCreateLink" value="false" />
+         <param name="icon" value="'REPOSITORY'" />
+         <param name="placeholderText" value="'customObject214.resultsChooser.txt'" />
+         <param name="dialogTitle" value="'customObject214.htmResultsChooser.dialog.txt'" />
+         <param name="showLocationChooser" value="false" />
+         <!-- Filter results to only show data with relevant results -->
+         <param name="queryProcessorFieldName" value="'TEMP.filterObj_htm'" />
+         <on-change>
+            <!-- Get handle of linked analysis data -->
+            <set-value name="TEMP.linkedHTMData" value="GetBusinessObjects(getLinkInstancesOfType('RMC', 'cycle_analysisData_prev'))" />
+            <set-value name="TEMP.htmDataHandle" value="get('handle', getFirst(TEMP.linkedHTMData))" /> 
+            <!-- Refresh the relationship diagram -->
+            <set-values name="TEMP.relDiagram" values="GetRelationships(GetHandle(BUSINESSOBJECT), TEMP.diagramLinkTypes, true)" />
+         </on-change>
+      </field>
+
+      <finalize>
+      </finalize>
+   </screen>
+</ui-definition>

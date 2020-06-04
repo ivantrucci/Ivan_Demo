@@ -1,0 +1,19 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 154debtSecurities Debt Securities
+
+\anchor DebtSecurities
+
+\section DebtSecuritiesIntro Debt Securities
+
+The default SAS Solution for IFRS 9 workflow template (IFRS9_Cycle) enables you to manage the following debt securities by default:<br>
+- Financing Receivables
+- Held-To-Maturity (HTM) debt securities
+
+Input data for these debt securities should be provided in the CREDIT_PORTFOLIO table. Note that the instrument identifier (INSTID) must be unique among all loans and debt securities.
+
+The expected credit loss for financing receivables is calculated using a model. The expected credit loss for held-to-maturity debt securities can be calculated using a model (as is done with financing receivables) or using discounted cash flow methodology. Because the held-to-maturity debt securities data is provided via the CREDIT_PORTFOLIO data set, these records are processed through the same SAS Model Implementation Platform modeling system or SAS code model as the financing receivables records. However, within the modeling system or the SAS code model, you can configure held-to-maturity records to go through different calculations than the financing receivables records, if necessary. For example, in a SAS Model Implementation Platform modeling system, this would be done by mapping held-to-maturity records to a separate model group than the other records in the input data set.
+
+*/

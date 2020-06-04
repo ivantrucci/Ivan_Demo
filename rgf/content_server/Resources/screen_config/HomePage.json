@@ -1,0 +1,35 @@
+{
+   "documentation": "'/SASStoredProcess/do?_program=/Products/SAS Risk Stratum Core/Stored Processes/Solution Documentation&amp;solution_id=ifrs9'",
+   "links": [
+      {
+         "name": "Link01",
+         "linkText": "'ifrs9.documentation.link.txt'",
+         "linkHref": "concat('http://documentation.sas.com/#/?softwareId=RGFIFRS9&softwareVersion=7.4_01&requestor=inapp&locale=',C_GetLocale())"
+      },
+      {
+         "name": "Link02",
+         "linkText": "'ifrs.ifrs9.link.txt'",
+         "linkHref": "'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/'"
+      },
+      {
+         "name": "Link03",
+         "linkText": "'kpmg.ifrs9.link.txt'",
+         "linkHref": "'https://home.kpmg/xx/en/home/insights/2014/07/ith-2014-13.html'"
+      },
+      {
+         "name": "Link04",
+         "linkText": "'deloitte.ifrs9.link.txt'",
+         "linkHref": "'https://www2.deloitte.com/content/dam/Deloitte/ru/Documents/audit/ifrs-9-financial-instruments-en.pdf'"
+      },
+      {
+         "name": "Link05",
+         "linkText": "'pwc.ifrs9.link.txt'",
+         "linkHref": "'https://www.pwc.com/gx/en/audit-services/ifrs/publications/ifrs-9/ifrs-9-understanding-the-basics.pdf'"
+      },
+      {
+         "name": "Link06",
+         "linkText": "'sas.ifrs9.link.txt'",
+         "linkHref": "'http://www.sas.com/'"
+      }
+   ]
+}

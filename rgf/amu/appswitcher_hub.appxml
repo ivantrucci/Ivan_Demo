@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationMetadata xmlns="http://www.sas.com/xml/schema/namespace/ApplicationMetadata-9.4">
+  <Application ClassIdentifier="rgpmid" ProductName="Risk Gov Frwk Mid-Tier">
+    <Hub>
+        <HubDirective Name="Risk.branch">
+            <branch label.loc="Risk Management"/>
+        </HubDirective>
+        <HubDirective Name="RGF_HUB_Home_IFRS9">
+             <options displayName          ="SAS Solution for IFRS9"
+                      appId                ="RGF_HUB_Home_IFRS9"
+                      appGroupId           ="2621"
+                      capabilityName       ="ORM.GLOBAL.hub.ifrs9"
+                      appSwitcherCompliance="1"
+                      createDefaultShortcut="true"
+                      allowRename          ="true" />
+             <leaf parentId="Risk.branch" />
+             <commonActions label.loc="SAS Solution for IFRS9" iconName="modelRiskManagement" />
+             <createContent />
+             <toolbar />
+        </HubDirective>
+    </Hub>
+    <Capabilities>
+        <Category Name="Assigned Global Capabilities"
+                  Desc="Assigned Global Capabilities">
+            <Capability CapabilityId="ORM.GLOBAL.hub.ifrs9"
+                    Name="Access SAS Solution for IFRS9 from Visual Analytics Hub"
+                    Desc="Allows a user to access SAS Solution for IFRS9 from the Visual Analytics Hub."/>
+        </Category>
+    </Capabilities>
+    <Directives>
+      <URLDirective Name="RGF_HUB_Home_IFRS9" Desc="Directive for VA Hub integration with SAS Solution for IFRS9" Public="true" LogonTarget="true" Uri="/content/rmc-ifrs9" />
+    </Directives>
+  </Application>
+</ApplicationMetadata>

@@ -1,0 +1,2 @@
+{"ruleSetTypes": ["AllocationRuleSet", "BusinessRuleSet"],
+ "ruleSetCategories": ["DQ","STAGE","SPPI","ADJ","OTHER"]}

@@ -1,0 +1,43 @@
+/*
+Copyright (c) 2019, SAS Institute Inc., Cary, NC, USA. All Rights Reserved
+*/
+
+/*! \page 050solarchitecture Solution Architecture
+
+\anchor ArchitecturePage
+
+\anchor Architecture
+
+
+
+\section SAIntroduction_key Introduction
+ 
+The solution architecture is designed for an end-to-end regulatory cycle that consists of the following tasks:
+-# Load any necessary data into the system.
+-# Process the data through an orchestrated and governed routine that includes analytical transformations.
+-# Initiate model runs and automatically create records of all input and output objects used in a given analysis.
+-# Create reports and publish results.
+
+The following figure shows how customer data flows into the solution and is processed.
+
+\image html IFRS9Workflow.png
+    
+\section SALandingData_key Landing Area
+The landing area is the location where input data is provided to the solution. 
+By default, the landing area is a folder on the server containing data in a SAS data set format.
+
+See the \ref datamodel for details of the input data model that is shipped with the solution.
+
+
+\section SALandingAnalysisData_key Analysis Data
+Data in the landing area is registered in the solution during the data preparation run in the cycle. It can also be completed through an Analysis Run of the default <i>IFRS9 - Data Preparation</i> model. In both cases, the analysis run creates 
+a data definition that captures the structure of the data in the Data Definition object and registers the data in the Analysis Data object. Users can view the detailed data in the solution by viewing the Analysis Data object. Analysis data can be used directly in various analysis and model runs. 
+
+  
+\section SALandingOutputData_key Output Data
+There are two areas where output data is stored:
+-   In-memory Report Tables: These are tables that contain a limited volume of output data and exist only to service SAS Visual Analytics reports. 
+-   IFRS 9 Data Repository (IFRS9DR): These are tables that contain input data from the landing area and any output data created from an analysis. 
+
+
+*/
