@@ -1,4 +1,0 @@
-This file contains the URL and access key that are required to access the IFRS9 documentation in SAS Help Center.
-
-URL: https://documentation.sas.com/?cdcId=eclifrs9cdc&cdcVersion=7.4_01&docsetId=rgpicg&docsetTarget=titlepage.htm
-Access key: ExpCr3LO5
